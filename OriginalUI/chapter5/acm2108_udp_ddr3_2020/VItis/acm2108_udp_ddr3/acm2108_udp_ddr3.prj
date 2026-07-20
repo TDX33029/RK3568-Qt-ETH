@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="acm2108_udp_ddr3" location="C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3" platform="C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/export/acm2108_udp_ddr3_bsp/acm2108_udp_ddr3_bsp.xpfm" platformUID="xilinx:::0.0(custom)" systemProject="acm2108_udp_ddr3_system" sysConfig="acm2108_udp_ddr3_bsp" runtime="C/C++" cpu="standalone_domain" cpuInstance="ps7_cortexa9_0" os="standalone" mssSignature="c0d7b7c53dbd6464540692acd3ebfc74">
+  <configuration name="Debug" id="xilinx.gnu.armv7.exe.debug.1518226524">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.armv7.exe.release.621046359" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="empty_application"/>
+</sdkproject:SdkProject>

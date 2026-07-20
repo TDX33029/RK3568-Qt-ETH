@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cmd.exe /c \"attrib -R \\\\\"D:\\\\Docunemt\\\\低空侦测技术\\\\share\\\\1\\\\test1\\\\mainwindow.ui\\\\\"\")",
+      "Bash(echo \"exit: $?\")",
+      "Bash(powershell.exe -Command \"Remove-Item -Force 'D:\\\\Docunemt\\\\低空侦测技术\\\\share\\\\1\\\\test1\\\\mainwindow.ui'\")",
+      "Bash(cmd.exe *)",
+      "Bash(echo \"remove done, exit: $?\")",
+      "Bash(node *)",
+      "Bash(powershell.exe *)",
+      "Bash(echo \"exit code: $?\")"
+    ]
+  }
+}

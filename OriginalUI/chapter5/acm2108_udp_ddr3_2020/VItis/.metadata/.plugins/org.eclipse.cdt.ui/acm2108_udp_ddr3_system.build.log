@@ -1,0 +1,10 @@
+15:26:45 **** Build of configuration Debug for project acm2108_udp_ddr3_system ****
+make all 
+Generating bif file for the system project
+generate_system_bif.bat 56551 C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/export/acm2108_udp_ddr3_bsp/acm2108_udp_ddr3_bsp.xpfm standalone_domain C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_system/Debug/system.bif
+sdcard_gen --xpfm C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/export/acm2108_udp_ddr3_bsp/acm2108_udp_ddr3_bsp.xpfm --sys_config acm2108_udp_ddr3_bsp --bif C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_system/Debug/system.bif --bitstream C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3/_ide/bitstream/acm2108_udp_ddr3.bit --elf C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3/Debug/acm2108_udp_ddr3.elf,ps7_cortexa9_0
+creating BOOT.BIN using C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3/_ide/bitstream/acm2108_udp_ddr3.bit
+Running D:/vivado2020/Vitis/2020.2/bin/bootgen  -image C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_system/Debug/sd_card_temp/boot.bif -w -o i BOOT.BIN
+
+15:26:50 Build Finished (took 4s.497ms)
+

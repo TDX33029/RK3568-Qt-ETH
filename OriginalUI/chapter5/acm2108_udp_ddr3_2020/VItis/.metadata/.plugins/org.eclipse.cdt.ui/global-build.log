@@ -1,0 +1,31 @@
+Nothing to build in platform 'acm2108_udp_ddr3_bsp'
+
+15:26:44 **** Build of configuration Debug for project acm2108_udp_ddr3 ****
+make all 
+make --no-print-directory pre-build
+a9-linaro-pre-build-step
+' '
+make --no-print-directory main-build
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -IC:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/export/acm2108_udp_ddr3_bsp/sw/acm2108_udp_ddr3_bsp/standalone_domain/bspinclude/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+'Finished building: ../src/main.c'
+' '
+'Building target: acm2108_udp_ddr3.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -LC:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/export/acm2108_udp_ddr3_bsp/sw/acm2108_udp_ddr3_bsp/standalone_domain/bsplib/lib -o "acm2108_udp_ddr3.elf"  ./src/main.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: acm2108_udp_ddr3.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size acm2108_udp_ddr3.elf  |tee "acm2108_udp_ddr3.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  18676	   1144	  22568	  42388	   a594	acm2108_udp_ddr3.elf
+'Finished building: acm2108_udp_ddr3.elf.size'
+' '
+15:26:45 **** Build of configuration Debug for project acm2108_udp_ddr3_system ****
+make all 
+Generating bif file for the system project
+generate_system_bif.bat 56551 C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/export/acm2108_udp_ddr3_bsp/acm2108_udp_ddr3_bsp.xpfm standalone_domain C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_system/Debug/system.bif
+sdcard_gen --xpfm C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/export/acm2108_udp_ddr3_bsp/acm2108_udp_ddr3_bsp.xpfm --sys_config acm2108_udp_ddr3_bsp --bif C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_system/Debug/system.bif --bitstream C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3/_ide/bitstream/acm2108_udp_ddr3.bit --elf C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3/Debug/acm2108_udp_ddr3.elf,ps7_cortexa9_0
+creating BOOT.BIN using C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3/_ide/bitstream/acm2108_udp_ddr3.bit
+Running D:/vivado2020/Vitis/2020.2/bin/bootgen  -image C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_system/Debug/sd_card_temp/boot.bif -w -o i BOOT.BIN

@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cmake -S . -B build -G \"MinGW Makefiles\")",
+      "Bash(where cmake *)",
+      "Bash(where.exe cmake *)",
+      "Read(//c//**)",
+      "Read(//c/Program Files/CMake/**)",
+      "Read(//d//**)"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+15:01:19 INFO  : Launching XSCT server: xsct.bat -n  -interactive C:\Users\24165\Desktop\acm2108_udp_ddr3_2020\VItis\temp_xsdb_launch_script.tcl
+15:01:20 INFO  : Registering command handlers for Vitis TCF services
+15:01:21 INFO  : XSCT server has started successfully.
+15:01:21 INFO  : plnx-install-location is set to ''
+15:01:21 INFO  : Successfully done setting XSCT server connection channel  
+15:01:22 INFO  : Platform repository initialization has completed.
+15:01:22 INFO  : Successfully done setting workspace for the tool. 
+15:01:22 INFO  : Successfully done query RDI_DATADIR 
+15:02:10 INFO  : Result from executing command 'getProjects': acm2108_udp_ddr3_bsp
+15:02:10 INFO  : Result from executing command 'getPlatforms': 
+15:02:34 INFO  : Result from executing command 'getProjects': acm2108_udp_ddr3_bsp
+15:02:34 INFO  : Result from executing command 'getPlatforms': acm2108_udp_ddr3_bsp|C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/export/acm2108_udp_ddr3_bsp/acm2108_udp_ddr3_bsp.xpfm
+15:26:44 INFO  : Checking for BSP changes to sync application flags for project 'acm2108_udp_ddr3'...

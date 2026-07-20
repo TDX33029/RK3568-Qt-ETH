@@ -1,0 +1,7 @@
+/*acm2108_udp_ddr3_bsp*/
+the_ROM_image:
+{
+  [bootloader]<acm2108_udp_ddr3_bsp/boot/fsbl.elf>
+   <bitstream> 
+  <elf,ps7_cortexa9_0>
+}

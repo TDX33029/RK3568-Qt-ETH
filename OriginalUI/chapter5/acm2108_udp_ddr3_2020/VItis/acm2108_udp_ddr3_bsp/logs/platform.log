@@ -1,0 +1,2123 @@
+TRACE::2025-05-14.15:02:01::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:01::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:01::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:03::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:03::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:03::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:03::SCWPlatform::Do not have an existing db opened. 
+TRACE::2025-05-14.15:02:04::SCWPlatform::Opened new HwDB with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:04::SCWWriter::formatted JSON is {
+	"platformName":	"acm2108_udp_ddr3_bsp",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"acm2108_udp_ddr3_bsp",
+	"platHandOff":	"C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/acm2108_udp_ddr3/acm2108_udp_ddr3.xsa",
+	"platIntHandOff":	"<platformDir>/hw/acm2108_udp_ddr3.xsa",
+	"deviceType":	"zynq",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	""
+}
+TRACE::2025-05-14.15:02:04::SCWWriter::formatted JSON is {
+	"platformName":	"acm2108_udp_ddr3_bsp",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"acm2108_udp_ddr3_bsp",
+	"platHandOff":	"C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/acm2108_udp_ddr3/acm2108_udp_ddr3.xsa",
+	"platIntHandOff":	"<platformDir>/hw/acm2108_udp_ddr3.xsa",
+	"deviceType":	"zynq",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"acm2108_udp_ddr3_bsp",
+	"systems":	[{
+			"systemName":	"acm2108_udp_ddr3_bsp",
+			"systemDesc":	"acm2108_udp_ddr3_bsp",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"acm2108_udp_ddr3_bsp"
+		}]
+}
+TRACE::2025-05-14.15:02:04::SCWPlatform::Boot application domains not present, creating them
+TRACE::2025-05-14.15:02:04::SCWDomain::checking for install qemu data   : 
+TRACE::2025-05-14.15:02:04::SCWDomain:: Using the QEMU Data from install at  : D:/vivado2020/Vitis/2020.2/data/emulation/platforms/zynq/sw/a9_standalone/qemu/
+TRACE::2025-05-14.15:02:04::SCWDomain:: Using the QEMU args  from install at  : D:/vivado2020/Vitis/2020.2/data/emulation/platforms/zynq/sw/a9_standalone/qemu/qemu_args.txt
+TRACE::2025-05-14.15:02:04::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:04::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:04::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:04::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:04::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:04::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:04::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:04::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:04::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:04::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:04::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:04::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:04::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:04::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:04::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:04::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:04::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:04::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:04::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:04::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:04::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:04::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:04::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:04::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:04::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:04::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:04::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:04::SCWPlatform::Boot application domain added for zynq_fsbl
+TRACE::2025-05-14.15:02:04::SCWPlatform::Generating the sources  .
+TRACE::2025-05-14.15:02:04::SCWBDomain::Generating boot domain sources.
+TRACE::2025-05-14.15:02:04::SCWBDomain:: Generating the zynq_fsbl Application.
+TRACE::2025-05-14.15:02:04::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:04::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:04::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:04::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:04::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:04::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:04::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:04::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:04::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:04::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:04::SCWMssOS::DEBUG:  swdes dump  
+TRACE::2025-05-14.15:02:04::SCWMssOS::No sw design opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:04::SCWMssOS::mss does not exists at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:04::SCWMssOS::Creating sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:04::SCWMssOS::Adding the swdes entry, created swdb C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss with des name C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:04::SCWMssOS::updating the scw layer changes to swdes at   C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:04::SCWMssOS::Writing mss at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:04::SCWMssOS::Completed writing the mss file at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp
+TRACE::2025-05-14.15:02:04::SCWMssOS::Picking up changes from newly written mss file into SCW Layer. 
+TRACE::2025-05-14.15:02:04::SCWMssOS::Updated the changes from newly written mss file into SCW Layer. 
+TRACE::2025-05-14.15:02:04::SCWBDomain::Completed writing the mss file at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp
+TRACE::2025-05-14.15:02:09::SCWPlatform::Generating sources Done.
+TRACE::2025-05-14.15:02:09::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:09::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:09::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:09::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:09::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:09::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:09::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss||
+
+KEYINFO::2025-05-14.15:02:09::SCWMssOS::Could not open the swdb for C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+KEYINFO::2025-05-14.15:02:09::SCWMssOS::Could not open the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+ERROR: [Hsi 55-1558] Software Design C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss is not found
+
+TRACE::2025-05-14.15:02:09::SCWMssOS::Cleared the swdb table entry
+TRACE::2025-05-14.15:02:09::SCWMssOS::No sw design opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:09::SCWMssOS::mss exists loading the mss file  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:09::SCWMssOS::Opened the sw design from mss  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:09::SCWMssOS::Adding the swdes entry C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss with des name system
+TRACE::2025-05-14.15:02:09::SCWMssOS::updating the scw layer about changes
+TRACE::2025-05-14.15:02:09::SCWMssOS::Opened the sw design.  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:09::SCWMssOS::Saving the mss changes C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:09::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2025-05-14.15:02:09::SCWMssOS::Completed writemss as part of save.
+TRACE::2025-05-14.15:02:09::SCWMssOS::Commit changes completed.
+TRACE::2025-05-14.15:02:09::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:09::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:09::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:09::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:09::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:09::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:09::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:09::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:09::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:09::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:09::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:09::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:09::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:09::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:09::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:09::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:09::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:09::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:09::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:09::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:09::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:09::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:09::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:09::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:09::SCWWriter::formatted JSON is {
+	"platformName":	"acm2108_udp_ddr3_bsp",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"acm2108_udp_ddr3_bsp",
+	"platHandOff":	"C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/acm2108_udp_ddr3/acm2108_udp_ddr3.xsa",
+	"platIntHandOff":	"<platformDir>/hw/acm2108_udp_ddr3.xsa",
+	"deviceType":	"zynq",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"platFsblTarget":	"ps7_cortexa9_0",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"fsblExtraCompilerFlags":	"-MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard ",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"acm2108_udp_ddr3_bsp",
+	"systems":	[{
+			"systemName":	"acm2108_udp_ddr3_bsp",
+			"systemDesc":	"acm2108_udp_ddr3_bsp",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"acm2108_udp_ddr3_bsp",
+			"sysActiveDom":	"zynq_fsbl",
+			"sysDefaultDom":	"",
+			"domains":	[{
+					"domainName":	"zynq_fsbl",
+					"domainDispName":	"zynq_fsbl",
+					"domainDesc":	"FSBL Application BSP - Auto Generated.",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"debugEnable":	"",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"7.3",
+					"mssFile":	"",
+					"md5Digest":	"74d2c26735edd201a73eec4c1d7e68be",
+					"compatibleApp":	"zynq_fsbl",
+					"domType":	"bootDomain",
+					"arch":	"32-bit",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	["xilffs:4.4", "xilrsa:1.6"],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}]
+		}]
+}
+TRACE::2025-05-14.15:02:09::SCWDomain::checking for install qemu data   : 
+TRACE::2025-05-14.15:02:09::SCWDomain:: Using the QEMU Data from install at  : D:/vivado2020/Vitis/2020.2/data/emulation/platforms/zynq/sw/a9_standalone/qemu/
+TRACE::2025-05-14.15:02:09::SCWDomain:: Using the QEMU args  from install at  : D:/vivado2020/Vitis/2020.2/data/emulation/platforms/zynq/sw/a9_standalone/qemu/qemu_args.txt
+TRACE::2025-05-14.15:02:09::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:09::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:09::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:09::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:09::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:09::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:09::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:09::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:09::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:09::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:09::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:09::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:09::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:09::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:09::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:09::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:09::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:09::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:09::SCWMssOS::No sw design opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:09::SCWMssOS::mss does not exists at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:09::SCWMssOS::Creating sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:09::SCWMssOS::Adding the swdes entry, created swdb C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss with des name C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:09::SCWMssOS::updating the scw layer changes to swdes at   C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:09::SCWMssOS::Writing mss at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:09::SCWMssOS::Completed writing the mss file at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp
+TRACE::2025-05-14.15:02:09::SCWMssOS::Picking up changes from newly written mss file into SCW Layer. 
+TRACE::2025-05-14.15:02:09::SCWMssOS::Updated the changes from newly written mss file into SCW Layer. 
+TRACE::2025-05-14.15:02:09::SCWMssOS::Completed writing the mss file at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp
+TRACE::2025-05-14.15:02:09::SCWMssOS::Forcing BSP Sources regeneration.
+TRACE::2025-05-14.15:02:10::SCWMssOS::Saving the mss changes C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2025-05-14.15:02:10::SCWMssOS::Completed writemss as part of save.
+TRACE::2025-05-14.15:02:10::SCWMssOS::Commit changes completed.
+TRACE::2025-05-14.15:02:10::SCWMssOS::Saving the mss changes C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2025-05-14.15:02:10::SCWMssOS::Running validate of swdbs.
+KEYINFO::2025-05-14.15:02:10::SCWMssOS::Could not open the swdb for C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+KEYINFO::2025-05-14.15:02:10::SCWMssOS::Could not open the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+ERROR: [Hsi 55-1558] Software Design C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss is not found
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Cleared the swdb table entry
+TRACE::2025-05-14.15:02:10::SCWMssOS::Adding the swdes entry, mss present, able to open swdb C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss with des name system_0
+TRACE::2025-05-14.15:02:10::SCWMssOS::Writing the mss file completed C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::Commit changes completed.
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWWriter::formatted JSON is {
+	"platformName":	"acm2108_udp_ddr3_bsp",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"acm2108_udp_ddr3_bsp",
+	"platHandOff":	"C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/acm2108_udp_ddr3/acm2108_udp_ddr3.xsa",
+	"platIntHandOff":	"<platformDir>/hw/acm2108_udp_ddr3.xsa",
+	"deviceType":	"zynq",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"platFsblTarget":	"ps7_cortexa9_0",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"fsblExtraCompilerFlags":	"-MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard ",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"acm2108_udp_ddr3_bsp",
+	"systems":	[{
+			"systemName":	"acm2108_udp_ddr3_bsp",
+			"systemDesc":	"acm2108_udp_ddr3_bsp",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"acm2108_udp_ddr3_bsp",
+			"sysActiveDom":	"standalone_domain",
+			"sysDefaultDom":	"standalone_domain",
+			"domains":	[{
+					"domainName":	"zynq_fsbl",
+					"domainDispName":	"zynq_fsbl",
+					"domainDesc":	"FSBL Application BSP - Auto Generated.",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"debugEnable":	"",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"7.3",
+					"mssFile":	"",
+					"md5Digest":	"74d2c26735edd201a73eec4c1d7e68be",
+					"compatibleApp":	"zynq_fsbl",
+					"domType":	"bootDomain",
+					"arch":	"32-bit",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	["xilffs:4.4", "xilrsa:1.6"],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}, {
+					"domainName":	"standalone_domain",
+					"domainDispName":	"standalone_domain",
+					"domainDesc":	"standalone_domain",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"qemuArgs":	"D:/vivado2020/Vitis/2020.2/data/emulation/platforms/zynq/sw/a9_standalone/qemu/qemu_args.txt",
+					"qemuData":	"D:/vivado2020/Vitis/2020.2/data/emulation/platforms/zynq/sw/a9_standalone/qemu/",
+					"debugEnable":	"False",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"7.3",
+					"mssFile":	"",
+					"md5Digest":	"2d37364a8f03a4baa56cea77992e8261",
+					"compatibleApp":	"",
+					"domType":	"mssDomain",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	[],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}]
+		}]
+}
+LOG::2025-05-14.15:02:10::SCWPlatform::Started generating the artifacts platform acm2108_udp_ddr3_bsp
+TRACE::2025-05-14.15:02:10::SCWPlatform::Sanity checking of platform is completed
+LOG::2025-05-14.15:02:10::SCWPlatform::Started generating the artifacts for system configuration acm2108_udp_ddr3_bsp
+LOG::2025-05-14.15:02:10::SCWSystem::Checking the domain zynq_fsbl
+LOG::2025-05-14.15:02:10::SCWSystem::Doing application build for :  zynq_fsbl
+TRACE::2025-05-14.15:02:10::SCWBDomain::Not a forced makefile updation, No changes are present. 
+TRACE::2025-05-14.15:02:10::SCWDomain::Skipping the build for domain :  zynq_fsbl
+LOG::2025-05-14.15:02:10::SCWSystem::Checking the domain standalone_domain
+LOG::2025-05-14.15:02:10::SCWSystem::Not a boot domain 
+LOG::2025-05-14.15:02:10::SCWSystem::Started Processing the domain standalone_domain
+TRACE::2025-05-14.15:02:10::SCWDomain::Generating domain artifcats
+TRACE::2025-05-14.15:02:10::SCWMssOS::Generating standalone artifcats
+TRACE::2025-05-14.15:02:10::SCWMssOS::Copying the qemu file from  D:/vivado2020/Vitis/2020.2/data/emulation/platforms/zynq/sw/a9_standalone/qemu/qemu_args.txt To C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/export/acm2108_udp_ddr3_bsp/sw/acm2108_udp_ddr3_bsp/qemu/
+TRACE::2025-05-14.15:02:10::SCWMssOS::Copying the qemu file from  D:/vivado2020/Vitis/2020.2/data/emulation/platforms/zynq/sw/a9_standalone/qemu/qemu_args.txt To C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/export/acm2108_udp_ddr3_bsp/sw/acm2108_udp_ddr3_bsp/standalone_domain/qemu/
+TRACE::2025-05-14.15:02:10::SCWMssOS:: Copying the user libraries. 
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::Completed writing the mss file at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp
+TRACE::2025-05-14.15:02:10::SCWMssOS::Mss edits present, copying mssfile into export location C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::bsp generated is upto date with the mss file. Skipping bsp generation.
+TRACE::2025-05-14.15:02:10::SCWMssOS::BSP is already built. skipping the bsp build ... 
+TRACE::2025-05-14.15:02:10::SCWDomain::Skipping the build for domain :  standalone_domain
+TRACE::2025-05-14.15:02:10::SCWMssOS::skipping the bsp build ... 
+TRACE::2025-05-14.15:02:10::SCWMssOS::Copying to export directory.
+TRACE::2025-05-14.15:02:10::SCWMssOS:: Checking if to create the Supporting Applications
+TRACE::2025-05-14.15:02:10::SCWMssOS:: No Linux domain exists, trying to generate FSBL 
+TRACE::2025-05-14.15:02:10::SCWMssOS:: Completed Standalone Artifacts creation 
+LOG::2025-05-14.15:02:10::SCWSystem::Completed Processing the domain standalone_domain
+LOG::2025-05-14.15:02:10::SCWSystem::Completed Processing the sysconfig acm2108_udp_ddr3_bsp
+LOG::2025-05-14.15:02:10::SCWPlatform::Completed generating the artifacts for system configuration acm2108_udp_ddr3_bsp
+TRACE::2025-05-14.15:02:10::SCWPlatform::Started preparing the platform 
+TRACE::2025-05-14.15:02:10::SCWSystem::Writing the bif file for system config acm2108_udp_ddr3_bsp
+TRACE::2025-05-14.15:02:10::SCWSystem::dir created 
+TRACE::2025-05-14.15:02:10::SCWSystem::Writing the bif 
+TRACE::2025-05-14.15:02:10::SCWPlatform::Started writing the spfm file 
+TRACE::2025-05-14.15:02:10::SCWPlatform::Started writing the xpfm file 
+TRACE::2025-05-14.15:02:10::SCWPlatform::Completed generating the platform
+TRACE::2025-05-14.15:02:10::SCWMssOS::Saving the mss changes C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2025-05-14.15:02:10::SCWMssOS::Completed writemss as part of save.
+TRACE::2025-05-14.15:02:10::SCWMssOS::Commit changes completed.
+TRACE::2025-05-14.15:02:10::SCWMssOS::Saving the mss changes C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2025-05-14.15:02:10::SCWMssOS::Completed writemss as part of save.
+TRACE::2025-05-14.15:02:10::SCWMssOS::Commit changes completed.
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWWriter::formatted JSON is {
+	"platformName":	"acm2108_udp_ddr3_bsp",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"acm2108_udp_ddr3_bsp",
+	"platHandOff":	"C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/acm2108_udp_ddr3/acm2108_udp_ddr3.xsa",
+	"platIntHandOff":	"<platformDir>/hw/acm2108_udp_ddr3.xsa",
+	"deviceType":	"zynq",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"platFsblTarget":	"ps7_cortexa9_0",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"fsblExtraCompilerFlags":	"-MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard ",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"acm2108_udp_ddr3_bsp",
+	"systems":	[{
+			"systemName":	"acm2108_udp_ddr3_bsp",
+			"systemDesc":	"acm2108_udp_ddr3_bsp",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"acm2108_udp_ddr3_bsp",
+			"sysActiveDom":	"standalone_domain",
+			"sysDefaultDom":	"standalone_domain",
+			"domains":	[{
+					"domainName":	"zynq_fsbl",
+					"domainDispName":	"zynq_fsbl",
+					"domainDesc":	"FSBL Application BSP - Auto Generated.",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"debugEnable":	"",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"7.3",
+					"mssFile":	"",
+					"md5Digest":	"74d2c26735edd201a73eec4c1d7e68be",
+					"compatibleApp":	"zynq_fsbl",
+					"domType":	"bootDomain",
+					"arch":	"32-bit",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	["xilffs:4.4", "xilrsa:1.6"],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}, {
+					"domainName":	"standalone_domain",
+					"domainDispName":	"standalone_domain",
+					"domainDesc":	"standalone_domain",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"qemuArgs":	"D:/vivado2020/Vitis/2020.2/data/emulation/platforms/zynq/sw/a9_standalone/qemu/qemu_args.txt",
+					"qemuData":	"D:/vivado2020/Vitis/2020.2/data/emulation/platforms/zynq/sw/a9_standalone/qemu/",
+					"debugEnable":	"False",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"7.3",
+					"mssFile":	"",
+					"md5Digest":	"2d37364a8f03a4baa56cea77992e8261",
+					"compatibleApp":	"",
+					"domType":	"mssDomain",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	[],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}]
+		}]
+}
+KEYINFO::2025-05-14.15:02:10::SCWPlatform::updated the xpfm file.
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::Saving the mss changes C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2025-05-14.15:02:10::SCWMssOS::Completed writemss as part of save.
+TRACE::2025-05-14.15:02:10::SCWMssOS::Commit changes completed.
+TRACE::2025-05-14.15:02:10::SCWMssOS::Saving the mss changes C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2025-05-14.15:02:10::SCWMssOS::Completed writemss as part of save.
+TRACE::2025-05-14.15:02:10::SCWMssOS::Commit changes completed.
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWWriter::formatted JSON is {
+	"platformName":	"acm2108_udp_ddr3_bsp",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"acm2108_udp_ddr3_bsp",
+	"platHandOff":	"C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/acm2108_udp_ddr3/acm2108_udp_ddr3.xsa",
+	"platIntHandOff":	"<platformDir>/hw/acm2108_udp_ddr3.xsa",
+	"deviceType":	"zynq",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"platFsblTarget":	"ps7_cortexa9_0",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"fsblExtraCompilerFlags":	"-MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard ",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"acm2108_udp_ddr3_bsp",
+	"systems":	[{
+			"systemName":	"acm2108_udp_ddr3_bsp",
+			"systemDesc":	"acm2108_udp_ddr3_bsp",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"acm2108_udp_ddr3_bsp",
+			"sysActiveDom":	"standalone_domain",
+			"sysDefaultDom":	"standalone_domain",
+			"domains":	[{
+					"domainName":	"zynq_fsbl",
+					"domainDispName":	"zynq_fsbl",
+					"domainDesc":	"FSBL Application BSP - Auto Generated.",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"debugEnable":	"",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"7.3",
+					"mssFile":	"",
+					"md5Digest":	"74d2c26735edd201a73eec4c1d7e68be",
+					"compatibleApp":	"zynq_fsbl",
+					"domType":	"bootDomain",
+					"arch":	"32-bit",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	["xilffs:4.4", "xilrsa:1.6"],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}, {
+					"domainName":	"standalone_domain",
+					"domainDispName":	"standalone_domain",
+					"domainDesc":	"standalone_domain",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"qemuArgs":	"D:/vivado2020/Vitis/2020.2/data/emulation/platforms/zynq/sw/a9_standalone/qemu/qemu_args.txt",
+					"qemuData":	"D:/vivado2020/Vitis/2020.2/data/emulation/platforms/zynq/sw/a9_standalone/qemu/",
+					"debugEnable":	"False",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"7.3",
+					"mssFile":	"",
+					"md5Digest":	"2d37364a8f03a4baa56cea77992e8261",
+					"compatibleApp":	"",
+					"domType":	"mssDomain",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	[],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}]
+		}]
+}
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::Saving the mss changes C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2025-05-14.15:02:10::SCWMssOS::Completed writemss as part of save.
+TRACE::2025-05-14.15:02:10::SCWMssOS::Commit changes completed.
+TRACE::2025-05-14.15:02:10::SCWMssOS::Saving the mss changes C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2025-05-14.15:02:10::SCWMssOS::Completed writemss as part of save.
+TRACE::2025-05-14.15:02:10::SCWMssOS::Commit changes completed.
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWWriter::formatted JSON is {
+	"platformName":	"acm2108_udp_ddr3_bsp",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"acm2108_udp_ddr3_bsp",
+	"platHandOff":	"C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/acm2108_udp_ddr3/acm2108_udp_ddr3.xsa",
+	"platIntHandOff":	"<platformDir>/hw/acm2108_udp_ddr3.xsa",
+	"deviceType":	"zynq",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"platFsblTarget":	"ps7_cortexa9_0",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"fsblExtraCompilerFlags":	"-MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard ",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"acm2108_udp_ddr3_bsp",
+	"systems":	[{
+			"systemName":	"acm2108_udp_ddr3_bsp",
+			"systemDesc":	"acm2108_udp_ddr3_bsp",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"acm2108_udp_ddr3_bsp",
+			"sysActiveDom":	"standalone_domain",
+			"sysDefaultDom":	"standalone_domain",
+			"domains":	[{
+					"domainName":	"zynq_fsbl",
+					"domainDispName":	"zynq_fsbl",
+					"domainDesc":	"FSBL Application BSP - Auto Generated.",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"debugEnable":	"",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"7.3",
+					"mssFile":	"",
+					"md5Digest":	"74d2c26735edd201a73eec4c1d7e68be",
+					"compatibleApp":	"zynq_fsbl",
+					"domType":	"bootDomain",
+					"arch":	"32-bit",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	["xilffs:4.4", "xilrsa:1.6"],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}, {
+					"domainName":	"standalone_domain",
+					"domainDispName":	"standalone on ps7_cortexa9_0",
+					"domainDesc":	"standalone_domain",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"qemuArgs":	"D:/vivado2020/Vitis/2020.2/data/emulation/platforms/zynq/sw/a9_standalone/qemu/qemu_args.txt",
+					"qemuData":	"D:/vivado2020/Vitis/2020.2/data/emulation/platforms/zynq/sw/a9_standalone/qemu/",
+					"debugEnable":	"False",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"7.3",
+					"mssFile":	"",
+					"md5Digest":	"2d37364a8f03a4baa56cea77992e8261",
+					"compatibleApp":	"",
+					"domType":	"mssDomain",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	[],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}]
+		}]
+}
+TRACE::2025-05-14.15:02:10::SCWMssOS::Saving the mss changes C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2025-05-14.15:02:10::SCWMssOS::Completed writemss as part of save.
+TRACE::2025-05-14.15:02:10::SCWMssOS::Commit changes completed.
+TRACE::2025-05-14.15:02:10::SCWMssOS::Saving the mss changes C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2025-05-14.15:02:10::SCWMssOS::Completed writemss as part of save.
+TRACE::2025-05-14.15:02:10::SCWMssOS::Commit changes completed.
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:10::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:10::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWWriter::formatted JSON is {
+	"platformName":	"acm2108_udp_ddr3_bsp",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"acm2108_udp_ddr3_bsp",
+	"platHandOff":	"C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/acm2108_udp_ddr3/acm2108_udp_ddr3.xsa",
+	"platIntHandOff":	"<platformDir>/hw/acm2108_udp_ddr3.xsa",
+	"deviceType":	"zynq",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"platFsblTarget":	"ps7_cortexa9_0",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"fsblExtraCompilerFlags":	"-MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard ",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"acm2108_udp_ddr3_bsp",
+	"systems":	[{
+			"systemName":	"acm2108_udp_ddr3_bsp",
+			"systemDesc":	"acm2108_udp_ddr3_bsp",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"acm2108_udp_ddr3_bsp",
+			"sysActiveDom":	"standalone_domain",
+			"sysDefaultDom":	"standalone_domain",
+			"domains":	[{
+					"domainName":	"zynq_fsbl",
+					"domainDispName":	"zynq_fsbl",
+					"domainDesc":	"FSBL Application BSP - Auto Generated.",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"debugEnable":	"",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"7.3",
+					"mssFile":	"",
+					"md5Digest":	"74d2c26735edd201a73eec4c1d7e68be",
+					"compatibleApp":	"zynq_fsbl",
+					"domType":	"bootDomain",
+					"arch":	"32-bit",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	["xilffs:4.4", "xilrsa:1.6"],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}, {
+					"domainName":	"standalone_domain",
+					"domainDispName":	"standalone on ps7_cortexa9_0",
+					"domainDesc":	"standalone_domain",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"qemuArgs":	"D:/vivado2020/Vitis/2020.2/data/emulation/platforms/zynq/sw/a9_standalone/qemu/qemu_args.txt",
+					"qemuData":	"D:/vivado2020/Vitis/2020.2/data/emulation/platforms/zynq/sw/a9_standalone/qemu/",
+					"debugEnable":	"False",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"7.3",
+					"mssFile":	"",
+					"md5Digest":	"2d37364a8f03a4baa56cea77992e8261",
+					"compatibleApp":	"",
+					"domType":	"mssDomain",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	[],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}]
+		}]
+}
+TRACE::2025-05-14.15:02:10::SCWPlatform::Clearing the existing platform
+TRACE::2025-05-14.15:02:10::SCWSystem::Clearing the existing sysconfig
+TRACE::2025-05-14.15:02:10::SCWBDomain::clearing the fsbl build
+TRACE::2025-05-14.15:02:10::SCWMssOS::Removing the swdes entry for  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWMssOS::Removing the swdes entry for  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:10::SCWSystem::Clearing the domains completed.
+TRACE::2025-05-14.15:02:10::SCWPlatform::Clearing the opened hw db.
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform location is C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Removing the HwDB with name C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:10::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:10::SCWPlatform::Do not have an existing db opened. 
+TRACE::2025-05-14.15:02:12::SCWPlatform::Opened new HwDB with name acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:12::SCWReader::Active system found as  acm2108_udp_ddr3_bsp
+TRACE::2025-05-14.15:02:12::SCWReader::Handling sysconfig acm2108_udp_ddr3_bsp
+TRACE::2025-05-14.15:02:12::SCWDomain::checking for install qemu data   : 
+TRACE::2025-05-14.15:02:12::SCWDomain:: Using the QEMU Data from install at  : D:/vivado2020/Vitis/2020.2/data/emulation/platforms/zynq/sw/a9_standalone/qemu/
+TRACE::2025-05-14.15:02:12::SCWDomain:: Using the QEMU args  from install at  : D:/vivado2020/Vitis/2020.2/data/emulation/platforms/zynq/sw/a9_standalone/qemu/qemu_args.txt
+TRACE::2025-05-14.15:02:12::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:12::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:12::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:12::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:12::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:12::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:12::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:12::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:12::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:12::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:12::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:12::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:12::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:12::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:12::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:12::SCWReader::Boot application domain added for zynq_fsbl
+TRACE::2025-05-14.15:02:12::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:12::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:12::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:12::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:12::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:12::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:12::SCWMssOS::DEBUG:  swdes dump  
+TRACE::2025-05-14.15:02:12::SCWMssOS::No sw design opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:12::SCWMssOS::mss exists loading the mss file  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:12::SCWMssOS::Opened the sw design from mss  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:12::SCWMssOS::Adding the swdes entry C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss with des name system
+TRACE::2025-05-14.15:02:12::SCWMssOS::updating the scw layer about changes
+TRACE::2025-05-14.15:02:12::SCWMssOS::Opened the sw design.  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:12::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:12::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:12::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:12::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:12::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:12::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:12::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:12::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:12::SCWMssOS:: library already available in sw design:  xilffs:4.4
+TRACE::2025-05-14.15:02:12::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:12::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:12::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:12::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:12::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:12::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:12::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:12::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:12::SCWMssOS:: library already available in sw design:  xilrsa:1.6
+TRACE::2025-05-14.15:02:12::SCWMssOS::Saving the mss changes C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:12::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2025-05-14.15:02:12::SCWMssOS::Completed writemss as part of save.
+TRACE::2025-05-14.15:02:12::SCWMssOS::Commit changes completed.
+TRACE::2025-05-14.15:02:12::SCWReader::Adding prebuilt librarypaths as   
+TRACE::2025-05-14.15:02:12::SCWReader::Adding prebuilt incpaths  as   
+TRACE::2025-05-14.15:02:12::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:12::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:12::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:12::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:12::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:12::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:12::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:12::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:12::SCWReader::No isolation master present  
+TRACE::2025-05-14.15:02:12::SCWDomain::checking for install qemu data   : 
+TRACE::2025-05-14.15:02:12::SCWDomain:: Using the QEMU Data from install at  : D:/vivado2020/Vitis/2020.2/data/emulation/platforms/zynq/sw/a9_standalone/qemu/
+TRACE::2025-05-14.15:02:12::SCWDomain:: Using the QEMU args  from install at  : D:/vivado2020/Vitis/2020.2/data/emulation/platforms/zynq/sw/a9_standalone/qemu/qemu_args.txt
+TRACE::2025-05-14.15:02:12::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:12::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:12::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:12::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:12::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:12::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:12::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:12::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:12::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:12::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:12::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:12::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:12::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:12::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:12::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:12::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:12::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:12::SCWMssOS::No sw design opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:12::SCWMssOS::mss exists loading the mss file  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:12::SCWMssOS::Opened the sw design from mss  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:12::SCWMssOS::Adding the swdes entry C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss with des name system_0
+TRACE::2025-05-14.15:02:12::SCWMssOS::updating the scw layer about changes
+TRACE::2025-05-14.15:02:12::SCWMssOS::Opened the sw design.  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:12::SCWMssOS::Saving the mss changes C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:12::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2025-05-14.15:02:12::SCWMssOS::Completed writemss as part of save.
+TRACE::2025-05-14.15:02:12::SCWMssOS::Commit changes completed.
+TRACE::2025-05-14.15:02:12::SCWReader::Adding prebuilt librarypaths as   
+TRACE::2025-05-14.15:02:12::SCWReader::Adding prebuilt incpaths  as   
+TRACE::2025-05-14.15:02:12::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:12::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:12::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:12::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:12::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:12::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:12::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:12::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:12::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:12::SCWReader::No isolation master present  
+LOG::2025-05-14.15:02:19::SCWPlatform::Started generating the artifacts platform acm2108_udp_ddr3_bsp
+TRACE::2025-05-14.15:02:19::SCWPlatform::Sanity checking of platform is completed
+LOG::2025-05-14.15:02:19::SCWPlatform::Started generating the artifacts for system configuration acm2108_udp_ddr3_bsp
+LOG::2025-05-14.15:02:19::SCWSystem::Checking the domain zynq_fsbl
+LOG::2025-05-14.15:02:19::SCWSystem::Doing application build for :  zynq_fsbl
+TRACE::2025-05-14.15:02:19::SCWBDomain::Not a forced makefile updation, No changes are present. 
+TRACE::2025-05-14.15:02:19::SCWDomain::Building the domain as part of full build :  zynq_fsbl
+TRACE::2025-05-14.15:02:19::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:19::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:19::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:19::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:19::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:19::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:19::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:19::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:19::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:19::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:19::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:19::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:19::SCWBDomain::Completed writing the mss file at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp
+TRACE::2025-05-14.15:02:19::SCWBDomain::bsp generated is upto date with the mss file. Skipping bsp generation.
+TRACE::2025-05-14.15:02:19::SCWBDomain::Not a forced makefile updation, No changes are present. 
+TRACE::2025-05-14.15:02:19::SCWBDomain::System Command Ran  C:&  cd  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl& make -C  zynq_fsbl_bsp & make 
+TRACE::2025-05-14.15:02:19::SCWBDomain::make: Entering directory 'C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp'
+
+TRACE::2025-05-14.15:02:19::SCWBDomain::make --no-print-directory seq_libs
+
+TRACE::2025-05-14.15:02:19::SCWBDomain::"Running Make include in ps7_cortexa9_0/libsrc/coresightps_dcc_v1_8/src"
+
+TRACE::2025-05-14.15:02:19::SCWBDomain::make -C ps7_cortexa9_0/libsrc/coresightps_dcc_v1_8/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none
+TRACE::2025-05-14.15:02:19::SCWBDomain::-eabi-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=h
+TRACE::2025-05-14.15:02:19::SCWBDomain::ard -nostartfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:19::SCWBDomain::"Running Make include in ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_10/src"
+
+TRACE::2025-05-14.15:02:19::SCWBDomain::make -C ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_10/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-e
+TRACE::2025-05-14.15:02:19::SCWBDomain::abi-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=har
+TRACE::2025-05-14.15:02:19::SCWBDomain::d -nostartfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:19::SCWBDomain::"Running Make include in ps7_cortexa9_0/libsrc/ddrps_v1_2/src"
+
+TRACE::2025-05-14.15:02:19::SCWBDomain::make -C ps7_cortexa9_0/libsrc/ddrps_v1_2/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as" 
+TRACE::2025-05-14.15:02:19::SCWBDomain::"ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nosta
+TRACE::2025-05-14.15:02:19::SCWBDomain::rtfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:19::SCWBDomain::"Running Make include in ps7_cortexa9_0/libsrc/devcfg_v3_7/src"
+
+TRACE::2025-05-14.15:02:19::SCWBDomain::make -C ps7_cortexa9_0/libsrc/devcfg_v3_7/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as"
+TRACE::2025-05-14.15:02:19::SCWBDomain:: "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nost
+TRACE::2025-05-14.15:02:19::SCWBDomain::artfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:19::SCWBDomain::"Running Make include in ps7_cortexa9_0/libsrc/dmaps_v2_7/src"
+
+TRACE::2025-05-14.15:02:19::SCWBDomain::make -C ps7_cortexa9_0/libsrc/dmaps_v2_7/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as" 
+TRACE::2025-05-14.15:02:19::SCWBDomain::"ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nosta
+TRACE::2025-05-14.15:02:19::SCWBDomain::rtfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:19::SCWBDomain::"Running Make include in ps7_cortexa9_0/libsrc/scugic_v4_3/src"
+
+TRACE::2025-05-14.15:02:19::SCWBDomain::make -C ps7_cortexa9_0/libsrc/scugic_v4_3/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as"
+TRACE::2025-05-14.15:02:19::SCWBDomain:: "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nost
+TRACE::2025-05-14.15:02:19::SCWBDomain::artfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:19::SCWBDomain::"Running Make include in ps7_cortexa9_0/libsrc/scutimer_v2_3/src"
+
+TRACE::2025-05-14.15:02:19::SCWBDomain::make -C ps7_cortexa9_0/libsrc/scutimer_v2_3/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-a
+TRACE::2025-05-14.15:02:19::SCWBDomain::s" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -no
+TRACE::2025-05-14.15:02:19::SCWBDomain::startfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::"Running Make include in ps7_cortexa9_0/libsrc/scuwdt_v2_3/src"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::make -C ps7_cortexa9_0/libsrc/scuwdt_v2_3/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as"
+TRACE::2025-05-14.15:02:20::SCWBDomain:: "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nost
+TRACE::2025-05-14.15:02:20::SCWBDomain::artfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::"Running Make include in ps7_cortexa9_0/libsrc/standalone_v7_3/src"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::make -C ps7_cortexa9_0/libsrc/standalone_v7_3/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi
+TRACE::2025-05-14.15:02:20::SCWBDomain::-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -
+TRACE::2025-05-14.15:02:20::SCWBDomain::nostartfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::"Running Make include in ps7_cortexa9_0/libsrc/xadcps_v2_5/src"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::make -C ps7_cortexa9_0/libsrc/xadcps_v2_5/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as"
+TRACE::2025-05-14.15:02:20::SCWBDomain:: "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nost
+TRACE::2025-05-14.15:02:20::SCWBDomain::artfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::"Running Make include in ps7_cortexa9_0/libsrc/xilffs_v4_4/src"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::make -C ps7_cortexa9_0/libsrc/xilffs_v4_4/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as"
+TRACE::2025-05-14.15:02:20::SCWBDomain:: "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nost
+TRACE::2025-05-14.15:02:20::SCWBDomain::artfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::"Running Make include in ps7_cortexa9_0/libsrc/xilrsa_v1_6/src"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::make -C ps7_cortexa9_0/libsrc/xilrsa_v1_6/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as"
+TRACE::2025-05-14.15:02:20::SCWBDomain:: "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nost
+TRACE::2025-05-14.15:02:20::SCWBDomain::artfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::"Running Make libs in ps7_cortexa9_0/libsrc/xilrsa_v1_6/src"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::make -C ps7_cortexa9_0/libsrc/xilrsa_v1_6/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as" "A
+TRACE::2025-05-14.15:02:20::SCWBDomain::RCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostart
+TRACE::2025-05-14.15:02:20::SCWBDomain::files -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::'Finished building libraries sequentially.'
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::make -j --no-print-directory par_libs
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::"Running Make include in ps7_cortexa9_0/libsrc/coresightps_dcc_v1_8/src"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::make -C ps7_cortexa9_0/libsrc/coresightps_dcc_v1_8/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none
+TRACE::2025-05-14.15:02:20::SCWBDomain::-eabi-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=h
+TRACE::2025-05-14.15:02:20::SCWBDomain::ard -nostartfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::"Running Make include in ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_10/src"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::"Running Make include in ps7_cortexa9_0/libsrc/ddrps_v1_2/src"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::make -C ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_10/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-e
+TRACE::2025-05-14.15:02:20::SCWBDomain::abi-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=har
+TRACE::2025-05-14.15:02:20::SCWBDomain::d -nostartfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::"Running Make include in ps7_cortexa9_0/libsrc/devcfg_v3_7/src"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::make -C ps7_cortexa9_0/libsrc/ddrps_v1_2/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as" 
+TRACE::2025-05-14.15:02:20::SCWBDomain::"ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nosta
+TRACE::2025-05-14.15:02:20::SCWBDomain::rtfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::make -C ps7_cortexa9_0/libsrc/devcfg_v3_7/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as"
+TRACE::2025-05-14.15:02:20::SCWBDomain:: "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nost
+TRACE::2025-05-14.15:02:20::SCWBDomain::artfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::"Running Make include in ps7_cortexa9_0/libsrc/dmaps_v2_7/src"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::"Running Make include in ps7_cortexa9_0/libsrc/scugic_v4_3/src"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::make -C ps7_cortexa9_0/libsrc/dmaps_v2_7/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as" 
+TRACE::2025-05-14.15:02:20::SCWBDomain::"ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nosta
+TRACE::2025-05-14.15:02:20::SCWBDomain::rtfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::"Running Make include in ps7_cortexa9_0/libsrc/scutimer_v2_3/src"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::make -C ps7_cortexa9_0/libsrc/scugic_v4_3/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as"
+TRACE::2025-05-14.15:02:20::SCWBDomain:: "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nost
+TRACE::2025-05-14.15:02:20::SCWBDomain::artfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::"Running Make include in ps7_cortexa9_0/libsrc/scuwdt_v2_3/src"
+
+TRACE::2025-05-14.15:02:20::SCWBDomain::make -C ps7_cortexa9_0/libsrc/scutimer_v2_3/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-a
+TRACE::2025-05-14.15:02:21::SCWBDomain::s" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -no
+TRACE::2025-05-14.15:02:21::SCWBDomain::startfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::make -C ps7_cortexa9_0/libsrc/scuwdt_v2_3/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as"
+TRACE::2025-05-14.15:02:21::SCWBDomain:: "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nost
+TRACE::2025-05-14.15:02:21::SCWBDomain::artfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::"Running Make include in ps7_cortexa9_0/libsrc/standalone_v7_3/src"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::make -C ps7_cortexa9_0/libsrc/standalone_v7_3/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi
+TRACE::2025-05-14.15:02:21::SCWBDomain::-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -
+TRACE::2025-05-14.15:02:21::SCWBDomain::nostartfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::"Running Make include in ps7_cortexa9_0/libsrc/xadcps_v2_5/src"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::"Running Make include in ps7_cortexa9_0/libsrc/xilffs_v4_4/src"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::make -C ps7_cortexa9_0/libsrc/xadcps_v2_5/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as"
+TRACE::2025-05-14.15:02:21::SCWBDomain:: "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nost
+TRACE::2025-05-14.15:02:21::SCWBDomain::artfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::"Running Make include in ps7_cortexa9_0/libsrc/xilrsa_v1_6/src"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::make -C ps7_cortexa9_0/libsrc/xilffs_v4_4/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as"
+TRACE::2025-05-14.15:02:21::SCWBDomain:: "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nost
+TRACE::2025-05-14.15:02:21::SCWBDomain::artfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::make -C ps7_cortexa9_0/libsrc/xilrsa_v1_6/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as"
+TRACE::2025-05-14.15:02:21::SCWBDomain:: "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nost
+TRACE::2025-05-14.15:02:21::SCWBDomain::artfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::"Running Make libs in ps7_cortexa9_0/libsrc/coresightps_dcc_v1_8/src"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::"Running Make libs in ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_10/src"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::make -C ps7_cortexa9_0/libsrc/coresightps_dcc_v1_8/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-ea
+TRACE::2025-05-14.15:02:21::SCWBDomain::bi-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard
+TRACE::2025-05-14.15:02:21::SCWBDomain:: -nostartfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::"Running Make libs in ps7_cortexa9_0/libsrc/ddrps_v1_2/src"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::make -C ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_10/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi
+TRACE::2025-05-14.15:02:21::SCWBDomain::-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -
+TRACE::2025-05-14.15:02:21::SCWBDomain::nostartfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::"Running Make libs in ps7_cortexa9_0/libsrc/devcfg_v3_7/src"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::make -C ps7_cortexa9_0/libsrc/ddrps_v1_2/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as" "AR
+TRACE::2025-05-14.15:02:21::SCWBDomain::CHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartf
+TRACE::2025-05-14.15:02:21::SCWBDomain::iles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::"Running Make libs in ps7_cortexa9_0/libsrc/dmaps_v2_7/src"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::make -C ps7_cortexa9_0/libsrc/devcfg_v3_7/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as" "A
+TRACE::2025-05-14.15:02:21::SCWBDomain::RCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostart
+TRACE::2025-05-14.15:02:21::SCWBDomain::files -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::make -C ps7_cortexa9_0/libsrc/dmaps_v2_7/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as" "AR
+TRACE::2025-05-14.15:02:21::SCWBDomain::CHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartf
+TRACE::2025-05-14.15:02:21::SCWBDomain::iles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::"Running Make libs in ps7_cortexa9_0/libsrc/scugic_v4_3/src"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::make -C ps7_cortexa9_0/libsrc/scugic_v4_3/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as" "A
+TRACE::2025-05-14.15:02:21::SCWBDomain::RCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostart
+TRACE::2025-05-14.15:02:21::SCWBDomain::files -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::"Running Make libs in ps7_cortexa9_0/libsrc/scutimer_v2_3/src"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::"Running Make libs in ps7_cortexa9_0/libsrc/scuwdt_v2_3/src"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::"Running Make libs in ps7_cortexa9_0/libsrc/standalone_v7_3/src"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::make -C ps7_cortexa9_0/libsrc/scutimer_v2_3/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as" 
+TRACE::2025-05-14.15:02:21::SCWBDomain::"ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nosta
+TRACE::2025-05-14.15:02:21::SCWBDomain::rtfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::make -C ps7_cortexa9_0/libsrc/scuwdt_v2_3/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as" "A
+TRACE::2025-05-14.15:02:21::SCWBDomain::RCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostart
+TRACE::2025-05-14.15:02:21::SCWBDomain::files -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::make -C ps7_cortexa9_0/libsrc/standalone_v7_3/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as
+TRACE::2025-05-14.15:02:21::SCWBDomain::" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nos
+TRACE::2025-05-14.15:02:21::SCWBDomain::tartfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::"Running Make libs in ps7_cortexa9_0/libsrc/xadcps_v2_5/src"
+
+TRACE::2025-05-14.15:02:21::SCWBDomain::make -C ps7_cortexa9_0/libsrc/xadcps_v2_5/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as" "A
+TRACE::2025-05-14.15:02:21::SCWBDomain::RCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostart
+TRACE::2025-05-14.15:02:21::SCWBDomain::files -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:23::SCWBDomain::"Running Make libs in ps7_cortexa9_0/libsrc/xilffs_v4_4/src"
+
+TRACE::2025-05-14.15:02:23::SCWBDomain::make -C ps7_cortexa9_0/libsrc/xilffs_v4_4/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as" "A
+TRACE::2025-05-14.15:02:23::SCWBDomain::RCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostart
+TRACE::2025-05-14.15:02:23::SCWBDomain::files -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:24::SCWBDomain::'Finished building libraries parallelly.'
+
+TRACE::2025-05-14.15:02:24::SCWBDomain::make --no-print-directory archive
+
+TRACE::2025-05-14.15:02:24::SCWBDomain::arm-none-eabi-ar -r  ps7_cortexa9_0/lib/libxil.a ps7_cortexa9_0/lib/xadcps_selftest.o ps7_cortexa9_0/lib/kill.o ps7_cortexa9_0/
+TRACE::2025-05-14.15:02:24::SCWBDomain::lib/xscuwdt_g.o ps7_cortexa9_0/lib/xplatform_info.o ps7_cortexa9_0/lib/print.o ps7_cortexa9_0/lib/_exit.o ps7_cortexa9_0/lib/xi
+TRACE::2025-05-14.15:02:24::SCWBDomain::l_testio.o ps7_cortexa9_0/lib/isatty.o ps7_cortexa9_0/lib/sleep.o ps7_cortexa9_0/lib/boot.o ps7_cortexa9_0/lib/xdevcfg_hw.o ps7
+TRACE::2025-05-14.15:02:24::SCWBDomain::_cortexa9_0/lib/xadcps_intr.o ps7_cortexa9_0/lib/xpm_counter.o ps7_cortexa9_0/lib/xdmaps_g.o ps7_cortexa9_0/lib/xscutimer_g.o p
+TRACE::2025-05-14.15:02:24::SCWBDomain::s7_cortexa9_0/lib/xdmaps_sinit.o ps7_cortexa9_0/lib/xscutimer_sinit.o ps7_cortexa9_0/lib/xil_cache.o ps7_cortexa9_0/lib/xil_uti
+TRACE::2025-05-14.15:02:24::SCWBDomain::l.o ps7_cortexa9_0/lib/inbyte.o ps7_cortexa9_0/lib/xdmaps_selftest.o ps7_cortexa9_0/lib/xscutimer_selftest.o ps7_cortexa9_0/lib
+TRACE::2025-05-14.15:02:24::SCWBDomain::/xil_misc_psreset_api.o ps7_cortexa9_0/lib/cpputest_time.o ps7_cortexa9_0/lib/close.o ps7_cortexa9_0/lib/xscugic_hw.o ps7_corte
+TRACE::2025-05-14.15:02:24::SCWBDomain::xa9_0/lib/translation_table.o ps7_cortexa9_0/lib/write.o ps7_cortexa9_0/lib/xil_mem.o ps7_cortexa9_0/lib/cpu_init.o ps7_cortexa
+TRACE::2025-05-14.15:02:24::SCWBDomain::9_0/lib/xscugic_g.o ps7_cortexa9_0/lib/usleep.o ps7_cortexa9_0/lib/xil_sleepcommon.o ps7_cortexa9_0/lib/xil_printf.o ps7_cortex
+TRACE::2025-05-14.15:02:24::SCWBDomain::a9_0/lib/unlink.o ps7_cortexa9_0/lib/xadcps.o ps7_cortexa9_0/lib/xdmaps_hw.o ps7_cortexa9_0/lib/xscugic_intr.o ps7_cortexa9_0/l
+TRACE::2025-05-14.15:02:24::SCWBDomain::ib/xscugic_sinit.o ps7_cortexa9_0/lib/xil_sleeptimer.o ps7_cortexa9_0/lib/fcntl.o ps7_cortexa9_0/lib/open.o ps7_cortexa9_0/lib/
+TRACE::2025-05-14.15:02:24::SCWBDomain::outbyte.o ps7_cortexa9_0/lib/read.o ps7_cortexa9_0/lib/xtime_l.o ps7_cortexa9_0/lib/xl2cc_counter.o ps7_cortexa9_0/lib/asm_vect
+TRACE::2025-05-14.15:02:24::SCWBDomain::ors.o ps7_cortexa9_0/lib/xdevcfg_intr.o ps7_cortexa9_0/lib/abort.o ps7_cortexa9_0/lib/xdevcfg_g.o ps7_cortexa9_0/lib/getpid.o p
+TRACE::2025-05-14.15:02:24::SCWBDomain::s7_cortexa9_0/lib/xil_testcache.o ps7_cortexa9_0/lib/xdevcfg_sinit.o ps7_cortexa9_0/lib/xdmaps.o ps7_cortexa9_0/lib/xscutimer.o
+TRACE::2025-05-14.15:02:24::SCWBDomain:: ps7_cortexa9_0/lib/xscuwdt.o ps7_cortexa9_0/lib/xdevcfg_selftest.o ps7_cortexa9_0/lib/_sbrk.o ps7_cortexa9_0/lib/xscuwdt_sinit
+TRACE::2025-05-14.15:02:24::SCWBDomain::.o ps7_cortexa9_0/lib/sbrk.o ps7_cortexa9_0/lib/fstat.o ps7_cortexa9_0/lib/errno.o ps7_cortexa9_0/lib/lseek.o ps7_cortexa9_0/li
+TRACE::2025-05-14.15:02:24::SCWBDomain::b/vectors.o ps7_cortexa9_0/lib/xil_exception.o ps7_cortexa9_0/lib/xil_testmem.o ps7_cortexa9_0/lib/putnum.o ps7_cortexa9_0/lib/
+TRACE::2025-05-14.15:02:24::SCWBDomain::xil_clocking.o ps7_cortexa9_0/lib/xil_assert.o ps7_cortexa9_0/lib/xscuwdt_selftest.o ps7_cortexa9_0/lib/xcoresightpsdcc.o ps7_c
+TRACE::2025-05-14.15:02:24::SCWBDomain::ortexa9_0/lib/xscugic.o ps7_cortexa9_0/lib/xadcps_g.o ps7_cortexa9_0/lib/xscugic_selftest.o ps7_cortexa9_0/lib/xil-crt0.o ps7_c
+TRACE::2025-05-14.15:02:24::SCWBDomain::ortexa9_0/lib/xadcps_sinit.o ps7_cortexa9_0/lib/xil_mmu.o ps7_cortexa9_0/lib/_open.o ps7_cortexa9_0/lib/xdevcfg.o
+
+TRACE::2025-05-14.15:02:24::SCWBDomain::'Finished building libraries'
+
+TRACE::2025-05-14.15:02:24::SCWBDomain::make: Leaving directory 'C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp'
+
+TRACE::2025-05-14.15:02:24::SCWBDomain::arm-none-eabi-gcc -MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard   -O2 -c -c sd.c -o sd.o -Izynq_fsbl_bsp/ps7_cort
+TRACE::2025-05-14.15:02:24::SCWBDomain::exa9_0/include -I.
+
+TRACE::2025-05-14.15:02:24::SCWBDomain::arm-none-eabi-gcc -MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard   -O2 -c -c nand.c -o nand.o -Izynq_fsbl_bsp/ps7_
+TRACE::2025-05-14.15:02:24::SCWBDomain::cortexa9_0/include -I.
+
+TRACE::2025-05-14.15:02:24::SCWBDomain::arm-none-eabi-gcc -MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard   -O2 -c -c nor.c -o nor.o -Izynq_fsbl_bsp/ps7_co
+TRACE::2025-05-14.15:02:24::SCWBDomain::rtexa9_0/include -I.
+
+TRACE::2025-05-14.15:02:24::SCWBDomain::arm-none-eabi-gcc -MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard   -O2 -c -c image_mover.c -o image_mover.o -Izynq
+TRACE::2025-05-14.15:02:24::SCWBDomain::_fsbl_bsp/ps7_cortexa9_0/include -I.
+
+TRACE::2025-05-14.15:02:25::SCWBDomain::arm-none-eabi-gcc -MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard   -O2 -c -c md5.c -o md5.o -Izynq_fsbl_bsp/ps7_co
+TRACE::2025-05-14.15:02:25::SCWBDomain::rtexa9_0/include -I.
+
+TRACE::2025-05-14.15:02:25::SCWBDomain::arm-none-eabi-gcc -MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard   -O2 -c -c fsbl_hooks.c -o fsbl_hooks.o -Izynq_f
+TRACE::2025-05-14.15:02:25::SCWBDomain::sbl_bsp/ps7_cortexa9_0/include -I.
+
+TRACE::2025-05-14.15:02:25::SCWBDomain::arm-none-eabi-gcc -MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard   -O2 -c -c main.c -o main.o -Izynq_fsbl_bsp/ps7_
+TRACE::2025-05-14.15:02:25::SCWBDomain::cortexa9_0/include -I.
+
+TRACE::2025-05-14.15:02:25::SCWBDomain::arm-none-eabi-gcc -MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard   -O2 -c -c rsa.c -o rsa.o -Izynq_fsbl_bsp/ps7_co
+TRACE::2025-05-14.15:02:25::SCWBDomain::rtexa9_0/include -I.
+
+TRACE::2025-05-14.15:02:25::SCWBDomain::arm-none-eabi-gcc -MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard   -O2 -c -c qspi.c -o qspi.o -Izynq_fsbl_bsp/ps7_
+TRACE::2025-05-14.15:02:25::SCWBDomain::cortexa9_0/include -I.
+
+TRACE::2025-05-14.15:02:25::SCWBDomain::arm-none-eabi-gcc -MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard   -O2 -c -c ps7_init.c -o ps7_init.o -Izynq_fsbl_
+TRACE::2025-05-14.15:02:25::SCWBDomain::bsp/ps7_cortexa9_0/include -I.
+
+TRACE::2025-05-14.15:02:25::SCWBDomain::arm-none-eabi-gcc -MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard   -O2 -c -c pcap.c -o pcap.o -Izynq_fsbl_bsp/ps7_
+TRACE::2025-05-14.15:02:25::SCWBDomain::cortexa9_0/include -I.
+
+TRACE::2025-05-14.15:02:25::SCWBDomain::arm-none-eabi-gcc -MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard   -O2 -c -c fsbl_handoff.S -o fsbl_handoff.o -Izy
+TRACE::2025-05-14.15:02:25::SCWBDomain::nq_fsbl_bsp/ps7_cortexa9_0/include -I.
+
+TRACE::2025-05-14.15:02:25::SCWBDomain::arm-none-eabi-gcc -o fsbl.elf  sd.o  nand.o  nor.o  image_mover.o  md5.o  fsbl_hooks.o  main.o  rsa.o  qspi.o  ps7_init.o  pcap
+TRACE::2025-05-14.15:02:25::SCWBDomain::.o  fsbl_handoff.o -MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard   -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -
+TRACE::2025-05-14.15:02:25::SCWBDomain::Wl,-build-id=none -specs=Xilinx.spec  -lrsa -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxilffs,-lxil,-lgc
+TRACE::2025-05-14.15:02:25::SCWBDomain::c,-lc,--end-group -Wl,--start-group,-lrsa,-lxil,-lgcc,-lc,--end-group                            -Wl,--gc-sections -Lzynq_fsbl_
+TRACE::2025-05-14.15:02:25::SCWBDomain::bsp/ps7_cortexa9_0/lib -L./ -Tlscript.ld
+
+LOG::2025-05-14.15:02:31::SCWSystem::Checking the domain standalone_domain
+LOG::2025-05-14.15:02:31::SCWSystem::Not a boot domain 
+LOG::2025-05-14.15:02:31::SCWSystem::Started Processing the domain standalone_domain
+TRACE::2025-05-14.15:02:31::SCWDomain::Generating domain artifcats
+TRACE::2025-05-14.15:02:31::SCWMssOS::Generating standalone artifcats
+TRACE::2025-05-14.15:02:31::SCWMssOS::Copying the qemu file from  D:/vivado2020/Vitis/2020.2/data/emulation/platforms/zynq/sw/a9_standalone/qemu/qemu_args.txt To C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/export/acm2108_udp_ddr3_bsp/sw/acm2108_udp_ddr3_bsp/qemu/
+TRACE::2025-05-14.15:02:31::SCWMssOS::Copying the qemu file from  D:/vivado2020/Vitis/2020.2/data/emulation/platforms/zynq/sw/a9_standalone/qemu/qemu_args.txt To C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/export/acm2108_udp_ddr3_bsp/sw/acm2108_udp_ddr3_bsp/standalone_domain/qemu/
+TRACE::2025-05-14.15:02:31::SCWMssOS:: Copying the user libraries. 
+TRACE::2025-05-14.15:02:31::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:31::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:31::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:31::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:31::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:31::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:31::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:31::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:31::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:31::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:31::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:31::SCWMssOS::Completed writing the mss file at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp
+TRACE::2025-05-14.15:02:31::SCWMssOS::Mss edits present, copying mssfile into export location C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:31::SCWMssOS::bsp generated is upto date with the mss file. Skipping bsp generation.
+TRACE::2025-05-14.15:02:31::SCWMssOS::BSP is already built. skipping the bsp build ... 
+TRACE::2025-05-14.15:02:31::SCWDomain::Building the domain as part of full build :  standalone_domain
+TRACE::2025-05-14.15:02:31::SCWMssOS::doing bsp build ... 
+TRACE::2025-05-14.15:02:31::SCWMssOS::System Command Ran  C: & cd  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp & make 
+TRACE::2025-05-14.15:02:31::SCWMssOS::make --no-print-directory seq_libs
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::'Finished building libraries sequentially.'
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::make -j --no-print-directory par_libs
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::"Running Make include in ps7_cortexa9_0/libsrc/coresightps_dcc_v1_8/src"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::make -C ps7_cortexa9_0/libsrc/coresightps_dcc_v1_8/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none
+TRACE::2025-05-14.15:02:31::SCWMssOS::-eabi-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=h
+TRACE::2025-05-14.15:02:31::SCWMssOS::ard -nostartfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::"Running Make include in ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_10/src"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::"Running Make include in ps7_cortexa9_0/libsrc/ddrps_v1_2/src"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::make -C ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_10/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-e
+TRACE::2025-05-14.15:02:31::SCWMssOS::abi-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=har
+TRACE::2025-05-14.15:02:31::SCWMssOS::d -nostartfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::"Running Make include in ps7_cortexa9_0/libsrc/devcfg_v3_7/src"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::make -C ps7_cortexa9_0/libsrc/ddrps_v1_2/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as" 
+TRACE::2025-05-14.15:02:31::SCWMssOS::"ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nosta
+TRACE::2025-05-14.15:02:31::SCWMssOS::rtfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::make -C ps7_cortexa9_0/libsrc/devcfg_v3_7/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as"
+TRACE::2025-05-14.15:02:31::SCWMssOS:: "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nost
+TRACE::2025-05-14.15:02:31::SCWMssOS::artfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::"Running Make include in ps7_cortexa9_0/libsrc/dmaps_v2_7/src"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::make -C ps7_cortexa9_0/libsrc/dmaps_v2_7/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as" 
+TRACE::2025-05-14.15:02:31::SCWMssOS::"ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nosta
+TRACE::2025-05-14.15:02:31::SCWMssOS::rtfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::"Running Make include in ps7_cortexa9_0/libsrc/scugic_v4_3/src"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::make -C ps7_cortexa9_0/libsrc/scugic_v4_3/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as"
+TRACE::2025-05-14.15:02:31::SCWMssOS:: "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nost
+TRACE::2025-05-14.15:02:31::SCWMssOS::artfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::"Running Make include in ps7_cortexa9_0/libsrc/scutimer_v2_3/src"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::make -C ps7_cortexa9_0/libsrc/scutimer_v2_3/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-a
+TRACE::2025-05-14.15:02:31::SCWMssOS::s" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -no
+TRACE::2025-05-14.15:02:31::SCWMssOS::startfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::"Running Make include in ps7_cortexa9_0/libsrc/scuwdt_v2_3/src"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::make -C ps7_cortexa9_0/libsrc/scuwdt_v2_3/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as"
+TRACE::2025-05-14.15:02:31::SCWMssOS:: "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nost
+TRACE::2025-05-14.15:02:31::SCWMssOS::artfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::"Running Make include in ps7_cortexa9_0/libsrc/standalone_v7_3/src"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::make -C ps7_cortexa9_0/libsrc/standalone_v7_3/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi
+TRACE::2025-05-14.15:02:31::SCWMssOS::-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -
+TRACE::2025-05-14.15:02:31::SCWMssOS::nostartfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::"Running Make include in ps7_cortexa9_0/libsrc/xadcps_v2_5/src"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::make -C ps7_cortexa9_0/libsrc/xadcps_v2_5/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as"
+TRACE::2025-05-14.15:02:31::SCWMssOS:: "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nost
+TRACE::2025-05-14.15:02:31::SCWMssOS::artfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::"Running Make libs in ps7_cortexa9_0/libsrc/coresightps_dcc_v1_8/src"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::"Running Make libs in ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_10/src"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::make -C ps7_cortexa9_0/libsrc/coresightps_dcc_v1_8/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-ea
+TRACE::2025-05-14.15:02:31::SCWMssOS::bi-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard
+TRACE::2025-05-14.15:02:31::SCWMssOS:: -nostartfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::"Running Make libs in ps7_cortexa9_0/libsrc/ddrps_v1_2/src"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::"Running Make libs in ps7_cortexa9_0/libsrc/devcfg_v3_7/src"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::make -C ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_10/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi
+TRACE::2025-05-14.15:02:31::SCWMssOS::-as" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -
+TRACE::2025-05-14.15:02:31::SCWMssOS::nostartfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::"Running Make libs in ps7_cortexa9_0/libsrc/dmaps_v2_7/src"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::make -C ps7_cortexa9_0/libsrc/ddrps_v1_2/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as" "AR
+TRACE::2025-05-14.15:02:31::SCWMssOS::CHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartf
+TRACE::2025-05-14.15:02:31::SCWMssOS::iles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::make -C ps7_cortexa9_0/libsrc/devcfg_v3_7/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as" "A
+TRACE::2025-05-14.15:02:31::SCWMssOS::RCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostart
+TRACE::2025-05-14.15:02:31::SCWMssOS::files -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::make -C ps7_cortexa9_0/libsrc/dmaps_v2_7/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as" "AR
+TRACE::2025-05-14.15:02:31::SCWMssOS::CHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartf
+TRACE::2025-05-14.15:02:31::SCWMssOS::iles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::"Running Make libs in ps7_cortexa9_0/libsrc/scugic_v4_3/src"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::"Running Make libs in ps7_cortexa9_0/libsrc/scutimer_v2_3/src"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::make -C ps7_cortexa9_0/libsrc/scugic_v4_3/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as" "A
+TRACE::2025-05-14.15:02:31::SCWMssOS::RCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostart
+TRACE::2025-05-14.15:02:31::SCWMssOS::files -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::make -C ps7_cortexa9_0/libsrc/scutimer_v2_3/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as" 
+TRACE::2025-05-14.15:02:31::SCWMssOS::"ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nosta
+TRACE::2025-05-14.15:02:31::SCWMssOS::rtfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::"Running Make libs in ps7_cortexa9_0/libsrc/scuwdt_v2_3/src"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::"Running Make libs in ps7_cortexa9_0/libsrc/standalone_v7_3/src"
+
+TRACE::2025-05-14.15:02:31::SCWMssOS::make -C ps7_cortexa9_0/libsrc/scuwdt_v2_3/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as" "A
+TRACE::2025-05-14.15:02:31::SCWMssOS::RCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostart
+TRACE::2025-05-14.15:02:31::SCWMssOS::files -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:32::SCWMssOS::"Running Make libs in ps7_cortexa9_0/libsrc/xadcps_v2_5/src"
+
+TRACE::2025-05-14.15:02:32::SCWMssOS::make -C ps7_cortexa9_0/libsrc/standalone_v7_3/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as
+TRACE::2025-05-14.15:02:32::SCWMssOS::" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nos
+TRACE::2025-05-14.15:02:32::SCWMssOS::tartfiles -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:32::SCWMssOS::make -C ps7_cortexa9_0/libsrc/xadcps_v2_5/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ASSEMBLER=arm-none-eabi-as" "A
+TRACE::2025-05-14.15:02:32::SCWMssOS::RCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostart
+TRACE::2025-05-14.15:02:32::SCWMssOS::files -g -Wall -Wextra"
+
+TRACE::2025-05-14.15:02:33::SCWMssOS::'Finished building libraries parallelly.'
+
+TRACE::2025-05-14.15:02:33::SCWMssOS::make --no-print-directory archive
+
+TRACE::2025-05-14.15:02:33::SCWMssOS::arm-none-eabi-ar -r  ps7_cortexa9_0/lib/libxil.a ps7_cortexa9_0/lib/xadcps_selftest.o ps7_cortexa9_0/lib/kill.o ps7_cortexa9_0/
+TRACE::2025-05-14.15:02:33::SCWMssOS::lib/xscuwdt_g.o ps7_cortexa9_0/lib/xplatform_info.o ps7_cortexa9_0/lib/print.o ps7_cortexa9_0/lib/_exit.o ps7_cortexa9_0/lib/xi
+TRACE::2025-05-14.15:02:33::SCWMssOS::l_testio.o ps7_cortexa9_0/lib/sleep.o ps7_cortexa9_0/lib/xdevcfg_hw.o ps7_cortexa9_0/lib/xadcps_intr.o ps7_cortexa9_0/lib/xpm_c
+TRACE::2025-05-14.15:02:33::SCWMssOS::ounter.o ps7_cortexa9_0/lib/xdmaps_g.o ps7_cortexa9_0/lib/xscutimer_g.o ps7_cortexa9_0/lib/xdmaps_sinit.o ps7_cortexa9_0/lib/xs
+TRACE::2025-05-14.15:02:33::SCWMssOS::cutimer_sinit.o ps7_cortexa9_0/lib/xil_cache.o ps7_cortexa9_0/lib/xil_util.o ps7_cortexa9_0/lib/inbyte.o ps7_cortexa9_0/lib/xdm
+TRACE::2025-05-14.15:02:33::SCWMssOS::aps_selftest.o ps7_cortexa9_0/lib/xscutimer_selftest.o ps7_cortexa9_0/lib/xil_misc_psreset_api.o ps7_cortexa9_0/lib/cpputest_ti
+TRACE::2025-05-14.15:02:33::SCWMssOS::me.o ps7_cortexa9_0/lib/close.o ps7_cortexa9_0/lib/xscugic_hw.o ps7_cortexa9_0/lib/isatty.o ps7_cortexa9_0/lib/translation_tabl
+TRACE::2025-05-14.15:02:33::SCWMssOS::e.o ps7_cortexa9_0/lib/write.o ps7_cortexa9_0/lib/xil_mem.o ps7_cortexa9_0/lib/boot.o ps7_cortexa9_0/lib/cpu_init.o ps7_cortexa
+TRACE::2025-05-14.15:02:33::SCWMssOS::9_0/lib/xscugic_g.o ps7_cortexa9_0/lib/usleep.o ps7_cortexa9_0/lib/xil_sleepcommon.o ps7_cortexa9_0/lib/xil_printf.o ps7_cortex
+TRACE::2025-05-14.15:02:33::SCWMssOS::a9_0/lib/unlink.o ps7_cortexa9_0/lib/xadcps.o ps7_cortexa9_0/lib/xdmaps_hw.o ps7_cortexa9_0/lib/xscugic_intr.o ps7_cortexa9_0/l
+TRACE::2025-05-14.15:02:33::SCWMssOS::ib/xscugic_sinit.o ps7_cortexa9_0/lib/xil_sleeptimer.o ps7_cortexa9_0/lib/fcntl.o ps7_cortexa9_0/lib/open.o ps7_cortexa9_0/lib/
+TRACE::2025-05-14.15:02:33::SCWMssOS::outbyte.o ps7_cortexa9_0/lib/read.o ps7_cortexa9_0/lib/xtime_l.o ps7_cortexa9_0/lib/xl2cc_counter.o ps7_cortexa9_0/lib/asm_vect
+TRACE::2025-05-14.15:02:33::SCWMssOS::ors.o ps7_cortexa9_0/lib/xdevcfg_intr.o ps7_cortexa9_0/lib/abort.o ps7_cortexa9_0/lib/xdevcfg_g.o ps7_cortexa9_0/lib/getpid.o p
+TRACE::2025-05-14.15:02:33::SCWMssOS::s7_cortexa9_0/lib/xil_testcache.o ps7_cortexa9_0/lib/xdevcfg_sinit.o ps7_cortexa9_0/lib/xdmaps.o ps7_cortexa9_0/lib/xscutimer.o
+TRACE::2025-05-14.15:02:33::SCWMssOS:: ps7_cortexa9_0/lib/xscuwdt.o ps7_cortexa9_0/lib/xdevcfg_selftest.o ps7_cortexa9_0/lib/_sbrk.o ps7_cortexa9_0/lib/xscuwdt_sinit
+TRACE::2025-05-14.15:02:33::SCWMssOS::.o ps7_cortexa9_0/lib/sbrk.o ps7_cortexa9_0/lib/fstat.o ps7_cortexa9_0/lib/errno.o ps7_cortexa9_0/lib/lseek.o ps7_cortexa9_0/li
+TRACE::2025-05-14.15:02:33::SCWMssOS::b/vectors.o ps7_cortexa9_0/lib/xil_exception.o ps7_cortexa9_0/lib/xil_testmem.o ps7_cortexa9_0/lib/putnum.o ps7_cortexa9_0/lib/
+TRACE::2025-05-14.15:02:33::SCWMssOS::xil_clocking.o ps7_cortexa9_0/lib/xil_assert.o ps7_cortexa9_0/lib/xscuwdt_selftest.o ps7_cortexa9_0/lib/xcoresightpsdcc.o ps7_c
+TRACE::2025-05-14.15:02:33::SCWMssOS::ortexa9_0/lib/xscugic.o ps7_cortexa9_0/lib/xadcps_g.o ps7_cortexa9_0/lib/xscugic_selftest.o ps7_cortexa9_0/lib/xil-crt0.o ps7_c
+TRACE::2025-05-14.15:02:33::SCWMssOS::ortexa9_0/lib/xadcps_sinit.o ps7_cortexa9_0/lib/xil_mmu.o ps7_cortexa9_0/lib/_open.o ps7_cortexa9_0/lib/xdevcfg.o
+
+TRACE::2025-05-14.15:02:33::SCWMssOS::'Finished building libraries'
+
+TRACE::2025-05-14.15:02:33::SCWMssOS::Copying to export directory.
+TRACE::2025-05-14.15:02:34::SCWMssOS:: Checking if to create the Supporting Applications
+TRACE::2025-05-14.15:02:34::SCWMssOS:: No Linux domain exists, trying to generate FSBL 
+LOG::2025-05-14.15:02:34::SCWSystem::Completed Processing the domain standalone_domain
+LOG::2025-05-14.15:02:34::SCWSystem::Completed Processing the sysconfig acm2108_udp_ddr3_bsp
+LOG::2025-05-14.15:02:34::SCWPlatform::Completed generating the artifacts for system configuration acm2108_udp_ddr3_bsp
+TRACE::2025-05-14.15:02:34::SCWPlatform::Started preparing the platform 
+TRACE::2025-05-14.15:02:34::SCWSystem::Writing the bif file for system config acm2108_udp_ddr3_bsp
+TRACE::2025-05-14.15:02:34::SCWSystem::dir created 
+TRACE::2025-05-14.15:02:34::SCWSystem::Writing the bif 
+TRACE::2025-05-14.15:02:34::SCWPlatform::Started writing the spfm file 
+TRACE::2025-05-14.15:02:34::SCWPlatform::Started writing the xpfm file 
+TRACE::2025-05-14.15:02:34::SCWPlatform::Completed generating the platform
+TRACE::2025-05-14.15:02:34::SCWMssOS::Saving the mss changes C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:34::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2025-05-14.15:02:34::SCWMssOS::Completed writemss as part of save.
+TRACE::2025-05-14.15:02:34::SCWMssOS::Commit changes completed.
+TRACE::2025-05-14.15:02:34::SCWMssOS::Saving the mss changes C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:34::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2025-05-14.15:02:34::SCWMssOS::Completed writemss as part of save.
+TRACE::2025-05-14.15:02:34::SCWMssOS::Commit changes completed.
+TRACE::2025-05-14.15:02:34::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:34::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:34::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:34::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:34::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:34::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:34::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:34::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:34::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:34::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:34::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:34::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2025-05-14.15:02:34::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:34::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:34::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:34::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:34::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:34::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:34::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:34::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:34::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:34::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:34::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:34::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:34::SCWWriter::formatted JSON is {
+	"platformName":	"acm2108_udp_ddr3_bsp",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"acm2108_udp_ddr3_bsp",
+	"platHandOff":	"C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/acm2108_udp_ddr3/acm2108_udp_ddr3.xsa",
+	"platIntHandOff":	"<platformDir>/hw/acm2108_udp_ddr3.xsa",
+	"deviceType":	"zynq",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"fsblExtraCompilerFlags":	"-MMD -MP       -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard ",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"acm2108_udp_ddr3_bsp",
+	"systems":	[{
+			"systemName":	"acm2108_udp_ddr3_bsp",
+			"systemDesc":	"acm2108_udp_ddr3_bsp",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"acm2108_udp_ddr3_bsp",
+			"sysActiveDom":	"standalone_domain",
+			"sysDefaultDom":	"standalone_domain",
+			"domains":	[{
+					"domainName":	"zynq_fsbl",
+					"domainDispName":	"zynq_fsbl",
+					"domainDesc":	"FSBL Application BSP - Auto Generated.",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"debugEnable":	"",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"7.3",
+					"mssFile":	"",
+					"md5Digest":	"74d2c26735edd201a73eec4c1d7e68be",
+					"compatibleApp":	"zynq_fsbl",
+					"domType":	"bootDomain",
+					"arch":	"32-bit",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	["xilffs:4.4", "xilrsa:1.6"],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}, {
+					"domainName":	"standalone_domain",
+					"domainDispName":	"standalone on ps7_cortexa9_0",
+					"domainDesc":	"standalone_domain",
+					"processors":	"ps7_cortexa9_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"qemuArgs":	"D:/vivado2020/Vitis/2020.2/data/emulation/platforms/zynq/sw/a9_standalone/qemu/qemu_args.txt",
+					"qemuData":	"D:/vivado2020/Vitis/2020.2/data/emulation/platforms/zynq/sw/a9_standalone/qemu/",
+					"debugEnable":	"False",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"7.3",
+					"mssFile":	"",
+					"md5Digest":	"2d37364a8f03a4baa56cea77992e8261",
+					"compatibleApp":	"",
+					"domType":	"mssDomain",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	[],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}]
+		}]
+}
+KEYINFO::2025-05-14.15:02:34::SCWPlatform::updated the xpfm file.
+TRACE::2025-05-14.15:02:34::SCWPlatform::Trying to open the hw design at C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:34::SCWPlatform::DSA given C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:34::SCWPlatform::DSA absoulate path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:34::SCWPlatform::DSA directory C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw
+TRACE::2025-05-14.15:02:34::SCWPlatform:: Platform Path C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/hw/acm2108_udp_ddr3.xsa
+TRACE::2025-05-14.15:02:34::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-05-14.15:02:34::SCWPlatform::Trying to set the existing hwdb with name acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:34::SCWPlatform::Opened existing hwdb acm2108_udp_ddr3_1
+TRACE::2025-05-14.15:02:34::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-05-14.15:02:34::SCWMssOS::Checking the sw design at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2025-05-14.15:02:34::SCWMssOS::DEBUG:  swdes dump  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2025-05-14.15:02:34::SCWMssOS::Sw design exists and opened at  C:/Users/24165/Desktop/acm2108_udp_ddr3_2020/VItis/acm2108_udp_ddr3_bsp/ps7_cortexa9_0/standalone_domain/bsp/system.mss
