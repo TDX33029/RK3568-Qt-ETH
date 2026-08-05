@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(aarch64-linux-gnu-ldd --version)",
+      "Bash(gcc --version)",
+      "Bash(aarch64-linux-gnu-gcc --version)",
+      "Bash(ldd --version)"
+    ]
+  }
+}

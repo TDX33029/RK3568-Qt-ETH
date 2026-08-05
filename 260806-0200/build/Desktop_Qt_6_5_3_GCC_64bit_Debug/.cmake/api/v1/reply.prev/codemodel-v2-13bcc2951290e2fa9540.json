@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-a3989e259d03e855523c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "ps_tracker_ui",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ps_tracker_ui::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ps_tracker_ui-Debug-2a514827f31a5d4f3a1e.json",
+					"name" : "ps_tracker_ui",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ps_tracker_ui_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ps_tracker_ui_autogen-Debug-e38ac86f494b2675ed77.json",
+					"name" : "ps_tracker_ui_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ps_tracker_ui_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ps_tracker_ui_autogen_timestamp_deps-Debug-d681c47122c14f9f0c97.json",
+					"name" : "ps_tracker_ui_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/ubuntu/\u684c\u9762/qt/260721/260721/build/Desktop_Qt_6_5_3_GCC_64bit_Debug",
+		"source" : "/home/ubuntu/\u684c\u9762/qt/260721/260721"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
