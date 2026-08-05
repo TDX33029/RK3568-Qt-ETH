@@ -1,0 +1,161 @@
+================================================================================
+  SPI 帧协议 -- 传感器  <-->  RK3568   (PS Tracker UI)
+  RK 端代码: spi_protocol.h / spi_reader.cpp   传感器端按本文实现即可
+================================================================================
+
+[1] 角色 / 电气
+--------------------------------------------------------------------------------
+  角色      : RK3568 = SPI 主机(轮询);  传感器 = 从机(双缓冲)
+  设备      : RK3568 上 /dev/spidev1.0  (SPI1, CS0)
+  模式      : SPI_MODE_0  (CPOL=0, CPHA=0)
+  字宽/序   : 8 bit, MSB first
+  速率      : 8 MHz  (RK 侧 SpiReader::setSpeedHz 可改)
+  轮询      : RK 每 10 ms 发起一次 182 字节全双工读 (约 100 Hz)
+  MOSI      : RK 发送全 0, 传感器忽略 (单向: 传感器 -> RK)
+
+  说明: RK 每次用 SPI_IOC_MESSAGE 全双工收 182 字节。传感器必须双缓冲:
+        内部维护"当前帧", 每次被读就返回当前帧的完整 182 字节。RK 用 seq 判断
+        帧是否更新(未变则丢弃)。
+
+[2] 帧布局 (固定 182 字节, 小端序)
+--------------------------------------------------------------------------------
+  偏移   长度   字段            说明
+  ----   ----   -------------   --------------------------------------------
+   0      2     magic           {0xA5, 0x5A}  帧同步
+   2      2     seq    (u16)    帧序号, 每产生一帧 +1 (回绕)
+   4      1     mode_mask(u8)   传感器提供的模态位图:
+                                 bit0=TDOA  bit1=TOA  bit2=AOA  bit3=RSS
+   5      1     n_anc  (u8)    实际有数据的锚点数(信息用; 始终占 8 个锚点槽)
+   6      4     dt_us  (u32)   距上一帧的微秒数, 用于 EKF 预测
+  10      2     reserved       0
+  12    168     anchors[8]      8 个锚点, 每个 21 字节 (见 [3])
+ 180      2     crc16  (u16)   CRC-16/CCITT-FALSE, 覆盖字节 [0..179]
+  ----
+  合计   182
+
+[3] 每个锚点 (21 字节)
+--------------------------------------------------------------------------------
+  偏移  长度  字段           说明
+  ----  ----  -----------    ------------------------------------------------
+   0     1    has   (u8)     bit0 tdoa, bit1 toa, bit2 aoa, bit3 rss
+                             (本锚点哪些测量有效)
+   1     4    tdoa_sec (f32) 秒        (has & 1 时有效)
+   5     4    toa_sec  (f32) 秒        (has & 2)
+   9     4    aoa_az   (f32) 弧度      (has & 4)
+  13     4    aoa_el   (f32) 弧度      (has & 4)
+  17     4    rss_dbm  (f32) dBm       (has & 8)
+
+[4] 锚点索引与几何 (传感器端必须与 RK 端一致)
+--------------------------------------------------------------------------------
+  RK 端坐标见 tracker_app.cpp 的 configure_demo_anchors():
+
+    idx      x       y       z      备注
+    ---  -----   -----   -----   --------------------------------
+      0    0       0       0      参考锚 (ref_anchor): TDOA 以它为基准
+      1   30       0       4
+      2   30      30       0
+      3    0      30       5
+      4   15      15      12
+
+  实际部署时把 configure_demo_anchors 里的坐标改成真实基站坐标即可,
+  协议字段不变, 只要填对索引。
+
+[5] 测量单位约定 (重要)
+--------------------------------------------------------------------------------
+  TDOA : 相对参考锚 A0 的时间差, 秒。  tdoa[i] = (range_i - range_0) / c
+  TOA  : 到达时间, 秒。                  toa[i]  = range_i / c     (c=299792458 m/s)
+  AOA  : 方位角 aoa_az = atan2(dy,dx), 俯仰角 aoa_el = atan2(dz, rho), 弧度,
+         以锚点为原点指向目标 (rho = sqrt(dx^2+dy^2))。
+  RSS  : 接收功率, dBm。模型 rss = ref_dbm - 10*n*log10(range)。
+
+  RK 端在菜单页选择当前模态 (TDOA/TOA/AOA/RSS), EKF 只用选中模态的测量;
+  其余模态的 has 位可置 0。
+
+[6] CRC-16/CCITT-FALSE
+--------------------------------------------------------------------------------
+  poly = 0x1021, init = 0xFFFF, refIn = false, refOut = false, xorOut = 0x0000
+  覆盖字节 [0..179], 结果填入 [180..181] (小端)。
+
+  参考实现 (RK 与传感器端一致):
+    uint16_t crc16_ccitt(const uint8_t *data, size_t len) {
+        uint16_t crc = 0xFFFF;
+        for (size_t i = 0; i < len; ++i) {
+            crc ^= (uint16_t)data[i] << 8;
+            for (int b = 0; b < 8; ++b)
+                crc = (crc & 0x8000) ? (uint16_t)((crc << 1) ^ 0x1021)
+                                     : (uint16_t)(crc << 1);
+        }
+        return crc;
+    }
+
+[7] 传感器端参考 C 结构 (与 RK 端 spi_protocol.h 一致)
+--------------------------------------------------------------------------------
+    #include <stdint.h>
+    #include <stddef.h>
+
+    #define SPI_MODE_TDOA  (1u<<0)
+    #define SPI_MODE_TOA   (1u<<1)
+    #define SPI_MODE_AOA   (1u<<2)
+    #define SPI_MODE_RSS   (1u<<3)
+
+    #pragma pack(push, 1)
+    typedef struct {
+        uint8_t  has;
+        float    tdoa_sec;
+        float    toa_sec;
+        float    aoa_az;
+        float    aoa_el;
+        float    rss_dbm;
+    } SpiAnchor;            /* 21 字节 */
+
+    typedef struct {
+        uint8_t   magic[2];   /* {0xA5, 0x5A} */
+        uint16_t  seq;
+        uint8_t   mode_mask;
+        uint8_t   n_anc;
+        uint32_t  dt_us;
+        uint16_t  reserved;
+        SpiAnchor anchors[8];
+        uint16_t  crc16;
+    } SpiFrame;              /* 182 字节 */
+    #pragma pack(pop)
+
+[8] 传感器端伪代码
+--------------------------------------------------------------------------------
+    static SpiFrame g_frame;        /* 双缓冲: 当前帧 */
+    static uint16_t g_seq = 0;
+
+    /* 每当产生新测量时调用 */
+    void sensor_update_measurement(/* your data */) {
+        SpiFrame f; memset(&f, 0, sizeof(f));
+        f.magic[0] = 0xA5; f.magic[1] = 0x5A;
+        f.seq       = g_seq++;
+        f.mode_mask = SPI_MODE_TDOA;          /* 例: TDOA */
+        f.n_anc     = 5;
+        f.dt_us     = 10000;                  /* 10 ms */
+        for (int i = 0; i < 5; ++i) {
+            f.anchors[i].has       = SPI_MODE_TDOA;
+            f.anchors[i].tdoa_sec  = tdoa_value[i];   /* 秒 */
+        }
+        f.crc16 = crc16_ccitt((uint8_t*)&f, offsetof(SpiFrame, crc16));
+        /* 原子更新当前帧 (关中断 或 双缓冲交换指针) */
+        memcpy(&g_frame, &f, sizeof(f));
+    }
+
+    /* SPI 从机中断/DMA: RK 来读时, MISO 返回 g_frame 的 182 字节, 帧对齐 */
+
+[9] RK3568 侧运行要求
+--------------------------------------------------------------------------------
+  - 设备树启用 SPI1 (overlay), 出现 /dev/spidev1.0
+  - 运行用户对 /dev/spidev1.0 有读写权限 (udev 规则或 chmod; 见 scripts/init_board.sh)
+  - 启动程序后菜单页点 "Start Live (SPI)" 即开始接收并实时显示
+  - 设备路径/速率可在 MainWindow::startLive() 里改 (m_spi->setDevice / setSpeedHz)
+
+[10] 丢帧 / 异常处理
+--------------------------------------------------------------------------------
+  魔数不符     -> 丢弃该帧
+  CRC 不符     -> 丢弃
+  seq 未变     -> 传感器未更新, 跳过 (不显示陈旧数据)
+  EKF 数值异常 -> 不中断跟踪, 等下一好帧
+  /dev/spidev1.0 打不开 -> 弹窗报错并退出实时模式 (不影响仿真)
+================================================================================
