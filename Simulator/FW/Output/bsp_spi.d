@@ -36,3 +36,6 @@
 ..\..\output\bsp_spi.o: ..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h
 ..\..\output\bsp_spi.o: ..\..\User\bsp\bsp_spi.h
 ..\..\output\bsp_spi.o: ..\..\User\bsp\bsp_clock.h
+..\..\output\bsp_spi.o: ..\..\User\sim\sim.h
+..\..\output\bsp_spi.o: ..\..\User\proto\proto.h
+..\..\output\bsp_spi.o: D:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stddef.h

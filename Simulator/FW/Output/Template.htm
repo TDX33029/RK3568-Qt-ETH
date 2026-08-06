@@ -3,11 +3,11 @@
 <title>Static Call Graph - [..\..\Output\Template.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\..\Output\Template.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Thu Aug 06 05:20:51 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Thu Aug 06 16:48:37 2026
 <BR><P>
-<H3>Maximum Stack Usage =        596 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        176 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-main &rArr; APP_Step &rArr; process_running &rArr; SIM_Generate &rArr; motion_pos &rArr; gauss &rArr; __hardfp_cosf &rArr; __mathlib_rredf2
+main &rArr; APP_Step &rArr; rx_feed &rArr; dispatch_cmd &rArr; send_status &rArr; Proto_BuildFrame &rArr; Proto_CRC16
 <P>
 <H3>
 Mutually Recursive functions
@@ -37,7 +37,7 @@ Function Pointers
  <LI><a href="#[16]">DMA1_Stream1_IRQHandler</a> from startup_stm32f40xx.o(.text) referenced from startup_stm32f40xx.o(RESET)
  <LI><a href="#[17]">DMA1_Stream2_IRQHandler</a> from startup_stm32f40xx.o(.text) referenced from startup_stm32f40xx.o(RESET)
  <LI><a href="#[18]">DMA1_Stream3_IRQHandler</a> from startup_stm32f40xx.o(.text) referenced from startup_stm32f40xx.o(RESET)
- <LI><a href="#[19]">DMA1_Stream4_IRQHandler</a> from startup_stm32f40xx.o(.text) referenced from startup_stm32f40xx.o(RESET)
+ <LI><a href="#[19]">DMA1_Stream4_IRQHandler</a> from bsp_spi.o(i.DMA1_Stream4_IRQHandler) referenced from startup_stm32f40xx.o(RESET)
  <LI><a href="#[1a]">DMA1_Stream5_IRQHandler</a> from startup_stm32f40xx.o(.text) referenced from startup_stm32f40xx.o(RESET)
  <LI><a href="#[1b]">DMA1_Stream6_IRQHandler</a> from startup_stm32f40xx.o(.text) referenced from startup_stm32f40xx.o(RESET)
  <LI><a href="#[39]">DMA1_Stream7_IRQHandler</a> from startup_stm32f40xx.o(.text) referenced from startup_stm32f40xx.o(RESET)
@@ -124,7 +124,7 @@ Global Symbols
 <P><STRONG><a name="[5e]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40xx.o(.text)
 </UL>
-<P><STRONG><a name="[c6]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[d0]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[5f]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -134,17 +134,17 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[c7]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[d1]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[c8]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[d2]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[c9]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[d3]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[ca]"></a>__rt_lib_shutdown_fini</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry12b.o(.ARM.Collect$$$$0000000E))
+<P><STRONG><a name="[d4]"></a>__rt_lib_shutdown_fini</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry12b.o(.ARM.Collect$$$$0000000E))
 
-<P><STRONG><a name="[cb]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[d5]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000F))
 
-<P><STRONG><a name="[cc]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$00000011))
+<P><STRONG><a name="[d6]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$00000011))
 
 <P><STRONG><a name="[0]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_stm32f40xx.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40xx.o(RESET)
@@ -196,9 +196,6 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40xx.o(RESET)
 </UL>
 <P><STRONG><a name="[18]"></a>DMA1_Stream3_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f40xx.o(.text))
-<BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40xx.o(RESET)
-</UL>
-<P><STRONG><a name="[19]"></a>DMA1_Stream4_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f40xx.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40xx.o(RESET)
 </UL>
 <P><STRONG><a name="[1a]"></a>DMA1_Stream5_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f40xx.o(.text))
@@ -393,15 +390,15 @@ Global Symbols
 <P><STRONG><a name="[a]"></a>WWDG_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f40xx.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40xx.o(RESET)
 </UL>
-<P><STRONG><a name="[bd]"></a>__aeabi_memcpy</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, memcpya.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dispatch_cmd
+<P><STRONG><a name="[c7]"></a>__aeabi_memcpy</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, memcpya.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dispatch_cmd
 </UL>
 
-<P><STRONG><a name="[cd]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
+<P><STRONG><a name="[d7]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
 
-<P><STRONG><a name="[ce]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
+<P><STRONG><a name="[d8]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
 
-<P><STRONG><a name="[cf]"></a>__I$use$fp</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, iusefp.o(.text), UNUSED)
+<P><STRONG><a name="[d9]"></a>__I$use$fp</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, iusefp.o(.text), UNUSED)
 
 <P><STRONG><a name="[60]"></a>__scatterload</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, init.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main_after_scatterload
@@ -409,195 +406,204 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[d0]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[da]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
-<P><STRONG><a name="[62]"></a>APP_Init</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, app.o(i.APP_Init))
+<P><STRONG><a name="[62]"></a>APP_Init</STRONG> (Thumb, 86 bytes, Stack size 16 bytes, app.o(i.APP_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = APP_Init &rArr; BEEP_GPIO_Config &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rx_reset
+<BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rx_reset
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cfg_load_default
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_Init
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_DelayMs
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BEEP_GPIO_Config
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_ApplyConfig
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_Start
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_SetRate
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Arm
+<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_DelayMs
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BEEP_GPIO_Config
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[68]"></a>APP_Step</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, app.o(i.APP_Step))
-<BR><BR>[Stack]<UL><LI>Max Depth = 596<LI>Call Chain = APP_Step &rArr; process_running &rArr; SIM_Generate &rArr; motion_pos &rArr; gauss &rArr; __hardfp_cosf &rArr; __mathlib_rredf2
+<P><STRONG><a name="[6c]"></a>APP_Step</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, app.o(i.APP_Step))
+<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = APP_Step &rArr; rx_feed &rArr; dispatch_cmd &rArr; send_status &rArr; Proto_BuildFrame &rArr; Proto_CRC16
 </UL>
-<BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rx_feed
-<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;process_running
-<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_GetByte
+<BR>[Calls]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rx_feed
+<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;process_running
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_GetByte
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[66]"></a>BEEP_GPIO_Config</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, bsp_beep.o(i.BEEP_GPIO_Config))
+<P><STRONG><a name="[6a]"></a>BEEP_GPIO_Config</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, bsp_beep.o(i.BEEP_GPIO_Config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = BEEP_GPIO_Config &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
-<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
+<BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Init
 </UL>
 
-<P><STRONG><a name="[6f]"></a>BSP_Clock_Init</STRONG> (Thumb, 124 bytes, Stack size 8 bytes, bsp_clock.o(i.BSP_Clock_Init))
+<P><STRONG><a name="[73]"></a>BSP_Clock_Init</STRONG> (Thumb, 124 bytes, Stack size 8 bytes, bsp_clock.o(i.BSP_Clock_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = BSP_Clock_Init &rArr; RCC_PLLConfig
 </UL>
-<BR>[Calls]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_SetLatency
-<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_PrefetchBufferCmd
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_InstructionCacheCmd
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_DataCacheCmd
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_SYSCLKConfig
-<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_PLLConfig
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_PLLCmd
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_PCLK2Config
-<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_PCLK1Config
-<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_HSICmd
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_HCLKConfig
-<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetSYSCLKSource
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetFlagStatus
-<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_DeInit
+<BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_SetLatency
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_PrefetchBufferCmd
+<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_InstructionCacheCmd
+<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_DataCacheCmd
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_SYSCLKConfig
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_PLLConfig
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_PLLCmd
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_PCLK2Config
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_PCLK1Config
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_HSICmd
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_HCLKConfig
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetSYSCLKSource
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetFlagStatus
+<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_DeInit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[67]"></a>BSP_DelayMs</STRONG> (Thumb, 22 bytes, Stack size 4 bytes, bsp_clock.o(i.BSP_DelayMs))
+<P><STRONG><a name="[6b]"></a>BSP_DelayMs</STRONG> (Thumb, 22 bytes, Stack size 4 bytes, bsp_clock.o(i.BSP_DelayMs))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = BSP_DelayMs
 </UL>
-<BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Millis
+<BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Millis
 </UL>
 <BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Init
 </UL>
 
-<P><STRONG><a name="[a4]"></a>BSP_Micros</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, bsp_clock.o(i.BSP_Micros))
+<P><STRONG><a name="[a7]"></a>BSP_Micros</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, bsp_clock.o(i.BSP_Micros))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = BSP_Micros
 </UL>
-<BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_Init
+<BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;process_running
+<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_Reset
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_ApplyConfig
 </UL>
 
-<P><STRONG><a name="[7e]"></a>BSP_Millis</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, bsp_clock.o(i.BSP_Millis))
-<BR><BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_status
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_frame
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_ack
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_Generate
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_SendFrame
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_DelayMs
+<P><STRONG><a name="[82]"></a>BSP_Millis</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, bsp_clock.o(i.BSP_Millis))
+<BR><BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_status
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_frame
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_ack
+<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_DelayMs
 </UL>
 
-<P><STRONG><a name="[7f]"></a>BSP_SPI_Init</STRONG> (Thumb, 204 bytes, Stack size 48 bytes, bsp_spi.o(i.BSP_SPI_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = BSP_SPI_Init &rArr; GPIO_Init
+<P><STRONG><a name="[67]"></a>BSP_SPI_Arm</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, bsp_spi.o(i.BSP_SPI_Arm))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = BSP_SPI_Arm
 </UL>
-<BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
-<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
-<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Init
-<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_ReceiveData
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Cmd
+<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_SetCurrDataCounter
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_GetCmdStatus
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_GetLiveFrame
+</UL>
+<BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Init
+</UL>
+
+<P><STRONG><a name="[cf]"></a>BSP_SPI_GetXferCount</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, bsp_spi.o(i.BSP_SPI_GetXferCount))
+<BR><BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_status
+</UL>
+
+<P><STRONG><a name="[87]"></a>BSP_SPI_Init</STRONG> (Thumb, 296 bytes, Stack size 112 bytes, bsp_spi.o(i.BSP_SPI_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 140<LI>Call Chain = BSP_SPI_Init &rArr; DMA_DeInit
+</UL>
+<BR>[Calls]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Init
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_ITConfig
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_DeInit
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Init
+<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_ReceiveData
+<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_DMACmd
+<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Cmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[86]"></a>BSP_SPI_SendFrame</STRONG> (Thumb, 272 bytes, Stack size 40 bytes, bsp_spi.o(i.BSP_SPI_SendFrame))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = BSP_SPI_SendFrame
-</UL>
-<BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_SendData
-<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_ReceiveData
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_GetFlagStatus
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Millis
-</UL>
-<BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;process_running
-</UL>
-
-<P><STRONG><a name="[c2]"></a>BSP_SysTick_Init</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, bsp_clock.o(i.BSP_SysTick_Init))
+<P><STRONG><a name="[cb]"></a>BSP_SysTick_Init</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, bsp_clock.o(i.BSP_SysTick_Init))
 <BR><BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[89]"></a>BSP_Timer_Init</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, bsp_timer.o(i.BSP_Timer_Init))
+<P><STRONG><a name="[92]"></a>BSP_Timer_Init</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, bsp_timer.o(i.BSP_Timer_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = BSP_Timer_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8a]"></a>BSP_Timer_SetRate</STRONG> (Thumb, 90 bytes, Stack size 24 bytes, bsp_timer.o(i.BSP_Timer_SetRate))
+<P><STRONG><a name="[68]"></a>BSP_Timer_SetRate</STRONG> (Thumb, 90 bytes, Stack size 24 bytes, bsp_timer.o(i.BSP_Timer_SetRate))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = BSP_Timer_SetRate &rArr; TIM_TimeBaseInit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
-<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITConfig
-<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearFlag
+<BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITConfig
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearFlag
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dispatch_cmd
+<BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dispatch_cmd
+<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Init
 </UL>
 
-<P><STRONG><a name="[8f]"></a>BSP_Timer_Start</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, bsp_timer.o(i.BSP_Timer_Start))
+<P><STRONG><a name="[69]"></a>BSP_Timer_Start</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, bsp_timer.o(i.BSP_Timer_Start))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = BSP_Timer_Start
 </UL>
-<BR>[Calls]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCounter
-<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
+<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCounter
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dispatch_cmd
+<BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dispatch_cmd
+<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Init
 </UL>
 
-<P><STRONG><a name="[92]"></a>BSP_Timer_Stop</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, bsp_timer.o(i.BSP_Timer_Stop))
+<P><STRONG><a name="[99]"></a>BSP_Timer_Stop</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, bsp_timer.o(i.BSP_Timer_Stop))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = BSP_Timer_Stop
 </UL>
-<BR>[Calls]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
+<BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dispatch_cmd
-</UL>
-
-<P><STRONG><a name="[c4]"></a>BSP_Timer_TakeRequests</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, bsp_timer.o(i.BSP_Timer_TakeRequests))
-<BR><BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;process_running
+<BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dispatch_cmd
 </UL>
 
-<P><STRONG><a name="[6a]"></a>BSP_UART_GetByte</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, bsp_uart.o(i.BSP_UART_GetByte))
+<P><STRONG><a name="[cc]"></a>BSP_Timer_TakeRequests</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, bsp_timer.o(i.BSP_Timer_TakeRequests))
+<BR><BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;process_running
+</UL>
+
+<P><STRONG><a name="[6e]"></a>BSP_UART_GetByte</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, bsp_uart.o(i.BSP_UART_GetByte))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = BSP_UART_GetByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ring_next
+<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ring_next
 </UL>
-<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Step
+<BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Step
 </UL>
 
-<P><STRONG><a name="[94]"></a>BSP_UART_Init</STRONG> (Thumb, 176 bytes, Stack size 48 bytes, bsp_uart.o(i.BSP_UART_Init))
+<P><STRONG><a name="[9b]"></a>BSP_UART_Init</STRONG> (Thumb, 176 bytes, Stack size 48 bytes, bsp_uart.o(i.BSP_UART_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = BSP_UART_Init &rArr; USART_Init &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
-<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
-<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
+<BR>[Calls]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
+<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[9a]"></a>BSP_UART_Send</STRONG> (Thumb, 72 bytes, Stack size 32 bytes, bsp_uart.o(i.BSP_UART_Send))
+<P><STRONG><a name="[a0]"></a>BSP_UART_Send</STRONG> (Thumb, 72 bytes, Stack size 32 bytes, bsp_uart.o(i.BSP_UART_Send))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = BSP_UART_Send &rArr; uart_kick_tx &rArr; USART_ITConfig
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_kick_tx
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ring_next
+<BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_kick_tx
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ring_next
 </UL>
-<BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_status
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_frame
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_ack
-<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;process_running
+<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_status
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_frame
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_ack
 </UL>
 
-<P><STRONG><a name="[c5]"></a>BSP_UART_TX_Avail</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, bsp_uart.o(i.BSP_UART_TX_Avail))
-<BR><BR>[Called By]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_frame
-<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;process_running
+<P><STRONG><a name="[ce]"></a>BSP_UART_TX_Avail</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, bsp_uart.o(i.BSP_UART_TX_Avail))
+<BR><BR>[Called By]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_frame
 </UL>
 
 <P><STRONG><a name="[4]"></a>BusFault_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.BusFault_Handler))
@@ -607,49 +613,95 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40xx.o(RESET)
 </UL>
+<P><STRONG><a name="[19]"></a>DMA1_Stream4_IRQHandler</STRONG> (Thumb, 90 bytes, Stack size 16 bytes, bsp_spi.o(i.DMA1_Stream4_IRQHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = DMA1_Stream4_IRQHandler &rArr; DMA_GetITStatus
+</UL>
+<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_SetCurrDataCounter
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_GetITStatus
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_GetCmdStatus
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_ClearITPendingBit
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_GetLiveFrame
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40xx.o(RESET)
+</UL>
+<P><STRONG><a name="[a3]"></a>DMA_ClearITPendingBit</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, stm32f4xx_dma.o(i.DMA_ClearITPendingBit))
+<BR><BR>[Called By]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Stream4_IRQHandler
+</UL>
+
+<P><STRONG><a name="[83]"></a>DMA_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f4xx_dma.o(i.DMA_Cmd))
+<BR><BR>[Called By]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Stream4_IRQHandler
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Arm
+</UL>
+
+<P><STRONG><a name="[8b]"></a>DMA_DeInit</STRONG> (Thumb, 278 bytes, Stack size 28 bytes, stm32f4xx_dma.o(i.DMA_DeInit))
+<BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = DMA_DeInit
+</UL>
+<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Init
+</UL>
+
+<P><STRONG><a name="[84]"></a>DMA_GetCmdStatus</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f4xx_dma.o(i.DMA_GetCmdStatus))
+<BR><BR>[Called By]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Stream4_IRQHandler
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Arm
+</UL>
+
+<P><STRONG><a name="[a2]"></a>DMA_GetITStatus</STRONG> (Thumb, 68 bytes, Stack size 12 bytes, stm32f4xx_dma.o(i.DMA_GetITStatus))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = DMA_GetITStatus
+</UL>
+<BR>[Called By]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Stream4_IRQHandler
+</UL>
+
+<P><STRONG><a name="[8d]"></a>DMA_ITConfig</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, stm32f4xx_dma.o(i.DMA_ITConfig))
+<BR><BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Init
+</UL>
+
+<P><STRONG><a name="[8c]"></a>DMA_Init</STRONG> (Thumb, 80 bytes, Stack size 12 bytes, stm32f4xx_dma.o(i.DMA_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = DMA_Init
+</UL>
+<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Init
+</UL>
+
+<P><STRONG><a name="[86]"></a>DMA_SetCurrDataCounter</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_dma.o(i.DMA_SetCurrDataCounter))
+<BR><BR>[Called By]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Stream4_IRQHandler
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Arm
+</UL>
+
 <P><STRONG><a name="[7]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.DebugMon_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40xx.o(RESET)
 </UL>
-<P><STRONG><a name="[76]"></a>FLASH_DataCacheCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f4xx_flash.o(i.FLASH_DataCacheCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
+<P><STRONG><a name="[7a]"></a>FLASH_DataCacheCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f4xx_flash.o(i.FLASH_DataCacheCmd))
+<BR><BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
 </UL>
 
-<P><STRONG><a name="[75]"></a>FLASH_InstructionCacheCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f4xx_flash.o(i.FLASH_InstructionCacheCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
+<P><STRONG><a name="[79]"></a>FLASH_InstructionCacheCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f4xx_flash.o(i.FLASH_InstructionCacheCmd))
+<BR><BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
 </UL>
 
-<P><STRONG><a name="[74]"></a>FLASH_PrefetchBufferCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f4xx_flash.o(i.FLASH_PrefetchBufferCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
+<P><STRONG><a name="[78]"></a>FLASH_PrefetchBufferCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f4xx_flash.o(i.FLASH_PrefetchBufferCmd))
+<BR><BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
 </UL>
 
-<P><STRONG><a name="[73]"></a>FLASH_SetLatency</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f4xx_flash.o(i.FLASH_SetLatency))
-<BR><BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
+<P><STRONG><a name="[77]"></a>FLASH_SetLatency</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f4xx_flash.o(i.FLASH_SetLatency))
+<BR><BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
 </UL>
 
-<P><STRONG><a name="[6d]"></a>GPIO_Init</STRONG> (Thumb, 124 bytes, Stack size 24 bytes, stm32f4xx_gpio.o(i.GPIO_Init))
+<P><STRONG><a name="[71]"></a>GPIO_Init</STRONG> (Thumb, 124 bytes, Stack size 24 bytes, stm32f4xx_gpio.o(i.GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = GPIO_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BEEP_GPIO_Config
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Init
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Init
+<BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BEEP_GPIO_Config
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Init
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Init
 </UL>
 
-<P><STRONG><a name="[81]"></a>GPIO_PinAFConfig</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, stm32f4xx_gpio.o(i.GPIO_PinAFConfig))
+<P><STRONG><a name="[89]"></a>GPIO_PinAFConfig</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, stm32f4xx_gpio.o(i.GPIO_PinAFConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = GPIO_PinAFConfig
 </UL>
-<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Init
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Init
+<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Init
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Init
 </UL>
 
-<P><STRONG><a name="[6e]"></a>GPIO_ResetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(i.GPIO_ResetBits))
-<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_SendFrame
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BEEP_GPIO_Config
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Init
-</UL>
-
-<P><STRONG><a name="[82]"></a>GPIO_SetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(i.GPIO_SetBits))
-<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_SendFrame
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Init
+<P><STRONG><a name="[72]"></a>GPIO_ResetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(i.GPIO_ResetBits))
+<BR><BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BEEP_GPIO_Config
 </UL>
 
 <P><STRONG><a name="[2]"></a>HardFault_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.HardFault_Handler))
@@ -669,261 +721,290 @@ Global Symbols
 <P><STRONG><a name="[1]"></a>NMI_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.NMI_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40xx.o(RESET)
 </UL>
-<P><STRONG><a name="[98]"></a>NVIC_Init</STRONG> (Thumb, 98 bytes, Stack size 12 bytes, misc.o(i.NVIC_Init))
+<P><STRONG><a name="[8e]"></a>NVIC_Init</STRONG> (Thumb, 98 bytes, Stack size 12 bytes, misc.o(i.NVIC_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = NVIC_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Init
+<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Init
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Init
 </UL>
 
 <P><STRONG><a name="[8]"></a>PendSV_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.PendSV_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40xx.o(RESET)
 </UL>
-<P><STRONG><a name="[9c]"></a>Proto_BuildFrame</STRONG> (Thumb, 120 bytes, Stack size 20 bytes, proto.o(i.Proto_BuildFrame))
+<P><STRONG><a name="[a4]"></a>Proto_BuildFrame</STRONG> (Thumb, 120 bytes, Stack size 20 bytes, proto.o(i.Proto_BuildFrame))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = Proto_BuildFrame &rArr; Proto_CRC16
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Proto_CRC16
+<BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Proto_CRC16
 </UL>
-<BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_status
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_frame
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_ack
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_Generate
+<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_status
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_frame
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_ack
 </UL>
 
-<P><STRONG><a name="[9d]"></a>Proto_CRC16</STRONG> (Thumb, 58 bytes, Stack size 20 bytes, proto.o(i.Proto_CRC16))
+<P><STRONG><a name="[a5]"></a>Proto_CRC16</STRONG> (Thumb, 58 bytes, Stack size 20 bytes, proto.o(i.Proto_CRC16))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = Proto_CRC16
 </UL>
-<BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rx_feed
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Proto_BuildFrame
+<BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rx_feed
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpiFrame_Finalize
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Proto_BuildFrame
 </UL>
 
-<P><STRONG><a name="[6c]"></a>RCC_AHB1PeriphClockCmd</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_AHB1PeriphClockCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BEEP_GPIO_Config
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Init
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Init
+<P><STRONG><a name="[70]"></a>RCC_AHB1PeriphClockCmd</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_AHB1PeriphClockCmd))
+<BR><BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BEEP_GPIO_Config
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Init
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Init
 </UL>
 
-<P><STRONG><a name="[80]"></a>RCC_APB1PeriphClockCmd</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_APB1PeriphClockCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_Init
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Init
+<P><STRONG><a name="[88]"></a>RCC_APB1PeriphClockCmd</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_APB1PeriphClockCmd))
+<BR><BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_Init
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Init
 </UL>
 
-<P><STRONG><a name="[a9]"></a>RCC_APB1PeriphResetCmd</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_APB1PeriphResetCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
+<P><STRONG><a name="[b4]"></a>RCC_APB1PeriphResetCmd</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_APB1PeriphResetCmd))
+<BR><BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
 </UL>
 
-<P><STRONG><a name="[95]"></a>RCC_APB2PeriphClockCmd</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_APB2PeriphClockCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Init
+<P><STRONG><a name="[9c]"></a>RCC_APB2PeriphClockCmd</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_APB2PeriphClockCmd))
+<BR><BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Init
 </UL>
 
-<P><STRONG><a name="[a8]"></a>RCC_APB2PeriphResetCmd</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_APB2PeriphResetCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
+<P><STRONG><a name="[b3]"></a>RCC_APB2PeriphResetCmd</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_APB2PeriphResetCmd))
+<BR><BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
 </UL>
 
-<P><STRONG><a name="[70]"></a>RCC_DeInit</STRONG> (Thumb, 68 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_DeInit))
-<BR><BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
+<P><STRONG><a name="[74]"></a>RCC_DeInit</STRONG> (Thumb, 68 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_DeInit))
+<BR><BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
 </UL>
 
-<P><STRONG><a name="[ae]"></a>RCC_GetClocksFreq</STRONG> (Thumb, 148 bytes, Stack size 16 bytes, stm32f4xx_rcc.o(i.RCC_GetClocksFreq))
+<P><STRONG><a name="[b9]"></a>RCC_GetClocksFreq</STRONG> (Thumb, 148 bytes, Stack size 16 bytes, stm32f4xx_rcc.o(i.RCC_GetClocksFreq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = RCC_GetClocksFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
+<BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
 </UL>
 
-<P><STRONG><a name="[72]"></a>RCC_GetFlagStatus</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_GetFlagStatus))
-<BR><BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
+<P><STRONG><a name="[76]"></a>RCC_GetFlagStatus</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_GetFlagStatus))
+<BR><BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
 </UL>
 
-<P><STRONG><a name="[7d]"></a>RCC_GetSYSCLKSource</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_GetSYSCLKSource))
-<BR><BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
+<P><STRONG><a name="[81]"></a>RCC_GetSYSCLKSource</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_GetSYSCLKSource))
+<BR><BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
 </UL>
 
-<P><STRONG><a name="[77]"></a>RCC_HCLKConfig</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_HCLKConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
+<P><STRONG><a name="[7b]"></a>RCC_HCLKConfig</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_HCLKConfig))
+<BR><BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
 </UL>
 
-<P><STRONG><a name="[71]"></a>RCC_HSICmd</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_HSICmd))
-<BR><BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
+<P><STRONG><a name="[75]"></a>RCC_HSICmd</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_HSICmd))
+<BR><BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
 </UL>
 
-<P><STRONG><a name="[78]"></a>RCC_PCLK1Config</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_PCLK1Config))
-<BR><BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
+<P><STRONG><a name="[7c]"></a>RCC_PCLK1Config</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_PCLK1Config))
+<BR><BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
 </UL>
 
-<P><STRONG><a name="[79]"></a>RCC_PCLK2Config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_PCLK2Config))
-<BR><BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
+<P><STRONG><a name="[7d]"></a>RCC_PCLK2Config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_PCLK2Config))
+<BR><BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
 </UL>
 
-<P><STRONG><a name="[7b]"></a>RCC_PLLCmd</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_PLLCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
+<P><STRONG><a name="[7f]"></a>RCC_PLLCmd</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_PLLCmd))
+<BR><BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
 </UL>
 
-<P><STRONG><a name="[7a]"></a>RCC_PLLConfig</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, stm32f4xx_rcc.o(i.RCC_PLLConfig))
+<P><STRONG><a name="[7e]"></a>RCC_PLLConfig</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, stm32f4xx_rcc.o(i.RCC_PLLConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = RCC_PLLConfig
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
+<BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
 </UL>
 
-<P><STRONG><a name="[7c]"></a>RCC_SYSCLKConfig</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_SYSCLKConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
+<P><STRONG><a name="[80]"></a>RCC_SYSCLKConfig</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_SYSCLKConfig))
+<BR><BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
 </UL>
 
-<P><STRONG><a name="[9e]"></a>SIM_Generate</STRONG> (Thumb, 490 bytes, Stack size 480 bytes, sim.o(i.SIM_Generate))
-<BR><BR>[Stack]<UL><LI>Max Depth = 564<LI>Call Chain = SIM_Generate &rArr; motion_pos &rArr; gauss &rArr; __hardfp_cosf &rArr; __mathlib_rredf2
+<P><STRONG><a name="[65]"></a>SIM_ApplyConfig</STRONG> (Thumb, 72 bytes, Stack size 8 bytes, sim.o(i.SIM_ApplyConfig))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = SIM_ApplyConfig &rArr; BSP_Micros
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motion_value
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motion_pos
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gauss
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clamp_u32
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clamp_i32
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Proto_BuildFrame
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Millis
+<BR>[Calls]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scene_init
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Micros
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;process_running
+<BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dispatch_cmd
+<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Init
 </UL>
 
-<P><STRONG><a name="[64]"></a>SIM_Init</STRONG> (Thumb, 114 bytes, Stack size 8 bytes, sim.o(i.SIM_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = SIM_Init &rArr; BSP_Micros
+<P><STRONG><a name="[85]"></a>SIM_GetLiveFrame</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, sim.o(i.SIM_GetLiveFrame))
+<BR><BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;process_running
+<LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Stream4_IRQHandler
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Arm
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Micros
+
+<P><STRONG><a name="[cd]"></a>SIM_GetTruth</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, sim.o(i.SIM_GetTruth))
+<BR><BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;process_running
+</UL>
+
+<P><STRONG><a name="[64]"></a>SIM_Init</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, sim.o(i.SIM_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = SIM_Init &rArr; SpiFrame_Finalize &rArr; Proto_CRC16
+</UL>
+<BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpiFrame_Finalize
 </UL>
 <BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Init
 </UL>
 
-<P><STRONG><a name="[be]"></a>SIM_Reset</STRONG> (Thumb, 80 bytes, Stack size 0 bytes, sim.o(i.SIM_Reset))
-<BR><BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dispatch_cmd
+<P><STRONG><a name="[a9]"></a>SIM_Reset</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, sim.o(i.SIM_Reset))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = SIM_Reset &rArr; BSP_Micros
+</UL>
+<BR>[Calls]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scene_init
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Micros
+</UL>
+<BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dispatch_cmd
 </UL>
 
-<P><STRONG><a name="[85]"></a>SPI_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f4xx_spi.o(i.SPI_Cmd))
-<BR><BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Init
+<P><STRONG><a name="[aa]"></a>SIM_Step</STRONG> (Thumb, 622 bytes, Stack size 80 bytes, sim.o(i.SIM_Step))
+<BR><BR>[Stack]<UL><LI>Max Depth = 124<LI>Call Chain = SIM_Step &rArr; gauss &rArr; __hardfp_cosf &rArr; __mathlib_rredf2
+</UL>
+<BR>[Calls]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sqrtf
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_log10f
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2f
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gauss
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;advance_target
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpiFrame_Finalize
+</UL>
+<BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;process_running
 </UL>
 
-<P><STRONG><a name="[87]"></a>SPI_I2S_GetFlagStatus</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f4xx_spi.o(i.SPI_I2S_GetFlagStatus))
-<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_SendFrame
+<P><STRONG><a name="[91]"></a>SPI_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f4xx_spi.o(i.SPI_Cmd))
+<BR><BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Init
 </UL>
 
-<P><STRONG><a name="[84]"></a>SPI_I2S_ReceiveData</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_spi.o(i.SPI_I2S_ReceiveData))
-<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_SendFrame
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Init
+<P><STRONG><a name="[90]"></a>SPI_I2S_DMACmd</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f4xx_spi.o(i.SPI_I2S_DMACmd))
+<BR><BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Init
 </UL>
 
-<P><STRONG><a name="[88]"></a>SPI_I2S_SendData</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_spi.o(i.SPI_I2S_SendData))
-<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_SendFrame
+<P><STRONG><a name="[8f]"></a>SPI_I2S_ReceiveData</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_spi.o(i.SPI_I2S_ReceiveData))
+<BR><BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Init
 </UL>
 
-<P><STRONG><a name="[83]"></a>SPI_Init</STRONG> (Thumb, 56 bytes, Stack size 12 bytes, stm32f4xx_spi.o(i.SPI_Init))
+<P><STRONG><a name="[8a]"></a>SPI_Init</STRONG> (Thumb, 56 bytes, Stack size 12 bytes, stm32f4xx_spi.o(i.SPI_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = SPI_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Init
+<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Init
 </UL>
 
 <P><STRONG><a name="[6]"></a>SVC_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.SVC_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40xx.o(RESET)
 </UL>
+<P><STRONG><a name="[a8]"></a>SpiFrame_Finalize</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, proto.o(i.SpiFrame_Finalize))
+<BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = SpiFrame_Finalize &rArr; Proto_CRC16
+</UL>
+<BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Proto_CRC16
+</UL>
+<BR>[Called By]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_Step
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_Init
+</UL>
+
 <P><STRONG><a name="[9]"></a>SysTick_Handler</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, bsp_clock.o(i.SysTick_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40xx.o(RESET)
 </UL>
 <P><STRONG><a name="[5d]"></a>SystemInit</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, system_stm32f4xx.o(i.SystemInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = SystemInit &rArr; SetSysClock
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
+<BR>[Calls]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40xx.o(.text)
 </UL>
 <P><STRONG><a name="[26]"></a>TIM2_IRQHandler</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, bsp_timer.o(i.TIM2_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = TIM2_IRQHandler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetITStatus
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
+<BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetITStatus
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40xx.o(RESET)
 </UL>
-<P><STRONG><a name="[8d]"></a>TIM_ClearFlag</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_ClearFlag))
-<BR><BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_SetRate
+<P><STRONG><a name="[95]"></a>TIM_ClearFlag</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_ClearFlag))
+<BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_SetRate
 </UL>
 
-<P><STRONG><a name="[a7]"></a>TIM_ClearITPendingBit</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_ClearITPendingBit))
+<P><STRONG><a name="[b2]"></a>TIM_ClearITPendingBit</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_ClearITPendingBit))
 <BR><BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[91]"></a>TIM_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_Cmd))
-<BR><BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_Stop
-<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_Start
+<P><STRONG><a name="[98]"></a>TIM_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_Cmd))
+<BR><BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_Stop
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_Start
 </UL>
 
-<P><STRONG><a name="[8b]"></a>TIM_DeInit</STRONG> (Thumb, 376 bytes, Stack size 8 bytes, stm32f4xx_tim.o(i.TIM_DeInit))
+<P><STRONG><a name="[93]"></a>TIM_DeInit</STRONG> (Thumb, 376 bytes, Stack size 8 bytes, stm32f4xx_tim.o(i.TIM_DeInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = TIM_DeInit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphResetCmd
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphResetCmd
+<BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphResetCmd
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphResetCmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_SetRate
+<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_SetRate
 </UL>
 
-<P><STRONG><a name="[a6]"></a>TIM_GetITStatus</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_GetITStatus))
+<P><STRONG><a name="[b1]"></a>TIM_GetITStatus</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_GetITStatus))
 <BR><BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[8e]"></a>TIM_ITConfig</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_ITConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_SetRate
+<P><STRONG><a name="[96]"></a>TIM_ITConfig</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_ITConfig))
+<BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_SetRate
 </UL>
 
-<P><STRONG><a name="[90]"></a>TIM_SetCounter</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_SetCounter))
-<BR><BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_Start
+<P><STRONG><a name="[97]"></a>TIM_SetCounter</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_SetCounter))
+<BR><BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_Start
 </UL>
 
-<P><STRONG><a name="[8c]"></a>TIM_TimeBaseInit</STRONG> (Thumb, 96 bytes, Stack size 12 bytes, stm32f4xx_tim.o(i.TIM_TimeBaseInit))
+<P><STRONG><a name="[94]"></a>TIM_TimeBaseInit</STRONG> (Thumb, 96 bytes, Stack size 12 bytes, stm32f4xx_tim.o(i.TIM_TimeBaseInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = TIM_TimeBaseInit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_SetRate
+<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_SetRate
 </UL>
 
 <P><STRONG><a name="[2f]"></a>USART1_IRQHandler</STRONG> (Thumb, 136 bytes, Stack size 16 bytes, bsp_uart.o(i.USART1_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = USART1_IRQHandler &rArr; USART_GetITStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ring_next
-<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
-<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ReceiveData
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
-<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetITStatus
-<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
+<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ring_next
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ReceiveData
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetITStatus
+<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40xx.o(RESET)
 </UL>
-<P><STRONG><a name="[99]"></a>USART_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f4xx_usart.o(i.USART_Cmd))
-<BR><BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Init
+<P><STRONG><a name="[9f]"></a>USART_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f4xx_usart.o(i.USART_Cmd))
+<BR><BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Init
 </UL>
 
-<P><STRONG><a name="[ad]"></a>USART_GetFlagStatus</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f4xx_usart.o(i.USART_GetFlagStatus))
+<P><STRONG><a name="[b8]"></a>USART_GetFlagStatus</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f4xx_usart.o(i.USART_GetFlagStatus))
 <BR><BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
-<P><STRONG><a name="[aa]"></a>USART_GetITStatus</STRONG> (Thumb, 64 bytes, Stack size 16 bytes, stm32f4xx_usart.o(i.USART_GetITStatus))
+<P><STRONG><a name="[b5]"></a>USART_GetITStatus</STRONG> (Thumb, 64 bytes, Stack size 16 bytes, stm32f4xx_usart.o(i.USART_GetITStatus))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = USART_GetITStatus
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
-<P><STRONG><a name="[97]"></a>USART_ITConfig</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, stm32f4xx_usart.o(i.USART_ITConfig))
+<P><STRONG><a name="[9e]"></a>USART_ITConfig</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, stm32f4xx_usart.o(i.USART_ITConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = USART_ITConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_kick_tx
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Init
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_kick_tx
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Init
 </UL>
 
-<P><STRONG><a name="[96]"></a>USART_Init</STRONG> (Thumb, 180 bytes, Stack size 32 bytes, stm32f4xx_usart.o(i.USART_Init))
+<P><STRONG><a name="[9d]"></a>USART_Init</STRONG> (Thumb, 180 bytes, Stack size 32 bytes, stm32f4xx_usart.o(i.USART_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = USART_Init &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
+<BR>[Calls]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Init
+<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Init
 </UL>
 
-<P><STRONG><a name="[ab]"></a>USART_ReceiveData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f4xx_usart.o(i.USART_ReceiveData))
+<P><STRONG><a name="[b6]"></a>USART_ReceiveData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f4xx_usart.o(i.USART_ReceiveData))
 <BR><BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
-<P><STRONG><a name="[ac]"></a>USART_SendData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f4xx_usart.o(i.USART_SendData))
+<P><STRONG><a name="[b7]"></a>USART_SendData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f4xx_usart.o(i.USART_SendData))
 <BR><BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
@@ -934,111 +1015,119 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40xx.o(RESET)
 </UL>
-<P><STRONG><a name="[b7]"></a>__ARM_fpclassifyf</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, fpclassifyf.o(i.__ARM_fpclassifyf))
-<BR><BR>[Called By]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sinf
+<P><STRONG><a name="[ba]"></a>__ARM_fpclassifyf</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, fpclassifyf.o(i.__ARM_fpclassifyf))
+<BR><BR>[Called By]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2f
 </UL>
 
-<P><STRONG><a name="[af]"></a>__hardfp_cosf</STRONG> (Thumb, 280 bytes, Stack size 8 bytes, cosf.o(i.__hardfp_cosf))
+<P><STRONG><a name="[ae]"></a>__hardfp_atan2f</STRONG> (Thumb, 594 bytes, Stack size 32 bytes, atan2f.o(i.__hardfp_atan2f))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __hardfp_atan2f
+</UL>
+<BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_underflow
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_infnan2
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_fpclassifyf
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
+</UL>
+<BR>[Called By]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_Step
+</UL>
+
+<P><STRONG><a name="[be]"></a>__hardfp_cosf</STRONG> (Thumb, 280 bytes, Stack size 8 bytes, cosf.o(i.__hardfp_cosf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = __hardfp_cosf &rArr; __mathlib_rredf2
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_rredf2
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_invalid
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_infnan
-<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
+<BR>[Calls]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_rredf2
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_invalid
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_infnan
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motion_pos
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gauss
-</UL>
-
-<P><STRONG><a name="[c3]"></a>__hardfp_floorf</STRONG> (Thumb, 98 bytes, Stack size 0 bytes, floorf.o(i.__hardfp_floorf))
-<BR><BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motion_value
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motion_pos
+<BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gauss
 </UL>
 
-<P><STRONG><a name="[b4]"></a>__hardfp_logf</STRONG> (Thumb, 320 bytes, Stack size 8 bytes, logf.o(i.__hardfp_logf))
+<P><STRONG><a name="[af]"></a>__hardfp_log10f</STRONG> (Thumb, 332 bytes, Stack size 8 bytes, log10f.o(i.__hardfp_log10f))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __hardfp_log10f
+</UL>
+<BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_invalid
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_infnan
+<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_divzero
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
+</UL>
+<BR>[Called By]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_Step
+</UL>
+
+<P><STRONG><a name="[c3]"></a>__hardfp_logf</STRONG> (Thumb, 320 bytes, Stack size 8 bytes, logf.o(i.__hardfp_logf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __hardfp_logf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_invalid
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_infnan
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_divzero
-<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
+<BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_invalid
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_infnan
+<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_divzero
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gauss
-</UL>
-
-<P><STRONG><a name="[d1]"></a>__mathlib_logf</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, logf.o(i.__hardfp_logf), UNUSED)
-
-<P><STRONG><a name="[b6]"></a>__hardfp_sinf</STRONG> (Thumb, 344 bytes, Stack size 16 bytes, sinf.o(i.__hardfp_sinf))
-<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = __hardfp_sinf &rArr; __mathlib_rredf2
-</UL>
-<BR>[Calls]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_rredf2
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_underflow
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_invalid
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_infnan
-<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_fpclassifyf
-<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
-</UL>
-<BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motion_value
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motion_pos
+<BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gauss
 </UL>
 
-<P><STRONG><a name="[b9]"></a>__hardfp_sqrtf</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, sqrtf.o(i.__hardfp_sqrtf))
+<P><STRONG><a name="[db]"></a>__mathlib_logf</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, logf.o(i.__hardfp_logf), UNUSED)
+
+<P><STRONG><a name="[ac]"></a>__hardfp_sqrtf</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, sqrtf.o(i.__hardfp_sqrtf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __hardfp_sqrtf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
+<BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gauss
-</UL>
-
-<P><STRONG><a name="[b5]"></a>__mathlib_flt_divzero</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, funder.o(i.__mathlib_flt_divzero))
-<BR><BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_logf
+<BR>[Called By]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_Step
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gauss
 </UL>
 
-<P><STRONG><a name="[b3]"></a>__mathlib_flt_infnan</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, funder.o(i.__mathlib_flt_infnan))
-<BR><BR>[Called By]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sinf
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_logf
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_cosf
+<P><STRONG><a name="[c2]"></a>__mathlib_flt_divzero</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, funder.o(i.__mathlib_flt_divzero))
+<BR><BR>[Called By]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_logf
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_log10f
 </UL>
 
-<P><STRONG><a name="[b2]"></a>__mathlib_flt_invalid</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, funder.o(i.__mathlib_flt_invalid))
-<BR><BR>[Called By]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sinf
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_logf
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_cosf
+<P><STRONG><a name="[c1]"></a>__mathlib_flt_infnan</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, funder.o(i.__mathlib_flt_infnan))
+<BR><BR>[Called By]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_logf
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_log10f
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_cosf
 </UL>
 
-<P><STRONG><a name="[b8]"></a>__mathlib_flt_underflow</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, funder.o(i.__mathlib_flt_underflow))
-<BR><BR>[Called By]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sinf
+<P><STRONG><a name="[bd]"></a>__mathlib_flt_infnan2</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, funder.o(i.__mathlib_flt_infnan2))
+<BR><BR>[Called By]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2f
 </UL>
 
-<P><STRONG><a name="[b0]"></a>__mathlib_rredf2</STRONG> (Thumb, 316 bytes, Stack size 20 bytes, rredf.o(i.__mathlib_rredf2))
+<P><STRONG><a name="[c0]"></a>__mathlib_flt_invalid</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, funder.o(i.__mathlib_flt_invalid))
+<BR><BR>[Called By]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_logf
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_log10f
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_cosf
+</UL>
+
+<P><STRONG><a name="[bb]"></a>__mathlib_flt_underflow</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, funder.o(i.__mathlib_flt_underflow))
+<BR><BR>[Called By]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2f
+</UL>
+
+<P><STRONG><a name="[bf]"></a>__mathlib_rredf2</STRONG> (Thumb, 316 bytes, Stack size 20 bytes, rredf.o(i.__mathlib_rredf2))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = __mathlib_rredf2
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sinf
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_cosf
+<BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_cosf
 </UL>
 
-<P><STRONG><a name="[d2]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[dc]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[d3]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[dd]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[d4]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[de]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[b1]"></a>__set_errno</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, errno.o(i.__set_errno))
-<BR><BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sqrtf
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sinf
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_logf
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_cosf
+<P><STRONG><a name="[bc]"></a>__set_errno</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, errno.o(i.__set_errno))
+<BR><BR>[Called By]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sqrtf
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_logf
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_log10f
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_cosf
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2f
 </UL>
 
 <P><STRONG><a name="[5c]"></a>main</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 596<LI>Call Chain = main &rArr; APP_Step &rArr; process_running &rArr; SIM_Generate &rArr; motion_pos &rArr; gauss &rArr; __hardfp_cosf &rArr; __mathlib_rredf2
+<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = main &rArr; APP_Step &rArr; rx_feed &rArr; dispatch_cmd &rArr; send_status &rArr; Proto_BuildFrame &rArr; Proto_CRC16
 </UL>
-<BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Init
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_Init
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SysTick_Init
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Init
-<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Step
+<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Init
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_Init
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SysTick_Init
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_Init
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Clock_Init
+<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Step
 <LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Init
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
@@ -1046,155 +1135,137 @@ Global Symbols
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[a5]"></a>SetSysClock</STRONG> (Thumb, 168 bytes, Stack size 12 bytes, system_stm32f4xx.o(i.SetSysClock))
+<P><STRONG><a name="[b0]"></a>SetSysClock</STRONG> (Thumb, 168 bytes, Stack size 12 bytes, system_stm32f4xx.o(i.SetSysClock))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = SetSysClock
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
 </UL>
 
-<P><STRONG><a name="[93]"></a>ring_next</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, bsp_uart.o(i.ring_next))
+<P><STRONG><a name="[9a]"></a>ring_next</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, bsp_uart.o(i.ring_next))
 <BR><BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Send
-<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_GetByte
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Send
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_GetByte
 </UL>
 
-<P><STRONG><a name="[9b]"></a>uart_kick_tx</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, bsp_uart.o(i.uart_kick_tx))
+<P><STRONG><a name="[a1]"></a>uart_kick_tx</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, bsp_uart.o(i.uart_kick_tx))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = uart_kick_tx &rArr; USART_ITConfig
 </UL>
-<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
+<BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Send
-</UL>
-
-<P><STRONG><a name="[a1]"></a>clamp_i32</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, sim.o(i.clamp_i32))
-<BR><BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_Generate
+<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Send
 </UL>
 
-<P><STRONG><a name="[a3]"></a>clamp_u32</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, sim.o(i.clamp_u32))
-<BR><BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_Generate
+<P><STRONG><a name="[ab]"></a>advance_target</STRONG> (Thumb, 202 bytes, Stack size 0 bytes, sim.o(i.advance_target))
+<BR><BR>[Called By]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_Step
 </UL>
 
-<P><STRONG><a name="[c0]"></a>frand</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, sim.o(i.frand))
+<P><STRONG><a name="[c9]"></a>frand</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, sim.o(i.frand))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = frand
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xorshift32
+<BR>[Calls]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xorshift32
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gauss
+<BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gauss
 </UL>
 
-<P><STRONG><a name="[a0]"></a>gauss</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, sim.o(i.gauss))
+<P><STRONG><a name="[ad]"></a>gauss</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, sim.o(i.gauss))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = gauss &rArr; __hardfp_cosf &rArr; __mathlib_rredf2
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sqrtf
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_logf
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_cosf
-<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;frand
+<BR>[Calls]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sqrtf
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_logf
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_cosf
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;frand
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_Generate
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motion_value
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motion_pos
+<BR>[Called By]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_Step
 </UL>
 
-<P><STRONG><a name="[a2]"></a>motion_pos</STRONG> (Thumb, 482 bytes, Stack size 40 bytes, sim.o(i.motion_pos))
-<BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = motion_pos &rArr; gauss &rArr; __hardfp_cosf &rArr; __mathlib_rredf2
-</UL>
-<BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sinf
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_floorf
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_cosf
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gauss
-</UL>
-<BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_Generate
+<P><STRONG><a name="[a6]"></a>scene_init</STRONG> (Thumb, 146 bytes, Stack size 0 bytes, sim.o(i.scene_init))
+<BR><BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_Reset
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_ApplyConfig
 </UL>
 
-<P><STRONG><a name="[9f]"></a>motion_value</STRONG> (Thumb, 210 bytes, Stack size 24 bytes, sim.o(i.motion_value))
-<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = motion_value &rArr; gauss &rArr; __hardfp_cosf &rArr; __mathlib_rredf2
-</UL>
-<BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sinf
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_floorf
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gauss
-</UL>
-<BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_Generate
+<P><STRONG><a name="[ca]"></a>xorshift32</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, sim.o(i.xorshift32))
+<BR><BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;frand
 </UL>
 
-<P><STRONG><a name="[c1]"></a>xorshift32</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, sim.o(i.xorshift32))
-<BR><BR>[Called By]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;frand
-</UL>
-
-<P><STRONG><a name="[63]"></a>cfg_load_default</STRONG> (Thumb, 68 bytes, Stack size 0 bytes, app.o(i.cfg_load_default))
+<P><STRONG><a name="[63]"></a>cfg_load_default</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, app.o(i.cfg_load_default))
 <BR><BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Init
 </UL>
 
-<P><STRONG><a name="[ba]"></a>dispatch_cmd</STRONG> (Thumb, 358 bytes, Stack size 64 bytes, app.o(i.dispatch_cmd))
+<P><STRONG><a name="[c4]"></a>dispatch_cmd</STRONG> (Thumb, 344 bytes, Stack size 56 bytes, app.o(i.dispatch_cmd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = dispatch_cmd &rArr; send_status &rArr; Proto_BuildFrame &rArr; Proto_CRC16
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
-<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_status
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_frame
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_ack
-<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_Reset
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_Stop
-<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_Start
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_SetRate
+<BR>[Calls]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_status
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_frame
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_ack
+<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_Reset
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_ApplyConfig
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_Stop
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_Start
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_SetRate
 </UL>
-<BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rx_feed
-</UL>
-
-<P><STRONG><a name="[6b]"></a>process_running</STRONG> (Thumb, 142 bytes, Stack size 24 bytes, app.o(i.process_running))
-<BR><BR>[Stack]<UL><LI>Max Depth = 588<LI>Call Chain = process_running &rArr; SIM_Generate &rArr; motion_pos &rArr; gauss &rArr; __hardfp_cosf &rArr; __mathlib_rredf2
-</UL>
-<BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_Generate
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_TakeRequests
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_SendFrame
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_TX_Avail
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Send
-</UL>
-<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Step
+<BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rx_feed
 </UL>
 
-<P><STRONG><a name="[69]"></a>rx_feed</STRONG> (Thumb, 344 bytes, Stack size 24 bytes, app.o(i.rx_feed))
+<P><STRONG><a name="[6f]"></a>process_running</STRONG> (Thumb, 90 bytes, Stack size 40 bytes, app.o(i.process_running))
+<BR><BR>[Stack]<UL><LI>Max Depth = 164<LI>Call Chain = process_running &rArr; SIM_Step &rArr; gauss &rArr; __hardfp_cosf &rArr; __mathlib_rredf2
+</UL>
+<BR>[Calls]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_frame
+<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_Step
+<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_GetTruth
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Timer_TakeRequests
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIM_GetLiveFrame
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Micros
+</UL>
+<BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Step
+</UL>
+
+<P><STRONG><a name="[6d]"></a>rx_feed</STRONG> (Thumb, 344 bytes, Stack size 24 bytes, app.o(i.rx_feed))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = rx_feed &rArr; dispatch_cmd &rArr; send_status &rArr; Proto_BuildFrame &rArr; Proto_CRC16
 </UL>
-<BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rx_reset
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dispatch_cmd
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Proto_CRC16
+<BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rx_reset
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dispatch_cmd
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Proto_CRC16
 </UL>
-<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Step
+<BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Step
 </UL>
 
-<P><STRONG><a name="[65]"></a>rx_reset</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, app.o(i.rx_reset))
-<BR><BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rx_feed
+<P><STRONG><a name="[66]"></a>rx_reset</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, app.o(i.rx_reset))
+<BR><BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rx_feed
 <LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APP_Init
 </UL>
 
-<P><STRONG><a name="[bc]"></a>send_ack</STRONG> (Thumb, 56 bytes, Stack size 24 bytes, app.o(i.send_ack))
+<P><STRONG><a name="[c6]"></a>send_ack</STRONG> (Thumb, 56 bytes, Stack size 24 bytes, app.o(i.send_ack))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = send_ack &rArr; Proto_BuildFrame &rArr; Proto_CRC16
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Proto_BuildFrame
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Send
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Millis
+<BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Proto_BuildFrame
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Send
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Millis
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dispatch_cmd
+<BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dispatch_cmd
 </UL>
 
-<P><STRONG><a name="[bb]"></a>send_frame</STRONG> (Thumb, 64 bytes, Stack size 24 bytes, app.o(i.send_frame))
+<P><STRONG><a name="[c5]"></a>send_frame</STRONG> (Thumb, 64 bytes, Stack size 24 bytes, app.o(i.send_frame))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = send_frame &rArr; Proto_BuildFrame &rArr; Proto_CRC16
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Proto_BuildFrame
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_TX_Avail
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Send
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Millis
+<BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Proto_BuildFrame
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_TX_Avail
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Send
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Millis
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dispatch_cmd
+<BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;process_running
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dispatch_cmd
 </UL>
 
-<P><STRONG><a name="[bf]"></a>send_status</STRONG> (Thumb, 90 bytes, Stack size 40 bytes, app.o(i.send_status))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = send_status &rArr; Proto_BuildFrame &rArr; Proto_CRC16
+<P><STRONG><a name="[c8]"></a>send_status</STRONG> (Thumb, 98 bytes, Stack size 48 bytes, app.o(i.send_status))
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = send_status &rArr; Proto_BuildFrame &rArr; Proto_CRC16
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Proto_BuildFrame
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Send
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Millis
+<BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Proto_BuildFrame
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SPI_GetXferCount
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_UART_Send
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Millis
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dispatch_cmd
+<BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dispatch_cmd
 </UL>
 <P>
 <H3>

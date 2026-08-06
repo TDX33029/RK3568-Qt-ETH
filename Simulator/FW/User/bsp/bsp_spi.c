@@ -17,9 +17,12 @@
 #define SPI_GPIO_PORT     GPIOB
 #define SPI_GPIO_CLK     RCC_AHB1Periph_GPIOB
 #define SPI_SCK_PIN       GPIO_Pin_13
-#define SPI_MISO_PIN      GPIO_Pin_14
 #define SPI_MOSI_PIN      GPIO_Pin_15
 #define SPI_NSS_PIN       GPIO_Pin_12
+/* MISO 走 PC2 (AF5, SPI2_MISO) */
+#define SPI_MISO_PORT     GPIOC
+#define SPI_MISO_CLK      RCC_AHB1Periph_GPIOC
+#define SPI_MISO_PIN      GPIO_Pin_2
 #define SPI_AF            GPIO_AF_SPI2
 
 /* SPI2_TX = DMA1 Stream4 Channel0 */
@@ -40,21 +43,25 @@ void BSP_SPI_Init(void)
     NVIC_InitTypeDef  NVIC_InitStructure;
 
     RCC_AHB1PeriphClockCmd(SPI_GPIO_CLK, ENABLE);
+    RCC_AHB1PeriphClockCmd(SPI_MISO_CLK, ENABLE);   /* GPIOC for MISO */
     SPI_RCC(SPI_RCC_PERIPH, ENABLE);
     RCC_AHB1PeriphClockCmd(SPI_DMA_CLK, ENABLE);
 
-    /* SCK / MISO / MOSI / NSS 复用 (AF5) */
-    GPIO_PinAFConfig(SPI_GPIO_PORT, GPIO_PinSource12, SPI_AF);  /* NSS */
-    GPIO_PinAFConfig(SPI_GPIO_PORT, GPIO_PinSource13, SPI_AF); /* SCK */
-    GPIO_PinAFConfig(SPI_GPIO_PORT, GPIO_PinSource14, SPI_AF); /* MISO */
-    GPIO_PinAFConfig(SPI_GPIO_PORT, GPIO_PinSource15, SPI_AF); /* MOSI */
+    /* SCK(PB13) / MOSI(PB15) / NSS(PB12) 复用 AF5；MISO(PC2) 在 GPIOC */
+    GPIO_PinAFConfig(SPI_GPIO_PORT, GPIO_PinSource12, SPI_AF);  /* NSS  PB12 */
+    GPIO_PinAFConfig(SPI_GPIO_PORT, GPIO_PinSource13, SPI_AF); /* SCK   PB13 */
+    GPIO_PinAFConfig(SPI_GPIO_PORT, GPIO_PinSource15, SPI_AF); /* MOSI  PB15 */
+    GPIO_PinAFConfig(SPI_MISO_PORT, GPIO_PinSource2, SPI_AF);  /* MISO  PC2  */
 
-    GPIO_InitStructure.GPIO_Pin   = SPI_NSS_PIN | SPI_SCK_PIN | SPI_MISO_PIN | SPI_MOSI_PIN;
+    GPIO_InitStructure.GPIO_Pin   = SPI_NSS_PIN | SPI_SCK_PIN | SPI_MOSI_PIN;
     GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF;
     GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
     GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_UP;     /* 空闲拉高 */
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
     GPIO_Init(SPI_GPIO_PORT, &GPIO_InitStructure);
+
+    GPIO_InitStructure.GPIO_Pin = SPI_MISO_PIN;       /* PC2 MISO */
+    GPIO_Init(SPI_MISO_PORT, &GPIO_InitStructure);
 
     /* SPI2 从机：模式0，8bit，MSB，硬件 NSS，全双工（MOSI 忽略） */
     SPI_InitStructure.SPI_Direction        = SPI_Direction_2Lines_FullDuplex;

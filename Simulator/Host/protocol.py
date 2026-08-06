@@ -87,13 +87,14 @@ CONFIG_FMT = "<IBBBBffffff"      # 32B
 STATUS_FMT = "<BBBBIIIIII"       # 28B
 TRUTH_FMT  = "<ffffff"           # 24B
 ANCHOR_FMT = "<Bfffff"           # 21B
-SPI_HDR_FMT = "<HBBHIH"         # magic(2)+seq(2)+mode_mask(1)+n_anc(1)+dt_us(4)+reserved(2) = 12
+SPI_HDR_FMT = "<HBBIH"          # seq(2)+mode_mask(1)+n_anc(1)+dt_us(4)+reserved(2) = 10B (after magic)
 
 CONFIG_SIZE = struct.calcsize(CONFIG_FMT)
 STATUS_SIZE = struct.calcsize(STATUS_FMT)
 TRUTH_SIZE = struct.calcsize(TRUTH_FMT)
 ANCHOR_SIZE = struct.calcsize(ANCHOR_FMT)
-SPI_HDR_SIZE = struct.calcsize(SPI_HDR_FMT)   # 12
+SPI_HDR_SIZE = struct.calcsize(SPI_HDR_FMT)   # 10 (after magic)
+SPI_ANC_OFF = 12   # anchors start at byte 12 (after magic+seq+mode_mask+n_anc+dt_us+reserved)
 
 
 def crc16(data: bytes) -> int:
@@ -190,9 +191,9 @@ def parse_spi_frame(payload: bytes) -> SpiFrame:
     crc_calc = crc16(payload[:180])
     if crc_recv != crc_calc:
         raise ValueError(f"CRC mismatch {crc_recv:#x} vs {crc_calc:#x}")
-    seq, mode_mask, n_anc, dt_us, reserved = struct.unpack(SPI_HDR_FMT, payload[2:14])
+    seq, mode_mask, n_anc, dt_us, reserved = struct.unpack(SPI_HDR_FMT, payload[2:12])
     anchors = []
-    off = 14
+    off = SPI_ANC_OFF
     for _ in range(SPI_MAX_ANCHORS):
         has, tdoa, toa, az, el, rss = struct.unpack(ANCHOR_FMT, payload[off:off + ANCHOR_SIZE])
         anchors.append(Anchor(has, tdoa, toa, az, el, rss))
@@ -323,7 +324,7 @@ class DemoSim:
         buf[5] = N_ANC
         struct.pack_into("<I", buf, 6, int(dt_us) & 0xFFFFFFFF)
         # reserved [10..11] = 0
-        off = 14
+        off = SPI_ANC_OFF   # 12
         for i in range(SPI_MAX_ANCHORS):
             if i < N_ANC:
                 dx = t[0] - ANCHORS[i][0]; dy = t[1] - ANCHORS[i][1]; dz = t[2] - ANCHORS[i][2]

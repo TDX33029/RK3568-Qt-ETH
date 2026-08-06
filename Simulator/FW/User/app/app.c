@@ -34,7 +34,7 @@ static void cfg_load_default(ProtoConfig_t *c)
     c->sample_rate_hz   = 100u;
     c->scene            = SIM_SCENE_STRAIGHT;
     c->enable_mask      = SPI_MODE_TDOA | SPI_MODE_TOA | SPI_MODE_AOA | SPI_MODE_RSS;
-    c->telemetry_decim  = 10u;          /* SpiFrame 快照抽稀（truth 每帧都发） */
+    c->telemetry_decim  = 10u;          /* SpiFrame 快照抽稀（truth 每 2 帧发 1） */
     c->reserved         = 0;
     c->init_x = 8.0f;  c->init_y = 10.0f; c->init_z = 6.0f;
     c->vel_x  = 1.20f; c->vel_y  = 0.75f; c->vel_z  = 0.20f;
@@ -123,12 +123,14 @@ static void dispatch_cmd(uint8_t type, const uint8_t *payload, uint16_t len)
             break;
 
         case PROTO_CMD_START:
-            if (s_running) { send_ack(type, PROTO_STAT_ERR_BUSY); break; }
-            SIM_Reset();
-            BSP_Timer_SetRate(s_cfg.sample_rate_hz);
-            BSP_Timer_Start();
-            s_running = 1;
-            s_telemetry_skip = 0;
+            /* 幂等：未运行则启动；已运行也回 OK（上电已自动启动，避免 BUSY） */
+            if (!s_running)
+            {
+                BSP_Timer_SetRate(s_cfg.sample_rate_hz);
+                BSP_Timer_Start();
+                s_running = 1;
+                s_telemetry_skip = 0;
+            }
             send_ack(type, PROTO_STAT_OK);
             break;
 
@@ -236,7 +238,8 @@ static void process_running(void)
     SIM_Step(BSP_Micros());
     s_frame_count++;
 
-    /* TRUTH 每帧回传（小，12B），上位机可丝滑绘图 */
+    /* TRUTH 抽稀到 ~50Hz（位置图刷新 30Hz 足够；减负 UART/上位机） */
+    if ((s_frame_count & 1u) == 0u)
     {
         ProtoTruth_t tr;
         SIM_GetTruth(&tr);
@@ -273,6 +276,12 @@ void APP_Init(void)
     SIM_ApplyConfig(&s_cfg);
     rx_reset();
     BSP_SPI_Arm();          /* SPI 从机 DMA 装载初始帧，开始响应 RK 轮询 */
+
+    /* 上电即开始流式输出（RK3568 可直接读到 seq 递增的新帧） */
+    BSP_Timer_SetRate(s_cfg.sample_rate_hz);
+    BSP_Timer_Start();
+    s_running = 1;
+    s_telemetry_skip = 0;
 
 #if APP_BEEP_ENABLE
     BEEP_GPIO_Config();
