@@ -1,0 +1,159 @@
+================================================================================
+  测量帧协议 -- 传感器  <-->  RK3568   (PS Tracker UI, 走 ETH1 / UDP)
+  RK 端代码: frame_protocol.h / eth_reader.cpp / ethtest.cpp   传感器端按本文实现即可
+================================================================================
+
+[1] 角色 / 传输
+--------------------------------------------------------------------------------
+  角色      : RK3568 = UDP 服务端(绑定 ETH1 端口);  传感器 = UDP 客户端(发数据报)
+  传输      : 以太网 (RK3568 的 ETH1 网卡),  协议 UDP
+  端口      : 默认 5000 (RK 端 eth_reader / ethtest 可配; PC 端 Host/send_eth.py 可配)
+  单报      : 每个 UDP 数据报恰好为一帧 182 字节 (单向: 传感器 -> RK)
+  速率      : 由传感器侧发送频率决定 (例 100 Hz, 即每 10 ms 一个数据报)
+
+  说明: RK 端每收一个数据报即是一帧完整 182 字节。RK 用 seq 判断帧是否更新
+        (未变则丢弃)。本项目完全不使用 SPI, 板子无任何 SPI 引脚操作。
+
+[2] 帧布局 (固定 182 字节, 小端序)
+--------------------------------------------------------------------------------
+  偏移   长度   字段            说明
+  ----   ----   -------------   --------------------------------------------
+   0      2     magic           {0xA5, 0x5A}  帧同步
+   2      2     seq    (u16)    帧序号, 每产生一帧 +1 (回绕)
+   4      1     mode_mask(u8)   传感器提供的模态位图:
+                                 bit0=TDOA  bit1=TOA  bit2=AOA  bit3=RSS
+   5      1     n_anc  (u8)    实际有数据的锚点数(信息用; 始终占 8 个锚点槽)
+   6      4     dt_us  (u32)   距上一帧的微秒数, 用于 EKF 预测
+  10      2     reserved       0
+  12    168     anchors[8]      8 个锚点, 每个 21 字节 (见 [3])
+ 180      2     crc16  (u16)   CRC-16/CCITT-FALSE, 覆盖字节 [0..179]
+  ----
+  合计   182
+
+[3] 每个锚点 (21 字节)
+--------------------------------------------------------------------------------
+  偏移  长度  字段           说明
+  ----  ----  -----------    ------------------------------------------------
+   0     1    has   (u8)     bit0 tdoa, bit1 toa, bit2 aoa, bit3 rss
+                             (本锚点哪些测量有效)
+   1     4    tdoa_sec (f32) 秒        (has & 1 时有效)
+   5     4    toa_sec  (f32) 秒        (has & 2)
+   9     4    aoa_az   (f32) 弧度      (has & 4)
+  13     4    aoa_el   (f32) 弧度      (has & 4)
+  17     4    rss_dbm  (f32) dBm       (has & 8)
+
+[4] 锚点索引与几何 (传感器端必须与 RK 端一致)
+--------------------------------------------------------------------------------
+  RK 端坐标见 tracker_app.cpp 的 configure_demo_anchors():
+
+    idx      x       y       z      备注
+    ---  -----   -----   -----   --------------------------------
+      0    0       0       0      参考锚 (ref_anchor): TDOA 以它为基准
+      1   30       0       4
+      2   30      30       0
+      3    0      30       5
+      4   15      15      12
+
+  实际部署时把 configure_demo_anchors 里的坐标改成真实基站坐标即可,
+  协议字段不变, 只要填对索引。
+
+[5] 测量单位约定 (重要)
+--------------------------------------------------------------------------------
+  TDOA : 相对参考锚 A0 的时间差, 秒。  tdoa[i] = (range_i - range_0) / c
+  TOA  : 到达时间, 秒。                  toa[i]  = range_i / c     (c=299792458 m/s)
+  AOA  : 方位角 aoa_az = atan2(dy,dx), 俯仰角 aoa_el = atan2(dz, rho), 弧度,
+         以锚点为原点指向目标 (rho = sqrt(dx^2+dy^2))。
+  RSS  : 接收功率, dBm。模型 rss = ref_dbm - 10*n*log10(range)。
+
+  RK 端在菜单页选择当前模态 (TDOA/TOA/AOA/RSS), EKF 只用选中模态的测量;
+  其余模态的 has 位可置 0。
+
+[6] CRC-16/CCITT-FALSE
+--------------------------------------------------------------------------------
+  poly = 0x1021, init = 0xFFFF, refIn = false, refOut = false, xorOut = 0x0000
+  覆盖字节 [0..179], 结果填入 [180..181] (小端)。
+
+  参考实现 (RK 与传感器端一致):
+    uint16_t crc16_ccitt(const uint8_t *data, size_t len) {
+        uint16_t crc = 0xFFFF;
+        for (size_t i = 0; i < len; ++i) {
+            crc ^= (uint16_t)data[i] << 8;
+            for (int b = 0; b < 8; ++b)
+                crc = (crc & 0x8000) ? (uint16_t)((crc << 1) ^ 0x1021)
+                                     : (uint16_t)(crc << 1);
+        }
+        return crc;
+    }
+
+[7] 传感器端参考 C 结构 (与 RK 端 frame_protocol.h 一致)
+--------------------------------------------------------------------------------
+    #include <stdint.h>
+    #include <stddef.h>
+
+    #define UDP_MODE_TDOA  (1u<<0)
+    #define UDP_MODE_TOA   (1u<<1)
+    #define UDP_MODE_AOA   (1u<<2)
+    #define UDP_MODE_RSS   (1u<<3)
+
+    #pragma pack(push, 1)
+    typedef struct {
+        uint8_t  has;
+        float    tdoa_sec;
+        float    toa_sec;
+        float    aoa_az;
+        float    aoa_el;
+        float    rss_dbm;
+    } UdpAnchor;            /* 21 字节 */
+
+    typedef struct {
+        uint8_t   magic[2];   /* {0xA5, 0x5A} */
+        uint16_t  seq;
+        uint8_t   mode_mask;
+        uint8_t   n_anc;
+        uint32_t  dt_us;
+        uint16_t  reserved;
+        UdpAnchor anchors[8];
+        uint16_t  crc16;
+    } UdpFrame;              /* 182 字节 */
+    #pragma pack(pop)
+
+[8] 传感器端伪代码
+--------------------------------------------------------------------------------
+    static UdpFrame g_frame;        /* 当前帧 */
+    static uint16_t g_seq = 0;
+
+    /* 每当产生新测量时调用 */
+    void sensor_update_measurement(/* your data */) {
+        UdpFrame f; memset(&f, 0, sizeof(f));
+        f.magic[0] = 0xA5; f.magic[1] = 0x5A;
+        f.seq       = g_seq++;
+        f.mode_mask = UDP_MODE_TDOA;          /* 例: TDOA */
+        f.n_anc     = 5;
+        f.dt_us     = 10000;                  /* 10 ms */
+        for (int i = 0; i < 5; ++i) {
+            f.anchors[i].has       = UDP_MODE_TDOA;
+            f.anchors[i].tdoa_sec  = tdoa_value[i];   /* 秒 */
+        }
+        f.crc16 = crc16_ccitt((uint8_t*)&f, offsetof(UdpFrame, crc16));
+        /* 原子更新当前帧 (关中断 或 双缓冲交换指针) */
+        memcpy(&g_frame, &f, sizeof(f));
+    }
+
+    /* UDP 发送: 每个数据报发一帧 g_frame (182 字节) 到 RK 的 ETH1 IP:端口 */
+
+[9] RK3568 侧运行要求
+--------------------------------------------------------------------------------
+  - RK 板子 ETH1 与传感器在同一网段, IP 可达 (无 SPI / 设备树步骤)
+  - 启动程序后菜单页点 "Start Live (ETH1)" 即开始接收并实时显示
+  - 绑定地址/端口可在 MainWindow::startLive() 改 (m_eth->setHost / setPort)
+  - 板端命令行快速验证: 见 ethtest.cpp (./ethtest --verbose)
+
+[10] 丢帧 / 异常处理
+--------------------------------------------------------------------------------
+  魔数不符     -> 丢弃该帧
+  CRC 不符     -> 丢弃
+  长度不对     -> 丢弃 (数据报 != 182 字节)
+  seq 未变     -> 传感器未更新, 跳过 (不显示陈旧数据)
+  EKF 数值异常 -> 不中断跟踪, 等下一好帧
+  UDP 绑定失败 -> 弹窗/打印错误并退出实时模式 (不影响仿真)
+================================================================================

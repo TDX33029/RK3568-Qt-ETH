@@ -1,0 +1,9 @@
+/home/ubuntu/桌面/qt/260721/260721/build/Desktop_Qt_6_5_3_GCC_64bit_Debug/CMakeFiles/ps_tracker_ui.dir
+/home/ubuntu/桌面/qt/260721/260721/build/Desktop_Qt_6_5_3_GCC_64bit_Debug/CMakeFiles/edit_cache.dir
+/home/ubuntu/桌面/qt/260721/260721/build/Desktop_Qt_6_5_3_GCC_64bit_Debug/CMakeFiles/rebuild_cache.dir
+/home/ubuntu/桌面/qt/260721/260721/build/Desktop_Qt_6_5_3_GCC_64bit_Debug/CMakeFiles/list_install_components.dir
+/home/ubuntu/桌面/qt/260721/260721/build/Desktop_Qt_6_5_3_GCC_64bit_Debug/CMakeFiles/install.dir
+/home/ubuntu/桌面/qt/260721/260721/build/Desktop_Qt_6_5_3_GCC_64bit_Debug/CMakeFiles/install/local.dir
+/home/ubuntu/桌面/qt/260721/260721/build/Desktop_Qt_6_5_3_GCC_64bit_Debug/CMakeFiles/install/strip.dir
+/home/ubuntu/桌面/qt/260721/260721/build/Desktop_Qt_6_5_3_GCC_64bit_Debug/CMakeFiles/ps_tracker_ui_autogen_timestamp_deps.dir
+/home/ubuntu/桌面/qt/260721/260721/build/Desktop_Qt_6_5_3_GCC_64bit_Debug/CMakeFiles/ps_tracker_ui_autogen.dir
