@@ -1,26 +1,5 @@
-/*
- * 板端 (RK3568) ETH1 接收测试 —— 取代原来的 SPI 测试 (spitest.c)
- * ----------------------------------------------------------------------------
- *   编译 (板子上直接用 g++):
- *     g++ ethtest.cpp tracker_app.cpp tracker3d.cpp -o ethtest -lm
- *   运行:
- *     ./ethtest                      # 绑定 0.0.0.0:5000, 只显示原始帧
- *     ./ethtest --port 5000 --bind 0.0.0.0
- *     ./ethtest --track              # 同时跑 EKF 实时定位, 显示估计位置
- *     ./ethtest --verbose            # 逐帧打印每个锚点的有效模态与数值
- *
- *   期望: 用 PC 端 Host/send_eth.py 往板子 IP:5000 发帧, 这里能收到并打印。
- *   本项目不使用 SPI, 数据完全走 ETH1/UDP。
- *     - 收到有效帧: 打印 seq / dt / n_anc / 各锚点数据
- *     - CRC 错误: 计入 crc_err, 不崩溃
- *     - 长度不对: 计入 len_err
- *     - seq 不走 / 跳变: 计入 drops (丢帧)
- *
- *   帧格式见 frame_protocol.h (182 字节 UdpFrame, 与传感器侧 / PC 端完全对齐)。
- * ============================================================================
- */
 #include "frame_protocol.h"
-#include "tracker_app.h"
+#include "alg/tracker_app.h"
 
 #include <arpa/inet.h>
 #include <netinet/in.h>
@@ -35,10 +14,10 @@
 static void print_usage(const char *prog) {
     fprintf(stderr,
         "用法: %s [--bind ADDR] [--port PORT] [--track] [--verbose] [--modality tdoa|toa|aoa|rss] [--dt SEC]\n"
-        "  --bind ADDR   绑定地址 (默认 0.0.0.0, 监听所有网卡含 ETH1)\n"
+        "  --bind ADDR   绑定地址 (默认 0.0.0.0)\n"
         "  --port PORT   监听 UDP 端口 (默认 5000)\n"
-        "  --track       接 EKF 实时定位, 额外打印估计位置/速度\n"
-        "  --verbose     逐帧打印每个锚点的有效模态与数值\n"
+        "  --track       接 EKF 实时定位\n"
+        "  --verbose     逐帧打印锚点数据\n"
         "  --modality M  定位模态 (默认 tdoa)\n"
         "  --dt SEC      EKF 预测步长 (默认 0.1)\n",
         prog);
@@ -98,7 +77,6 @@ int main(int argc, char **argv) {
     }
     printf("[ethtest] 绑定 %s:%d 成功, 等待 ETH1/UDP 数据 (Ctrl+C 退出)...\n", bind_addr, port);
 
-    /* 实时 EKF 初始化 (仅 --track) */
     TrackerSimResult res;
     TrackerSimOptions opts;
     tracker_sim_default_options(&opts);
@@ -107,7 +85,7 @@ int main(int argc, char **argv) {
         fprintf(stderr, "EKF 初始化失败\n"); do_track = 0;
     }
 
-    uint8_t buf[2048];   /* 大于帧长, 便于检测"超长数据报"而非误判为 CRC 错 */
+    uint8_t buf[2048];
     struct sockaddr_in from;
     socklen_t fromlen;
 
@@ -116,11 +94,10 @@ int main(int argc, char **argv) {
     double last_report = 0;
 
     while (1) {
-        fromlen = sizeof(from);   /* POSIX 值-结果参数, 每次调用前必须重置 */
+        fromlen = sizeof(from);
         ssize_t n = recvfrom(sock, buf, sizeof(buf), 0, (struct sockaddr *)&from, &fromlen);
         if (n < 0) { perror("recvfrom"); break; }
 
-        /* 联通测试: 8B PING 帧回 PONG (上位机测 RTT) */
         if (udp_ping_match(buf, (size_t)n)) {
             uint8_t pong[UDP_PING_LEN];
             udp_ping_to_pong(buf, pong);
@@ -129,6 +106,19 @@ int main(int argc, char **argv) {
             char pip[INET_ADDRSTRLEN];
             inet_ntop(AF_INET, &from.sin_addr, pip, sizeof(pip));
             printf("[%s:%d] <- PING seq=%u -> PONG\n", pip, ntohs(from.sin_port), buf[6]);
+            continue;
+        }
+
+        if (udp_cfg_match(buf, (size_t)n)) {
+            UdpCfgAnchor anc[UDP_MAX_ANCHORS];
+            int nanc = udp_cfg_parse(buf, anc, UDP_MAX_ANCHORS);
+            uint8_t ack[UDP_PING_LEN];
+            udp_cfg_to_ack(buf, ack);
+            sendto(sock, (char *)ack, sizeof(ack), 0, (struct sockaddr *)&from, fromlen);
+            if (nanc > 0) {
+                printf("[%s] <- CFG n=%d A0=(%.1f,%.1f,%.1f) -> ACK\n",
+                       "eth", nanc, anc[0].x, anc[0].y, anc[0].z);
+            }
             continue;
         }
 
@@ -146,12 +136,6 @@ int main(int argc, char **argv) {
             continue;
         }
 
-        /* 丢帧检测: 以模 2^16 增量 d = seq - prev_seq 判定
-         *   d==0      同帧重发 (传感器未刷新)  → 不计
-         *   d==1      连续                     → 不计
-         *   2<=d<2^15 小跳变                   → 计 d-1 帧丢失
-         *   d>=2^15   大回退 (乱序/迟到旧帧)   → 不计
-         * 2^15 半区分界在真丢帧 (通常个位数) 与乱序 (接近 65535) 之间有明显间隙。 */
         uint16_t prev_seq = (seq_prev == 0xFFFFFFFFu) ? 0xFFFFu : (uint16_t)seq_prev;
         int dropped = 0;
         if (prev_seq != 0xFFFFu) {
@@ -177,7 +161,6 @@ int main(int argc, char **argv) {
                    est[0], est[1], est[2], est[3], est[4], est[5]);
         }
 
-        /* 每 1 秒汇报一次统计, 不打断逐帧输出 */
         double now = (double)time(NULL);
         if (now - last_report >= 1.0) {
             last_report = now;

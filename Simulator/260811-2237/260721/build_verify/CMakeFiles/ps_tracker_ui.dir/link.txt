@@ -1,3 +1,0 @@
-C:\Qt\Tools\CMake_64\bin\cmake.exe -E rm -f CMakeFiles\ps_tracker_ui.dir/objects.a
-C:\Qt\Tools\mingw1120_64\bin\ar.exe qc CMakeFiles\ps_tracker_ui.dir/objects.a @CMakeFiles\ps_tracker_ui.dir\objects1.rsp
-C:\Qt\Tools\mingw1120_64\bin\c++.exe -mwindows -Wl,--whole-archive CMakeFiles\ps_tracker_ui.dir/objects.a -Wl,--no-whole-archive -o ps_tracker_ui.exe -Wl,--out-implib,libps_tracker_ui.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\ps_tracker_ui.dir\linkLibs.rsp

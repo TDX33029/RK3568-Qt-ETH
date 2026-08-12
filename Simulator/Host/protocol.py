@@ -1,17 +1,8 @@
-"""
-protocol.py - 与 F407 固件共用的协议
-
-UART 帧定界（与之前一致）:
-  SYNC0 SYNC1 | TYPE | LEN(2) | SEQ(2) | TS(4) | PAYLOAD | CRC16(2)
-
-SPI 链路（F407 从机 -> RK3568 主机）: 固定 182 字节 SpiFrame，与 RK3568 端
-spi_protocol.h 逐字节一致。UART 的 DATA_FRAME 载荷 = 整个 SpiFrame。
-"""
 from __future__ import annotations
 import struct
 from dataclasses import dataclass, field
 
-# ---- UART 帧结构 ----
+
 SYNC0 = 0xA5
 SYNC1 = 0x5A
 HDR_LEN = 9
@@ -19,7 +10,7 @@ CRC_LEN = 2
 MAX_PAYLOAD = 256
 MAX_FRAME_LEN = 2 + HDR_LEN + CRC_LEN + MAX_PAYLOAD
 
-# ---- 帧类型 ----
+
 CMD_PING       = 0x01
 CMD_SET_CONFIG = 0x02
 CMD_START      = 0x03
@@ -31,9 +22,9 @@ RSP_PONG       = 0x81
 RSP_ACK        = 0x82
 RSP_NACK       = 0x83
 RSP_STATUS     = 0x84
-RSP_DATA_FRAME = 0x85   # 载荷 = SpiFrame (182B)
+RSP_DATA_FRAME = 0x85   
 RSP_LOG        = 0x86
-RSP_TRUTH      = 0x87   # 载荷 = 真实位置/速度 (24B)
+RSP_TRUTH      = 0x87   
 
 STAT_OK               = 0x00
 STAT_ERR_LEN         = 0x01
@@ -43,7 +34,7 @@ STAT_ERR_BUSY        = 0x04
 STAT_ERR_NOT_RUNNING = 0x05
 STAT_ERR_UNSUPPORTED = 0x06
 
-# ---- SPI 帧 (182B) ----
+
 SPI_MAGIC0 = 0xA5
 SPI_MAGIC1 = 0x5A
 SPI_MAX_ANCHORS = 8
@@ -55,16 +46,16 @@ SPI_MODE_TOA  = 1 << 1
 SPI_MODE_AOA  = 1 << 2
 SPI_MODE_RSS  = 1 << 3
 
-# ---- 场景 ----
+
 SCENE_STRAIGHT = 0
 SCENE_CLIMB    = 1
 SCENE_TURN     = 2
 SCENE_CUSTOM   = 3
-SCENE_NAMES = {0: "直线 Straight", 1: "爬升 Climb", 2: "转弯 Turn", 3: "自定义 Custom"}
+SCENE_NAMES = {0: "直线", 1: "爬升", 2: "转弯", 3: "自定义"}
 
-# ---- 锚点坐标 (与 RK configure_demo_anchors 一致) ----
+
 ANCHORS = [
-    (0.0,  0.0,  0.0),   # A0 ref
+    (0.0,  0.0,  0.0),   
     (30.0, 0.0,  4.0),
     (30.0, 30.0, 0.0),
     (0.0,  30.0, 5.0),
@@ -73,7 +64,7 @@ ANCHORS = [
 N_ANC = 5
 REF_ANC = 0
 
-# ---- 物理常量 (与固件一致) ----
+
 C_LIGHT = 299792458.0
 TDOA_STD = 2.0e-9
 TOA_STD = 2.0e-9
@@ -82,23 +73,22 @@ RSS_STD = 2.0
 RSS_REF = -35.0
 RSS_N = 2.0
 
-# ---- 结构体格式 (与固件 packed 一致) ----
-CONFIG_FMT = "<IBBBBffffff"      # 32B
-STATUS_FMT = "<BBBBIIIIII"       # 28B
-TRUTH_FMT  = "<ffffff"           # 24B
-ANCHOR_FMT = "<Bfffff"           # 21B
-SPI_HDR_FMT = "<HBBIH"          # seq(2)+mode_mask(1)+n_anc(1)+dt_us(4)+reserved(2) = 10B (after magic)
+
+CONFIG_FMT = "<IBBBBffffff"      
+STATUS_FMT = "<BBBBIIIIII"       
+TRUTH_FMT  = "<ffffff"           
+ANCHOR_FMT = "<Bfffff"           
+SPI_HDR_FMT = "<HBBIH"          
 
 CONFIG_SIZE = struct.calcsize(CONFIG_FMT)
 STATUS_SIZE = struct.calcsize(STATUS_FMT)
 TRUTH_SIZE = struct.calcsize(TRUTH_FMT)
 ANCHOR_SIZE = struct.calcsize(ANCHOR_FMT)
-SPI_HDR_SIZE = struct.calcsize(SPI_HDR_FMT)   # 10 (after magic)
-SPI_ANC_OFF = 12   # anchors start at byte 12 (after magic+seq+mode_mask+n_anc+dt_us+reserved)
+SPI_HDR_SIZE = struct.calcsize(SPI_HDR_FMT)   
+SPI_ANC_OFF = 12   
 
 
 def crc16(data: bytes) -> int:
-    """CRC-16/CCITT-FALSE (与固件 + RK 一致)"""
     crc = 0xFFFF
     for b in data:
         crc ^= b << 8
@@ -107,14 +97,12 @@ def crc16(data: bytes) -> int:
     return crc
 
 
-# ---- 基站配置帧 (CFG, 106B; 与 182B 数据帧区分) ----
+
 CFG_FRAME_LEN = 106
-CFG_ANC_LEN = 12        # x,y,z float32
+CFG_ANC_LEN = 12        
 
 
 def build_cfg_frame(seq: int, anchors) -> bytes:
-    """打包 106B CFG 帧: {magic,'CFG',seq,n_anc,anchors[n]*12B,crc16}。
-    anchors: [(x, y, z), ...] (<=8)。板端收到更新 EKF 锚点并回 ACK。"""
     n = min(len(anchors), SPI_MAX_ANCHORS)
     buf = bytearray(CFG_FRAME_LEN)
     buf[0] = SPI_MAGIC0; buf[1] = SPI_MAGIC1
@@ -131,7 +119,6 @@ def build_cfg_frame(seq: int, anchors) -> bytes:
 
 
 def is_ack_frame(data: bytes) -> bool:
-    """板端对 CFG 的 ACK 应答 (8B): {magic,'ACK',0,seq,0} — tag 占 [2:5]"""
     return (len(data) == 8 and data[0] == SPI_MAGIC0 and data[1] == SPI_MAGIC1
             and data[2:5] == b"ACK")
 
@@ -189,7 +176,7 @@ class SpiFrame:
     mode_mask: int
     n_anc: int
     dt_us: int
-    anchors: list  # list[Anchor]
+    anchors: list  
 
 
 @dataclass
@@ -211,7 +198,6 @@ class Status:
 
 
 def parse_spi_frame(payload: bytes) -> SpiFrame:
-    """从 182B 解析 SpiFrame；校验 magic + CRC"""
     if len(payload) != SPI_FRAME_LEN:
         raise ValueError(f" SpiFrame len {len(payload)} != {SPI_FRAME_LEN}")
     if payload[0] != SPI_MAGIC0 or payload[1] != SPI_MAGIC1:
@@ -277,7 +263,7 @@ class FrameParser:
         return out
 
 
-# ===================== 仿真参考实现（与固件 sim.c 一致，供 Demo 模式） =====================
+
 import math
 
 
@@ -286,13 +272,10 @@ def scene_init_state(scene):
         return (6.0, 8.0, 4.0, 1.05, 0.65, 0.35)
     if scene == SCENE_TURN:
         return (10.0, 7.0, 5.5, 1.10, 0.25, 0.10)
-    return (8.0, 10.0, 6.0, 1.20, 0.75, 0.20)  # STRAIGHT / default
+    return (8.0, 10.0, 6.0, 1.20, 0.75, 0.20)  
 
 
 class DemoSim:
-    """本地仿真器：复刻固件 sim.c 的目标轨迹 + 每锚点测量，产出 SpiFrame 字节与 Truth。
-
-    anchors 可自定义 (上位机编辑基站后同步用); 默认与板端 EKF 一致 (ANCHORS)。"""
     def __init__(self, cfg: Config, anchors=None):
         self.cfg = cfg
         self.anchors = list(anchors) if anchors is not None else list(ANCHORS)
@@ -336,7 +319,7 @@ class DemoSim:
         dt = dt_us * 1e-6
         t = self._rw
         t[0] += t[3] * dt; t[1] += t[4] * dt; t[2] += t[5] * dt
-        # bounce
+        
         if t[0] > 40:  t[0] = 40;  t[3] = -t[3]
         if t[0] < -40: t[0] = -40; t[3] = -t[3]
         if t[1] > 40:  t[1] = 40;  t[4] = -t[4]
@@ -345,7 +328,7 @@ class DemoSim:
         if t[2] < 0.5: t[2] = 0.5; t[5] = -t[5]
 
         en = cfg.enable_mask
-        # ref anchor range (ref = 索引 0)
+        
         rdx, rdy, rdz = (t[0] - self.anchors[0][0], t[1] - self.anchors[0][1],
                          t[2] - self.anchors[0][2])
         rrho = math.sqrt(rdx*rdx + rdy*rdy) or 1e-3
@@ -357,8 +340,8 @@ class DemoSim:
         buf[4] = en & 0xFF
         buf[5] = self.n_anc
         struct.pack_into("<I", buf, 6, int(dt_us) & 0xFFFFFFFF)
-        # reserved [10..11] = 0
-        off = SPI_ANC_OFF   # 12
+        
+        off = SPI_ANC_OFF   
         for i in range(SPI_MAX_ANCHORS):
             if i < self.n_anc:
                 dx = t[0] - self.anchors[i][0]; dy = t[1] - self.anchors[i][1]

@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/ps_tracker_ui_autogen"
-  "ps_tracker_ui_autogen/include/ui_mainwindow.h"
   "ps_tracker_ui_autogen/mocs_compilation.cpp"
   "ps_tracker_ui_autogen/timestamp"
 )

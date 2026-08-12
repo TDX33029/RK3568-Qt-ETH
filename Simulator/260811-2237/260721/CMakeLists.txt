@@ -1,12 +1,6 @@
-﻿cmake_minimum_required(VERSION 3.13)
-
-# Project: PS Tracker UI (ported from Zynq ZCU102 to RK3568/Qt)
+cmake_minimum_required(VERSION 3.13)
 project(ps_tracker_ui VERSION 1.0.0 LANGUAGES CXX)
 
-# Qt prefix: override with -DQT_PREFIX=... (or env QT_PREFIX) for cross-builds.
-# Default points at the host x86-64 Qt for native builds only.
-# For an aarch64/RK3568 build you MUST point this at an aarch64 Qt6
-# (e.g. a Yocto SDK or one built against your target sysroot).
 if(NOT DEFINED QT_PREFIX)
     if(DEFINED ENV{QT_PREFIX})
         set(QT_PREFIX "$ENV{QT_PREFIX}" CACHE PATH "Qt install prefix")
@@ -23,9 +17,6 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Qt5 / Qt6 auto-detection (both work on RK3568).
-# Note: avoid find_package(NAMES ...) syntax -- it needs CMake >= 3.15, but
-# Debian 10 (buster) ships CMake 3.13.4. This try-Qt6-then-Qt5 form works on 3.13+.
 find_package(Qt6 QUIET COMPONENTS Widgets Network)
 if(Qt6_FOUND)
     set(QT_VERSION_MAJOR 6)
@@ -38,11 +29,10 @@ set(PROJECT_SOURCES
         main.cpp
         mainwindow.cpp
         mainwindow.h
-        mainwindow.ui
-        tracker_app.cpp
-        tracker_app.h
-        tracker3d.cpp
-        tracker3d.h
+        alg/tracker_app.cpp
+        alg/tracker_app.h
+        alg/tracker3d.cpp
+        alg/tracker3d.h
         tracker_plot.cpp
         tracker_plot.h
         frame_protocol.h
@@ -67,21 +57,15 @@ else()
     endif()
 endif()
 
-# Core dependency (Network: 本机 IP 显示)
 target_link_libraries(${PROJECT_NAME} PRIVATE
     Qt${QT_VERSION_MAJOR}::Widgets
     Qt${QT_VERSION_MAJOR}::Network
 )
 
-# Math library: needed on Linux (libm) for sqrt/cos/sin used in tracker3d/tracker_app.
-# On Windows/MinGW it is implicitly available.
 if(UNIX)
     target_link_libraries(${PROJECT_NAME} PRIVATE m)
 endif()
 
-# ── Platform-specific bundle properties ──────────────────────
-# Only apply WIN32_EXECUTABLE on Windows (hides the console window).
-# Only apply MACOSX_BUNDLE on Apple platforms.
 if(WIN32)
     set_target_properties(${PROJECT_NAME} PROPERTIES
         WIN32_EXECUTABLE TRUE
@@ -97,7 +81,6 @@ if(APPLE)
     )
 endif()
 
-# ── Installation ─────────────────────────────────────────────
 include(GNUInstallDirs)
 install(TARGETS ${PROJECT_NAME}
     BUNDLE DESTINATION .

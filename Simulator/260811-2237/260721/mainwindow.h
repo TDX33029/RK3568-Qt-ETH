@@ -1,4 +1,4 @@
-﻿#ifndef MAINWINDOW_H
+#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
@@ -11,7 +11,7 @@
 #include <QTimer>
 #include <QElapsedTimer>
 
-#include "tracker_app.h"
+#include "alg/tracker_app.h"
 #include "tracker_plot.h"
 #include "eth_reader.h"
 
@@ -23,7 +23,7 @@ public:
     ~MainWindow() override;
 
 public slots:
-    void startLive();          /* public: 供 --auto-live 经 QTimer 调用 */
+    void startLive();
 
 private slots:
     void runSimulation();
@@ -43,41 +43,37 @@ private:
 
     QStackedWidget *m_stack;
 
-    // Menu page
     QWidget *m_menuPage;
     QComboBox *m_sceneCombo;
     QComboBox *m_targetsCombo;
-    QCheckBox *m_chkTdoa, *m_chkToa, *m_chkAoa, *m_chkRss;  /* 模态多选 */
+    QCheckBox *m_chkTdoa, *m_chkToa, *m_chkAoa, *m_chkRss;
     QSpinBox *m_stepsSpin;
     QSpinBox *m_seedSpin;
     QLabel *m_dimLabel;
-    QSpinBox *m_portSpin;        /* 监听端口 (默认 5000) */
-    QLabel *m_ipLabel;           /* 本机有线 IP */
+    QSpinBox *m_portSpin;
+    QLabel *m_ipLabel;
     QPushButton *m_liveBtn;
 
-    // Result page (仅 XY 视图)
     QWidget *m_resultPage;
     QLabel *m_rScene, *m_rTargets, *m_rModality, *m_rSteps, *m_rDim;
     QLabel *m_rPosRmse, *m_rVelRmse, *m_rElapsed, *m_rStepMs;
     QLabel *m_rTargetInfo;
-    QLabel *m_rLink;                 /* 实时链路状态灯 (UI 线程) */
+    QLabel *m_rLink;
     TrackerPlot *m_xyPlot;
 
-    // Core data
     TrackerSimOptions m_options;
     TrackerSimResult m_result;
     bool m_hasResult = false;
 
-    // 实时(ETH1)模式
     EthReader *m_eth = nullptr;
     QTimer    *m_liveTimer = nullptr;
     bool       m_live = false;
     bool       m_liveDirty = false;
     quint16    m_liveSeq = 0;
     double     m_liveDt = 0.0;
-    quint64    m_liveFrames = 0;      /* 已收有效帧数 (滚动窗口不影响此计数) */
-    QElapsedTimer m_linkTimer;        /* 链路状态计时 (startLive 时启动) */
-    qint64     m_lastFrameMs = -1;    /* 最近收到帧的 elapsed() 时刻, -1=未收过 */
+    quint64    m_liveFrames = 0;
+    QElapsedTimer m_linkTimer;
+    qint64     m_lastFrameMs = -1;
 };
 
 #endif

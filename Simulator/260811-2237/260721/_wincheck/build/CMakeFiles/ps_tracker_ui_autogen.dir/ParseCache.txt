@@ -303,9 +303,9 @@ D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/eth_reader.h
  mdp:C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/vadefs.h
  mdp:C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h
  mdp:D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/_wincheck/build/ps_tracker_ui_autogen/moc_predefs.h
+ mdp:D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/alg/tracker3d.h
  mdp:D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/eth_reader.h
  mdp:D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/frame_protocol.h
- mdp:D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/tracker3d.h
 D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/frame_protocol.h
 D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/tracker_plot.h
  mmc:Q_OBJECT
@@ -647,10 +647,11 @@ D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/tracker_plot.h
  mdp:C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/vadefs.h
  mdp:C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h
  mdp:D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/_wincheck/build/ps_tracker_ui_autogen/moc_predefs.h
- mdp:D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/tracker3d.h
- mdp:D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/tracker_app.h
+ mdp:D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/alg/tracker3d.h
+ mdp:D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/alg/tracker_app.h
  mdp:D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/tracker_plot.h
 D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/eth_reader.cpp
+D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/alg/tracker_app.h
 D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/mainwindow.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.5.3/mingw_64/include/QtCore/QByteArray
@@ -1042,16 +1043,19 @@ D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/mainwindow.h
  mdp:C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/vadefs.h
  mdp:C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h
  mdp:D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/_wincheck/build/ps_tracker_ui_autogen/moc_predefs.h
+ mdp:D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/alg/tracker3d.h
+ mdp:D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/alg/tracker_app.h
  mdp:D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/eth_reader.h
  mdp:D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/frame_protocol.h
  mdp:D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/mainwindow.h
- mdp:D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/tracker3d.h
- mdp:D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/tracker_app.h
  mdp:D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/tracker_plot.h
 D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/tracker3d.h
-D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/tracker_app.h
 D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/mainwindow.cpp
+D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/tracker_app.h
+D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/alg/tracker_app.cpp
 D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/main.cpp
 D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/tracker3d.cpp
 D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/tracker_app.cpp
 D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/tracker_plot.cpp
+D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/alg/tracker3d.h
+D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/alg/tracker3d.cpp

@@ -199,6 +199,54 @@ ps_tracker_ui_autogen/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ps_tracker_ui_autogen.dir\build.make CMakeFiles/ps_tracker_ui_autogen.dir/build
 .PHONY : ps_tracker_ui_autogen/fast
 
+alg/tracker3d.obj: alg/tracker3d.cpp.obj
+.PHONY : alg/tracker3d.obj
+
+# target to build an object file
+alg/tracker3d.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ps_tracker_ui.dir\build.make CMakeFiles/ps_tracker_ui.dir/alg/tracker3d.cpp.obj
+.PHONY : alg/tracker3d.cpp.obj
+
+alg/tracker3d.i: alg/tracker3d.cpp.i
+.PHONY : alg/tracker3d.i
+
+# target to preprocess a source file
+alg/tracker3d.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ps_tracker_ui.dir\build.make CMakeFiles/ps_tracker_ui.dir/alg/tracker3d.cpp.i
+.PHONY : alg/tracker3d.cpp.i
+
+alg/tracker3d.s: alg/tracker3d.cpp.s
+.PHONY : alg/tracker3d.s
+
+# target to generate assembly for a file
+alg/tracker3d.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ps_tracker_ui.dir\build.make CMakeFiles/ps_tracker_ui.dir/alg/tracker3d.cpp.s
+.PHONY : alg/tracker3d.cpp.s
+
+alg/tracker_app.obj: alg/tracker_app.cpp.obj
+.PHONY : alg/tracker_app.obj
+
+# target to build an object file
+alg/tracker_app.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ps_tracker_ui.dir\build.make CMakeFiles/ps_tracker_ui.dir/alg/tracker_app.cpp.obj
+.PHONY : alg/tracker_app.cpp.obj
+
+alg/tracker_app.i: alg/tracker_app.cpp.i
+.PHONY : alg/tracker_app.i
+
+# target to preprocess a source file
+alg/tracker_app.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ps_tracker_ui.dir\build.make CMakeFiles/ps_tracker_ui.dir/alg/tracker_app.cpp.i
+.PHONY : alg/tracker_app.cpp.i
+
+alg/tracker_app.s: alg/tracker_app.cpp.s
+.PHONY : alg/tracker_app.s
+
+# target to generate assembly for a file
+alg/tracker_app.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ps_tracker_ui.dir\build.make CMakeFiles/ps_tracker_ui.dir/alg/tracker_app.cpp.s
+.PHONY : alg/tracker_app.cpp.s
+
 eth_reader.obj: eth_reader.cpp.obj
 .PHONY : eth_reader.obj
 
@@ -295,54 +343,6 @@ ps_tracker_ui_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ps_tracker_ui.dir\build.make CMakeFiles/ps_tracker_ui.dir/ps_tracker_ui_autogen/mocs_compilation.cpp.s
 .PHONY : ps_tracker_ui_autogen/mocs_compilation.cpp.s
 
-tracker3d.obj: tracker3d.cpp.obj
-.PHONY : tracker3d.obj
-
-# target to build an object file
-tracker3d.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ps_tracker_ui.dir\build.make CMakeFiles/ps_tracker_ui.dir/tracker3d.cpp.obj
-.PHONY : tracker3d.cpp.obj
-
-tracker3d.i: tracker3d.cpp.i
-.PHONY : tracker3d.i
-
-# target to preprocess a source file
-tracker3d.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ps_tracker_ui.dir\build.make CMakeFiles/ps_tracker_ui.dir/tracker3d.cpp.i
-.PHONY : tracker3d.cpp.i
-
-tracker3d.s: tracker3d.cpp.s
-.PHONY : tracker3d.s
-
-# target to generate assembly for a file
-tracker3d.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ps_tracker_ui.dir\build.make CMakeFiles/ps_tracker_ui.dir/tracker3d.cpp.s
-.PHONY : tracker3d.cpp.s
-
-tracker_app.obj: tracker_app.cpp.obj
-.PHONY : tracker_app.obj
-
-# target to build an object file
-tracker_app.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ps_tracker_ui.dir\build.make CMakeFiles/ps_tracker_ui.dir/tracker_app.cpp.obj
-.PHONY : tracker_app.cpp.obj
-
-tracker_app.i: tracker_app.cpp.i
-.PHONY : tracker_app.i
-
-# target to preprocess a source file
-tracker_app.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ps_tracker_ui.dir\build.make CMakeFiles/ps_tracker_ui.dir/tracker_app.cpp.i
-.PHONY : tracker_app.cpp.i
-
-tracker_app.s: tracker_app.cpp.s
-.PHONY : tracker_app.s
-
-# target to generate assembly for a file
-tracker_app.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ps_tracker_ui.dir\build.make CMakeFiles/ps_tracker_ui.dir/tracker_app.cpp.s
-.PHONY : tracker_app.cpp.s
-
 tracker_plot.obj: tracker_plot.cpp.obj
 .PHONY : tracker_plot.obj
 
@@ -382,6 +382,12 @@ help:
 	@echo ... ps_tracker_ui_autogen
 	@echo ... ps_tracker_ui_autogen_timestamp_deps
 	@echo ... ps_tracker_ui
+	@echo ... alg/tracker3d.obj
+	@echo ... alg/tracker3d.i
+	@echo ... alg/tracker3d.s
+	@echo ... alg/tracker_app.obj
+	@echo ... alg/tracker_app.i
+	@echo ... alg/tracker_app.s
 	@echo ... eth_reader.obj
 	@echo ... eth_reader.i
 	@echo ... eth_reader.s
@@ -394,12 +400,6 @@ help:
 	@echo ... ps_tracker_ui_autogen/mocs_compilation.obj
 	@echo ... ps_tracker_ui_autogen/mocs_compilation.i
 	@echo ... ps_tracker_ui_autogen/mocs_compilation.s
-	@echo ... tracker3d.obj
-	@echo ... tracker3d.i
-	@echo ... tracker3d.s
-	@echo ... tracker_app.obj
-	@echo ... tracker_app.i
-	@echo ... tracker_app.s
 	@echo ... tracker_plot.obj
 	@echo ... tracker_plot.i
 	@echo ... tracker_plot.s

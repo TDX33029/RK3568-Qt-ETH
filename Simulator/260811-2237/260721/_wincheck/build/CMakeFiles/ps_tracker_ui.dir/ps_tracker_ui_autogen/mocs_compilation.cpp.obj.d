@@ -318,7 +318,7 @@ CMakeFiles/ps_tracker_ui.dir/ps_tracker_ui_autogen/mocs_compilation.cpp.obj: \
  C:/Qt/6.5.3/mingw_64/include/QtCore/qbytearray.h \
  C:/Qt/6.5.3/mingw_64/include/QtCore/QMetaType \
  C:/Qt/6.5.3/mingw_64/include/QtCore/qmetatype.h \
- D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/tracker3d.h \
+ D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/alg/tracker3d.h \
  D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/frame_protocol.h \
  C:/Qt/6.5.3/mingw_64/include/QtCore/qtmochelpers.h \
  D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\_wincheck\build\ps_tracker_ui_autogen\EWIEGA46WW/moc_mainwindow.cpp \
@@ -410,7 +410,8 @@ CMakeFiles/ps_tracker_ui.dir/ps_tracker_ui_autogen/mocs_compilation.cpp.obj: \
  C:/Qt/6.5.3/mingw_64/include/QtCore/qbasictimer.h \
  C:/Qt/6.5.3/mingw_64/include/QtCore/QElapsedTimer \
  C:/Qt/6.5.3/mingw_64/include/QtCore/qelapsedtimer.h \
- D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/tracker_app.h \
+ D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/alg/tracker_app.h \
+ D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/alg/tracker3d.h \
  D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/tracker_plot.h \
  C:/Qt/6.5.3/mingw_64/include/QtWidgets/QWidget \
  C:/Qt/6.5.3/mingw_64/include/QtWidgets/qwidget.h \

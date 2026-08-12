@@ -26,7 +26,6 @@ void TrackerPlot::paintEvent(QPaintEvent *) {
     const int margin = 8;
     const int plotW = w - 2 * margin, plotH = h - 2 * margin;
 
-    /* 白底 + 浅灰边框 + 浅网格 */
     p.fillRect(rect(), Qt::white);
     p.setPen(QPen(QColor(0xCC, 0xCC, 0xCC), 1));
     p.drawRect(margin, margin, plotW, plotH);
@@ -38,10 +37,8 @@ void TrackerPlot::paintEvent(QPaintEvent *) {
 
     if (!m_result) return;
 
-    /* 仅 XY 视图: 坐标轴固定 (x, y) */
     const int coordX = 0, coordY = 1;
 
-    /* 坐标范围: 估计 + 真值(若有) + 基站 */
     double minX =  std::numeric_limits<double>::max();
     double maxX = -std::numeric_limits<double>::max();
     double minY =  std::numeric_limits<double>::max();
@@ -64,9 +61,8 @@ void TrackerPlot::paintEvent(QPaintEvent *) {
         double s[6] = {an->x, an->y, an->z, 0,0,0};
         double vx, vy; projectPoint(s, coordX, coordY, vx, vy); acc(vx, vy);
     }
-    if (minX > maxX) { minX = 0; maxX = 1; minY = 0; maxY = 1; }  /* 无任何点 */
+    if (minX > maxX) { minX = 0; maxX = 1; minY = 0; maxY = 1; }
     double spanX = std::max(maxX - minX, 1e-6), spanY = std::max(maxY - minY, 1e-6);
-    /* 留 5% 边距, 锚点标签不被裁切 */
     minX -= spanX * 0.05; maxX += spanX * 0.05;
     minY -= spanY * 0.05; maxY += spanY * 0.05;
     spanX = maxX - minX; spanY = maxY - minY;
@@ -75,7 +71,6 @@ void TrackerPlot::paintEvent(QPaintEvent *) {
                        margin + plotH - 4 - (vy - minY) / spanY * (plotH - 8));
     };
 
-    /* 真值轨迹(仿真, 灰虚线; 实时无真值不画) */
     if (m_result->truth_history) {
         for (size_t t = 0; t < m_result->target_count; ++t) {
             QPainterPath path; bool first = true;
@@ -92,7 +87,6 @@ void TrackerPlot::paintEvent(QPaintEvent *) {
         }
     }
 
-    /* 估计轨迹: 红色实线 (实时主显示) + 末端红点 */
     for (size_t t = 0; t < m_result->target_count; ++t) {
         QPainterPath path; bool first = true;
         for (size_t i = 0; i < m_result->steps; ++i) {
@@ -114,7 +108,6 @@ void TrackerPlot::paintEvent(QPaintEvent *) {
         }
     }
 
-    /* 基站锚点: 深色方块 + 标签 A0.. */
     p.setFont(QFont("sans-serif", 8, QFont::Bold));
     for (size_t a = 0; a < m_result->config.anchor_count; ++a) {
         const Tracker3DVec3 *an = &m_result->config.anchors[a];
@@ -128,7 +121,6 @@ void TrackerPlot::paintEvent(QPaintEvent *) {
         p.drawText(pt.x() + 7, pt.y() + 4, QStringLiteral("A%1").arg(a));
     }
 
-    /* 图例 */
     p.setFont(QFont("sans-serif", 8));
     const char *viewName = "XY";
     int lx = margin + 6, ly = margin + 14;

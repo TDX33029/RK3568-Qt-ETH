@@ -1,13 +1,13 @@
-﻿#ifndef TRACKER_PLOT_H
+#ifndef TRACKER_PLOT_H
 #define TRACKER_PLOT_H
 
 #include <QWidget>
-#include "tracker_app.h"
+#include "alg/tracker_app.h"
 
 class TrackerPlot : public QWidget {
     Q_OBJECT
 public:
-    enum ViewMode { ViewXY };              /* 仅 XY 视图 */
+    enum ViewMode { ViewXY };
 
     explicit TrackerPlot(QWidget *parent = nullptr);
 
@@ -23,4 +23,4 @@ private:
     ViewMode m_mode = ViewXY;
 };
 
-#endif // TRACKER_PLOT_H
+#endif

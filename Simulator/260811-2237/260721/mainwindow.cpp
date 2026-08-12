@@ -1,4 +1,4 @@
-﻿#include "mainwindow.h"
+#include "mainwindow.h"
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -18,7 +18,6 @@
 #include <cstdio>
 #include <cstring>
 
-/* 勾选框 -> 模态位图; 全不勾时退回 TDOA */
 static uint8_t modality_mask_from_boxes(const QCheckBox *t, const QCheckBox *to,
                                         const QCheckBox *a, const QCheckBox *r) {
     uint8_t m = 0;
@@ -38,7 +37,20 @@ static QString modality_mask_name(uint8_t mask) {
     return parts.isEmpty() ? QStringLiteral("TDOA") : parts.join(QStringLiteral("+"));
 }
 
-/* 获取本机有线 (以太网) IPv4: 过滤回环/虚拟/无线接口 */
+static QString scene_name_cn(DemoScene s) {
+    switch (s) {
+        case SCENE_STRAIGHT: return QStringLiteral("直线");
+        case SCENE_CLIMB:    return QStringLiteral("爬升");
+        case SCENE_TURN:     return QStringLiteral("转弯");
+        default:             return QStringLiteral("未知");
+    }
+}
+
+static QString target_mode_name_cn(TrackerTargetMode m) {
+    return (m == TARGET_MODE_MULTI3) ? QStringLiteral("三目标")
+                                     : QStringLiteral("单目标");
+}
+
 static QString board_ipv4() {
     const auto ifaces = QNetworkInterface::allInterfaces();
     for (const auto &iface : ifaces) {
@@ -55,15 +67,13 @@ static QString board_ipv4() {
                 return QStringLiteral("%1: %2").arg(name).arg(e.ip().toString());
         }
     }
-    return QStringLiteral("- (检查网线/IP)");
+    return QStringLiteral("-");
 }
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    setWindowTitle("PS Tracker UI");
-    /* 窗口尺寸: 保持 1100:720 设计比例等比缩放后居中, 屏幕比例不同也不变形
-     * (直接充满会改变宽高比 -> 画面被拉长)。RK3568 常见 1024x600/1280x800。 */
+    setWindowTitle("PS TRACKER UI");
     {
         const QRect scr = QGuiApplication::primaryScreen()->availableGeometry();
         const double scale = qMin((double)scr.width() / 1100.0,
@@ -80,14 +90,9 @@ MainWindow::MainWindow(QWidget *parent)
     buildResultPage();
     m_stack->setCurrentWidget(m_menuPage);
 
-    // 实时 ETH1 接收线程(Start Live 后才打开套接字)
     m_eth = new EthReader(this);
     m_liveTimer = new QTimer(this);
-    m_liveTimer->setInterval(33);            // ~30 Hz UI 刷新
-    /* 信号在工作线程发射, 槽必须在 UI 线程执行, 否则与 updateResultDisplay
-     * 等 UI 侧访问发生数据竞争。必须显式 QueuedConnection (AutoConnection
-     * 会按对象 affinity 判定为 DirectConnection); 排队还需要
-     * qRegisterMetaType<Tracker3DMeasurement>()。 */
+    m_liveTimer->setInterval(33);
     qRegisterMetaType<Tracker3DMeasurement>();
     connect(m_eth, &EthReader::frameReceived, this, &MainWindow::onEthFrame,
             Qt::QueuedConnection);
@@ -103,14 +108,11 @@ MainWindow::~MainWindow() {
     if (m_hasResult) tracker_free_result(&m_result);
 }
 
-// ─── Menu page ────────────────────────────────────────
-
 void MainWindow::buildMenuPage() {
     m_menuPage = new QWidget;
     auto *root = new QVBoxLayout(m_menuPage);
     root->setContentsMargins(0, 0, 0, 0);
 
-    // Title bar
     auto *titleBar = new QWidget;
     titleBar->setFixedHeight(64);
     titleBar->setStyleSheet("background-color:#1F4E5F;");
@@ -121,12 +123,10 @@ void MainWindow::buildMenuPage() {
     titleLay->addStretch();
     root->addWidget(titleBar);
 
-    // Hint
-    auto *hint = new QLabel("Configure simulation parameters and click RUN");
+    auto *hint = new QLabel("配置仿真参数并点击运行");
     hint->setStyleSheet("color:#30424E; font-size:13px; padding:8px 20px 0 20px;");
     root->addWidget(hint);
 
-    // Form area
     auto *formWidget = new QWidget;
     formWidget->setStyleSheet("padding:12px 20px;");
     auto *form = new QFormLayout(formWidget);
@@ -142,14 +142,14 @@ void MainWindow::buildMenuPage() {
         return cb;
     };
 
-    m_sceneCombo = makeCombo({"straight", "climb", "turn"});
+    m_sceneCombo = makeCombo({QStringLiteral("直线"), QStringLiteral("爬升"),
+                              QStringLiteral("转弯")});
     m_sceneCombo->setStyleSheet(m_sceneCombo->styleSheet() + "QComboBox{color:#1B2C34;}");
-    form->addRow("Scene:", m_sceneCombo);
+    form->addRow(QStringLiteral("场景:"), m_sceneCombo);
 
-    m_targetsCombo = makeCombo({"single", "multi3"});
-    form->addRow("Targets:", m_targetsCombo);
+    m_targetsCombo = makeCombo({QStringLiteral("单目标"), QStringLiteral("三目标")});
+    form->addRow(QStringLiteral("目标:"), m_targetsCombo);
 
-    /* 模态多选 (勾选的参与 EKF 计算) */
     m_chkTdoa = new QCheckBox("TDOA");
     m_chkToa  = new QCheckBox("TOA");
     m_chkAoa  = new QCheckBox("AOA");
@@ -157,7 +157,7 @@ void MainWindow::buildMenuPage() {
     for (QCheckBox *cb : {m_chkTdoa, m_chkToa, m_chkAoa, m_chkRss}) {
         cb->setStyleSheet("font-size:14px;");
     }
-    m_chkTdoa->setChecked(true);           /* 默认 TDOA */
+    m_chkTdoa->setChecked(true);
     auto *modRow = new QWidget;
     auto *modLay = new QHBoxLayout(modRow);
     modLay->setContentsMargins(0, 0, 0, 0);
@@ -165,41 +165,39 @@ void MainWindow::buildMenuPage() {
     for (QCheckBox *cb : {m_chkTdoa, m_chkToa, m_chkAoa, m_chkRss})
         modLay->addWidget(cb);
     modLay->addStretch();
-    form->addRow("Modality:", modRow);
+    form->addRow(QStringLiteral("模态:"), modRow);
 
     m_stepsSpin = new QSpinBox;
     m_stepsSpin->setRange(20, 500);
     m_stepsSpin->setValue((int)m_options.steps);
     m_stepsSpin->setFixedWidth(200);
     m_stepsSpin->setStyleSheet("font-size:14px; padding:4px 8px;");
-    form->addRow("Steps:", m_stepsSpin);
+    form->addRow(QStringLiteral("步数:"), m_stepsSpin);
 
     m_seedSpin = new QSpinBox;
     m_seedSpin->setRange(0, 999999);
     m_seedSpin->setValue((int)m_options.seed);
     m_seedSpin->setFixedWidth(200);
     m_seedSpin->setStyleSheet("font-size:14px; padding:4px 8px;");
-    form->addRow("Seed:", m_seedSpin);
+    form->addRow(QStringLiteral("种子:"), m_seedSpin);
 
     root->addWidget(formWidget);
 
-    // Dim label
     m_dimLabel = new QLabel;
     m_dimLabel->setStyleSheet("color:#30424E; font-size:14px; padding:0 60px;");
     root->addWidget(m_dimLabel);
 
-    // 连接信息: 本机有线 IP + 监听端口
     auto *connRow = new QWidget;
     auto *connLay = new QHBoxLayout(connRow);
     connLay->setContentsMargins(60, 4, 60, 0);
-    auto *portLabel = new QLabel("监听端口:");
+    auto *portLabel = new QLabel(QStringLiteral("监听端口:"));
     portLabel->setStyleSheet("color:#30424E; font-size:14px;");
     m_portSpin = new QSpinBox;
     m_portSpin->setRange(1, 65535);
-    m_portSpin->setValue(5000);                 /* 默认 UDP 监听端口 */
+    m_portSpin->setValue(5000);
     m_portSpin->setFixedWidth(110);
     m_portSpin->setStyleSheet("font-size:14px; padding:4px 8px;");
-    auto *ipLabelTitle = new QLabel("本机有线 IP:");
+    auto *ipLabelTitle = new QLabel(QStringLiteral("本机有线 IP:"));
     ipLabelTitle->setStyleSheet("color:#30424E; font-size:14px;");
     m_ipLabel = new QLabel(board_ipv4());
     m_ipLabel->setStyleSheet("color:#1B2C34; font-size:14px; font-weight:bold;");
@@ -211,11 +209,10 @@ void MainWindow::buildMenuPage() {
     connLay->addStretch();
     root->addWidget(connRow);
 
-    // Buttons
     auto *btnRow = new QHBoxLayout;
     btnRow->setContentsMargins(60, 8, 60, 16);
 
-    auto *runBtn = new QPushButton("Run Simulation");
+    auto *runBtn = new QPushButton(QStringLiteral("运行仿真"));
     runBtn->setStyleSheet(
         "QPushButton{background-color:#2A75BB; color:white; font-size:15px; font-weight:bold;"
         "padding:10px 32px; border-radius:6px; border:none;}"
@@ -224,7 +221,7 @@ void MainWindow::buildMenuPage() {
     );
     connect(runBtn, &QPushButton::clicked, this, &MainWindow::runSimulation);
 
-    m_liveBtn = new QPushButton("Start Live (ETH1)");
+    m_liveBtn = new QPushButton(QStringLiteral("启动实时 (ETH1)"));
     m_liveBtn->setStyleSheet(
         "QPushButton{background-color:#2E8B57; color:white; font-size:15px; font-weight:bold;"
         "padding:10px 32px; border-radius:6px; border:none;}"
@@ -233,7 +230,7 @@ void MainWindow::buildMenuPage() {
     );
     connect(m_liveBtn, &QPushButton::clicked, this, &MainWindow::startLive);
 
-    auto *quitBtn = new QPushButton("Quit");
+    auto *quitBtn = new QPushButton(QStringLiteral("退出"));
     quitBtn->setStyleSheet(
         "QPushButton{background-color:#C44E35; color:white; font-size:15px; font-weight:bold;"
         "padding:10px 32px; border-radius:6px; border:none;}"
@@ -252,7 +249,6 @@ void MainWindow::buildMenuPage() {
     root->addLayout(btnRow);
     root->addStretch();
 
-    // Connections for dim label update
     for (QCheckBox *cb : {m_chkTdoa, m_chkToa, m_chkAoa, m_chkRss})
         connect(cb, &QCheckBox::toggled, this, &MainWindow::onModalityChanged);
     connect(m_targetsCombo, QOverload<int>::of(&QComboBox::currentIndexChanged),
@@ -263,22 +259,19 @@ void MainWindow::buildMenuPage() {
     m_stack->addWidget(m_menuPage);
 }
 
-// ─── Result page ──────────────────────────────────────
-
 void MainWindow::buildResultPage() {
     m_resultPage = new QWidget;
     auto *root = new QVBoxLayout(m_resultPage);
     root->setContentsMargins(0, 0, 0, 0);
     root->setSpacing(0);
 
-    // Title bar with buttons
     auto *titleBar = new QWidget;
     titleBar->setFixedHeight(52);
     titleBar->setStyleSheet("background-color:#23403B;");
     auto *titleLay = new QHBoxLayout(titleBar);
     titleLay->setContentsMargins(12, 0, 12, 0);
 
-    auto *menuBtn = new QPushButton("Menu");
+    auto *menuBtn = new QPushButton(QStringLiteral("菜单"));
     menuBtn->setStyleSheet(
         "QPushButton{background:#3A6B63; color:white; font-size:13px; font-weight:bold;"
         "padding:6px 18px; border-radius:4px; border:none;}"
@@ -286,7 +279,7 @@ void MainWindow::buildResultPage() {
     );
     connect(menuBtn, &QPushButton::clicked, this, &MainWindow::goToMenu);
 
-    auto *rerunBtn = new QPushButton("Rerun");
+    auto *rerunBtn = new QPushButton(QStringLiteral("重跑"));
     rerunBtn->setStyleSheet(
         "QPushButton{background:#3A6B63; color:white; font-size:13px; font-weight:bold;"
         "padding:6px 18px; border-radius:4px; border:none;}"
@@ -305,7 +298,6 @@ void MainWindow::buildResultPage() {
     titleLay->addStretch();
     root->addWidget(titleBar);
 
-    // Info area
     auto *infoWidget = new QWidget;
     infoWidget->setStyleSheet("background-color:#F9F7F2;");
     auto *infoGrid = new QGridLayout(infoWidget);
@@ -327,28 +319,28 @@ void MainWindow::buildResultPage() {
     m_rSteps = makeVal(""); m_rDim = makeVal("");
     m_rPosRmse = makeVal(""); m_rVelRmse = makeVal("");
     m_rElapsed = makeVal(""); m_rStepMs = makeVal("");
-    m_rLink = makeVal("● 未启动");
+    m_rLink = makeVal(QStringLiteral("● 未启动"));
     m_rLink->setStyleSheet("color:#888; font-size:13px; font-weight:bold;");
     m_rTargetInfo = new QLabel;
     m_rTargetInfo->setStyleSheet("color:#1B2C34; font-size:12px; padding:4px 0;");
 
-    infoGrid->addWidget(makeInfo("Scene:"),      0, 0);
+    infoGrid->addWidget(makeInfo(QStringLiteral("场景:")),  0, 0);
     infoGrid->addWidget(m_rScene,                0, 1);
-    infoGrid->addWidget(makeInfo("Pos RMSE:"),   0, 2);
+    infoGrid->addWidget(makeInfo(QStringLiteral("位置误差:")), 0, 2);
     infoGrid->addWidget(m_rPosRmse,              0, 3);
-    infoGrid->addWidget(makeInfo("Targets:"),     1, 0);
+    infoGrid->addWidget(makeInfo(QStringLiteral("目标:")), 1, 0);
     infoGrid->addWidget(m_rTargets,               1, 1);
-    infoGrid->addWidget(makeInfo("Vel RMSE:"),   1, 2);
+    infoGrid->addWidget(makeInfo(QStringLiteral("速度误差:")), 1, 2);
     infoGrid->addWidget(m_rVelRmse,               1, 3);
-    infoGrid->addWidget(makeInfo("Modality:"),    2, 0);
+    infoGrid->addWidget(makeInfo(QStringLiteral("模态:")),    2, 0);
     infoGrid->addWidget(m_rModality,              2, 1);
-    infoGrid->addWidget(makeInfo("Total:"),       2, 2);
+    infoGrid->addWidget(makeInfo(QStringLiteral("总耗时:")), 2, 2);
     infoGrid->addWidget(m_rElapsed,               2, 3);
-    infoGrid->addWidget(makeInfo("Steps:"),       3, 0);
+    infoGrid->addWidget(makeInfo(QStringLiteral("步数:")),    3, 0);
     infoGrid->addWidget(m_rSteps,                 3, 1);
-    infoGrid->addWidget(makeInfo("Step/ms:"),    3, 2);
+    infoGrid->addWidget(makeInfo(QStringLiteral("单步耗时:")), 3, 2);
     infoGrid->addWidget(m_rStepMs,                3, 3);
-    infoGrid->addWidget(makeInfo("Link:"),        4, 0);
+    infoGrid->addWidget(makeInfo(QStringLiteral("链路:")),    4, 0);
     infoGrid->addWidget(m_rLink,                 4, 1);
     infoGrid->addWidget(m_rTargetInfo,            5, 0, 1, 4);
 
@@ -359,7 +351,6 @@ void MainWindow::buildResultPage() {
 
     root->addWidget(infoWidget);
 
-    // Plot labels + plots
     auto *plotSection = new QWidget;
     auto *plotVBox = new QVBoxLayout(plotSection);
     plotVBox->setContentsMargins(12, 4, 12, 8);
@@ -386,11 +377,8 @@ void MainWindow::buildResultPage() {
     m_stack->addWidget(m_resultPage);
 }
 
-// ─── Slots ────────────────────────────────────────────
-
 void MainWindow::runSimulation() {
     if (m_live) stopLive();
-    // Gather options
     m_options.scene = (DemoScene)m_sceneCombo->currentIndex();
     m_options.target_mode = (TrackerTargetMode)m_targetsCombo->currentIndex();
     m_options.enable_mask = modality_mask_from_boxes(m_chkTdoa, m_chkToa, m_chkAoa, m_chkRss);
@@ -419,11 +407,8 @@ void MainWindow::runSimulation() {
     QApplication::restoreOverrideCursor();
 }
 
-// ─── 实时(ETH1)模式 ───────────────────────────────────
-
 void MainWindow::startLive() {
     if (m_live) return;
-    // 复用菜单里的模态/种子等
     m_options.scene = (DemoScene)m_sceneCombo->currentIndex();
     m_options.enable_mask = modality_mask_from_boxes(m_chkTdoa, m_chkToa, m_chkAoa, m_chkRss);
     m_options.seed = (unsigned int)m_seedSpin->value();
@@ -443,10 +428,10 @@ void MainWindow::startLive() {
     m_lastFrameMs = -1;
     m_linkTimer.start();
     m_liveBtn->setEnabled(false);
-    m_liveBtn->setText(QStringLiteral("Live..."));
-    m_eth->setHost(QStringLiteral("0.0.0.0"));  /* 监听所有接口; 仅收 ETH1 流量时填其 IP */
-    m_eth->setPort((quint16)m_portSpin->value());  /* 监听端口 (菜单页可调, 默认 5000) */
-    m_ipLabel->setText(board_ipv4());           /* 启动前刷新一次本机 IP */
+    m_liveBtn->setText(QStringLiteral("实时中..."));
+    m_eth->setHost(QStringLiteral("0.0.0.0"));
+    m_eth->setPort((quint16)m_portSpin->value());
+    m_ipLabel->setText(board_ipv4());
     m_eth->start();
     m_liveTimer->start();
     updateResultDisplay();
@@ -457,13 +442,12 @@ void MainWindow::stopLive() {
     if (!m_live) return;
     m_liveTimer->stop();
     m_eth->stop();
-    /* 线程非阻塞收包, 2ms 内即退出; 加超时防意外卡死拖住 UI */
     m_eth->wait(2000);
     m_live = false;
     m_rLink->setText(QStringLiteral("● 已停止"));
     m_rLink->setStyleSheet("color:#888; font-size:13px; font-weight:bold;");
     m_liveBtn->setEnabled(true);
-    m_liveBtn->setText(QStringLiteral("Start Live (ETH1)"));
+    m_liveBtn->setText(QStringLiteral("启动实时 (ETH1)"));
     if (m_hasResult) { tracker_free_result(&m_result); m_hasResult = false; }
 }
 
@@ -472,7 +456,7 @@ void MainWindow::onEthFrame(const Tracker3DMeasurement &meas, double dt_sec, qui
     tracker_live_step(&m_result, &meas, dt_sec);
     m_liveSeq = seq;
     m_liveDt = dt_sec;
-    m_liveFrames++;            /* 独立计数: m_result.steps 滚动窗口会回退, 不用于帧数 */
+    m_liveFrames++;
     m_lastFrameMs = m_linkTimer.elapsed();
     m_liveDirty = true;
 }
@@ -481,16 +465,14 @@ void MainWindow::onEthError(const QString &msg) {
     if (m_live) stopLive();
     QMessageBox::warning(this, QStringLiteral("ETH1 错误"), msg);
     m_liveBtn->setEnabled(true);
-    m_liveBtn->setText(QStringLiteral("Start Live (ETH1)"));
+    m_liveBtn->setText(QStringLiteral("启动实时 (ETH1)"));
 }
 
-/* 上位机下发基站配置: payload = [n_anc:u8] + n_anc*UdpCfgAnchor (float32 xyz) */
 void MainWindow::onAnchorsUpdated(const QByteArray &payload) {
     if (payload.size() < 1) return;
     const int n = (uint8_t)payload[0];
     if (n <= 0 || n > TRACKER3D_MAX_ANCHORS) return;
     if (payload.size() < 1 + n * (int)sizeof(UdpCfgAnchor)) return;
-    /* 允许在 Start Live 之前下发 (接收前配置基站): 先安全初始化 */
     if (!m_hasResult) {
         memset(&m_result, 0, sizeof(m_result));
         tracker3d_default_config(&m_result.config);
@@ -502,7 +484,7 @@ void MainWindow::onAnchorsUpdated(const QByteArray &payload) {
         m_result.config.anchors[i].z = anc[i].z;
     }
     m_result.config.anchor_count = (size_t)n;
-    if (m_live) m_liveDirty = true;      /* 重绘: 图上锚点位置更新 */
+    if (m_live) m_liveDirty = true;
     fprintf(stderr, "[ANCHORS] n=%d A0=(%.1f,%.1f,%.1f) A1=(%.1f,%.1f,%.1f)\n",
             n, anc[0].x, anc[0].y, anc[0].z,
             n > 1 ? anc[1].x : 0.0, n > 1 ? anc[1].y : 0.0, n > 1 ? anc[1].z : 0.0);
@@ -511,7 +493,6 @@ void MainWindow::onAnchorsUpdated(const QByteArray &payload) {
 
 void MainWindow::onLiveTick() {
     if (!m_live) return;
-    /* 链路状态灯无条件刷新 (无新帧时也要变红), 1s 无新帧视为断流 */
     const qint64 since = m_linkTimer.elapsed() - m_lastFrameMs;
     if (m_lastFrameMs < 0) {
         m_rLink->setText(QStringLiteral("● 等待数据"));
@@ -526,7 +507,6 @@ void MainWindow::onLiveTick() {
     if (!m_liveDirty) return;
     m_liveDirty = false;
     updateResultDisplay();
-    /* stdout 状态: 串口可见, 便于 offscreen/无显示场景验证数据 */
     const double *e = tracker_result_final_estimate_at(&m_result, 0);
     if (e) {
         fprintf(stderr, "[LIVE] seq=%u dt=%.2fms est=(%.3f,%.3f,%.3f) frames=%llu\n",
@@ -538,12 +518,11 @@ void MainWindow::onLiveTick() {
 
 void MainWindow::updateResultDisplay() {
     if (m_live) {
-        // 实时模式: 无真值, 显示估计状态
         const double *e = tracker_result_final_estimate_at(&m_result, 0);
         m_rScene->setText(QStringLiteral("LIVE"));
         m_rTargets->setText(QStringLiteral("1"));
         m_rModality->setText(modality_mask_name(m_options.enable_mask));
-        m_rSteps->setText(QString::number(m_liveFrames));   /* 收帧总数, 非窗口步数 */
+        m_rSteps->setText(QString::number(m_liveFrames));
         m_rDim->setText(QString("Dim: %1").arg(m_result.measurement_dim));
         m_rPosRmse->setText(e ? QString::number(e[0], 'f', 3) : QStringLiteral("-"));
         m_rVelRmse->setText(e ? QString::number(e[1], 'f', 3) : QStringLiteral("-"));
@@ -560,8 +539,8 @@ void MainWindow::updateResultDisplay() {
         return;
     }
 
-    m_rScene->setText(tracker_scene_name(m_options.scene));
-    m_rTargets->setText(tracker_target_mode_name(m_result.target_mode));
+    m_rScene->setText(scene_name_cn(m_options.scene));
+    m_rTargets->setText(target_mode_name_cn(m_result.target_mode));
     m_rModality->setText(modality_mask_name(m_options.enable_mask));
     m_rSteps->setText(QString::number(m_result.steps));
     m_rDim->setText(QString("Dim: %1").arg(m_result.measurement_dim));
@@ -580,7 +559,6 @@ void MainWindow::updateResultDisplay() {
     }
     m_rTargetInfo->setText(ti);
 
-    // Update plots
     m_xyPlot->setResult(&m_result);
 }
 

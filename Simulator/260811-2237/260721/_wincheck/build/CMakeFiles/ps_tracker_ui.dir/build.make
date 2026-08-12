@@ -120,35 +120,35 @@ CMakeFiles/ps_tracker_ui.dir/mainwindow.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ps_tracker_ui.dir/mainwindow.cpp.s"
 	C:\Qt\Tools\mingw1120_64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\mainwindow.cpp -o CMakeFiles\ps_tracker_ui.dir\mainwindow.cpp.s
 
-CMakeFiles/ps_tracker_ui.dir/tracker_app.cpp.obj: CMakeFiles/ps_tracker_ui.dir/flags.make
-CMakeFiles/ps_tracker_ui.dir/tracker_app.cpp.obj: CMakeFiles/ps_tracker_ui.dir/includes_CXX.rsp
-CMakeFiles/ps_tracker_ui.dir/tracker_app.cpp.obj: D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/tracker_app.cpp
-CMakeFiles/ps_tracker_ui.dir/tracker_app.cpp.obj: CMakeFiles/ps_tracker_ui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\_wincheck\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ps_tracker_ui.dir/tracker_app.cpp.obj"
-	C:\Qt\Tools\mingw1120_64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ps_tracker_ui.dir/tracker_app.cpp.obj -MF CMakeFiles\ps_tracker_ui.dir\tracker_app.cpp.obj.d -o CMakeFiles\ps_tracker_ui.dir\tracker_app.cpp.obj -c D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\tracker_app.cpp
+CMakeFiles/ps_tracker_ui.dir/alg/tracker_app.cpp.obj: CMakeFiles/ps_tracker_ui.dir/flags.make
+CMakeFiles/ps_tracker_ui.dir/alg/tracker_app.cpp.obj: CMakeFiles/ps_tracker_ui.dir/includes_CXX.rsp
+CMakeFiles/ps_tracker_ui.dir/alg/tracker_app.cpp.obj: D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/alg/tracker_app.cpp
+CMakeFiles/ps_tracker_ui.dir/alg/tracker_app.cpp.obj: CMakeFiles/ps_tracker_ui.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\_wincheck\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ps_tracker_ui.dir/alg/tracker_app.cpp.obj"
+	C:\Qt\Tools\mingw1120_64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ps_tracker_ui.dir/alg/tracker_app.cpp.obj -MF CMakeFiles\ps_tracker_ui.dir\alg\tracker_app.cpp.obj.d -o CMakeFiles\ps_tracker_ui.dir\alg\tracker_app.cpp.obj -c D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\alg\tracker_app.cpp
 
-CMakeFiles/ps_tracker_ui.dir/tracker_app.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ps_tracker_ui.dir/tracker_app.cpp.i"
-	C:\Qt\Tools\mingw1120_64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\tracker_app.cpp > CMakeFiles\ps_tracker_ui.dir\tracker_app.cpp.i
+CMakeFiles/ps_tracker_ui.dir/alg/tracker_app.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ps_tracker_ui.dir/alg/tracker_app.cpp.i"
+	C:\Qt\Tools\mingw1120_64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\alg\tracker_app.cpp > CMakeFiles\ps_tracker_ui.dir\alg\tracker_app.cpp.i
 
-CMakeFiles/ps_tracker_ui.dir/tracker_app.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ps_tracker_ui.dir/tracker_app.cpp.s"
-	C:\Qt\Tools\mingw1120_64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\tracker_app.cpp -o CMakeFiles\ps_tracker_ui.dir\tracker_app.cpp.s
+CMakeFiles/ps_tracker_ui.dir/alg/tracker_app.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ps_tracker_ui.dir/alg/tracker_app.cpp.s"
+	C:\Qt\Tools\mingw1120_64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\alg\tracker_app.cpp -o CMakeFiles\ps_tracker_ui.dir\alg\tracker_app.cpp.s
 
-CMakeFiles/ps_tracker_ui.dir/tracker3d.cpp.obj: CMakeFiles/ps_tracker_ui.dir/flags.make
-CMakeFiles/ps_tracker_ui.dir/tracker3d.cpp.obj: CMakeFiles/ps_tracker_ui.dir/includes_CXX.rsp
-CMakeFiles/ps_tracker_ui.dir/tracker3d.cpp.obj: D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/tracker3d.cpp
-CMakeFiles/ps_tracker_ui.dir/tracker3d.cpp.obj: CMakeFiles/ps_tracker_ui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\_wincheck\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ps_tracker_ui.dir/tracker3d.cpp.obj"
-	C:\Qt\Tools\mingw1120_64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ps_tracker_ui.dir/tracker3d.cpp.obj -MF CMakeFiles\ps_tracker_ui.dir\tracker3d.cpp.obj.d -o CMakeFiles\ps_tracker_ui.dir\tracker3d.cpp.obj -c D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\tracker3d.cpp
+CMakeFiles/ps_tracker_ui.dir/alg/tracker3d.cpp.obj: CMakeFiles/ps_tracker_ui.dir/flags.make
+CMakeFiles/ps_tracker_ui.dir/alg/tracker3d.cpp.obj: CMakeFiles/ps_tracker_ui.dir/includes_CXX.rsp
+CMakeFiles/ps_tracker_ui.dir/alg/tracker3d.cpp.obj: D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/alg/tracker3d.cpp
+CMakeFiles/ps_tracker_ui.dir/alg/tracker3d.cpp.obj: CMakeFiles/ps_tracker_ui.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\_wincheck\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ps_tracker_ui.dir/alg/tracker3d.cpp.obj"
+	C:\Qt\Tools\mingw1120_64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ps_tracker_ui.dir/alg/tracker3d.cpp.obj -MF CMakeFiles\ps_tracker_ui.dir\alg\tracker3d.cpp.obj.d -o CMakeFiles\ps_tracker_ui.dir\alg\tracker3d.cpp.obj -c D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\alg\tracker3d.cpp
 
-CMakeFiles/ps_tracker_ui.dir/tracker3d.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ps_tracker_ui.dir/tracker3d.cpp.i"
-	C:\Qt\Tools\mingw1120_64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\tracker3d.cpp > CMakeFiles\ps_tracker_ui.dir\tracker3d.cpp.i
+CMakeFiles/ps_tracker_ui.dir/alg/tracker3d.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ps_tracker_ui.dir/alg/tracker3d.cpp.i"
+	C:\Qt\Tools\mingw1120_64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\alg\tracker3d.cpp > CMakeFiles\ps_tracker_ui.dir\alg\tracker3d.cpp.i
 
-CMakeFiles/ps_tracker_ui.dir/tracker3d.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ps_tracker_ui.dir/tracker3d.cpp.s"
-	C:\Qt\Tools\mingw1120_64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\tracker3d.cpp -o CMakeFiles\ps_tracker_ui.dir\tracker3d.cpp.s
+CMakeFiles/ps_tracker_ui.dir/alg/tracker3d.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ps_tracker_ui.dir/alg/tracker3d.cpp.s"
+	C:\Qt\Tools\mingw1120_64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\alg\tracker3d.cpp -o CMakeFiles\ps_tracker_ui.dir\alg\tracker3d.cpp.s
 
 CMakeFiles/ps_tracker_ui.dir/tracker_plot.cpp.obj: CMakeFiles/ps_tracker_ui.dir/flags.make
 CMakeFiles/ps_tracker_ui.dir/tracker_plot.cpp.obj: CMakeFiles/ps_tracker_ui.dir/includes_CXX.rsp
@@ -185,8 +185,8 @@ ps_tracker_ui_OBJECTS = \
 "CMakeFiles/ps_tracker_ui.dir/ps_tracker_ui_autogen/mocs_compilation.cpp.obj" \
 "CMakeFiles/ps_tracker_ui.dir/main.cpp.obj" \
 "CMakeFiles/ps_tracker_ui.dir/mainwindow.cpp.obj" \
-"CMakeFiles/ps_tracker_ui.dir/tracker_app.cpp.obj" \
-"CMakeFiles/ps_tracker_ui.dir/tracker3d.cpp.obj" \
+"CMakeFiles/ps_tracker_ui.dir/alg/tracker_app.cpp.obj" \
+"CMakeFiles/ps_tracker_ui.dir/alg/tracker3d.cpp.obj" \
 "CMakeFiles/ps_tracker_ui.dir/tracker_plot.cpp.obj" \
 "CMakeFiles/ps_tracker_ui.dir/eth_reader.cpp.obj"
 
@@ -196,8 +196,8 @@ ps_tracker_ui_EXTERNAL_OBJECTS =
 ps_tracker_ui.exe: CMakeFiles/ps_tracker_ui.dir/ps_tracker_ui_autogen/mocs_compilation.cpp.obj
 ps_tracker_ui.exe: CMakeFiles/ps_tracker_ui.dir/main.cpp.obj
 ps_tracker_ui.exe: CMakeFiles/ps_tracker_ui.dir/mainwindow.cpp.obj
-ps_tracker_ui.exe: CMakeFiles/ps_tracker_ui.dir/tracker_app.cpp.obj
-ps_tracker_ui.exe: CMakeFiles/ps_tracker_ui.dir/tracker3d.cpp.obj
+ps_tracker_ui.exe: CMakeFiles/ps_tracker_ui.dir/alg/tracker_app.cpp.obj
+ps_tracker_ui.exe: CMakeFiles/ps_tracker_ui.dir/alg/tracker3d.cpp.obj
 ps_tracker_ui.exe: CMakeFiles/ps_tracker_ui.dir/tracker_plot.cpp.obj
 ps_tracker_ui.exe: CMakeFiles/ps_tracker_ui.dir/eth_reader.cpp.obj
 ps_tracker_ui.exe: CMakeFiles/ps_tracker_ui.dir/build.make

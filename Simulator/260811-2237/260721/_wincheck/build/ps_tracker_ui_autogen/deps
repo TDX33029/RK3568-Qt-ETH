@@ -611,16 +611,16 @@ ps_tracker_ui_autogen/timestamp: \
 	D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/_wincheck/build/CMakeFiles/3.30.5/CMakeRCCompiler.cmake \
 	D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/_wincheck/build/CMakeFiles/3.30.5/CMakeSystem.cmake \
 	D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/_wincheck/build/ps_tracker_ui_autogen/moc_predefs.h \
+	D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/alg/tracker3d.cpp \
+	D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/alg/tracker3d.h \
+	D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/alg/tracker_app.cpp \
+	D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/alg/tracker_app.h \
 	D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/eth_reader.cpp \
 	D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/eth_reader.h \
 	D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/frame_protocol.h \
 	D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/main.cpp \
 	D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/mainwindow.cpp \
 	D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/mainwindow.h \
-	D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/tracker3d.cpp \
-	D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/tracker3d.h \
-	D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/tracker_app.cpp \
-	D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/tracker_app.h \
 	D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/tracker_plot.cpp \
 	D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/tracker_plot.h \
 	C:/Qt/Tools/CMake_64/bin/cmake.exe

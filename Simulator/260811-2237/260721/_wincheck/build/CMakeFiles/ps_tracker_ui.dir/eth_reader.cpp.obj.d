@@ -317,7 +317,7 @@ CMakeFiles/ps_tracker_ui.dir/eth_reader.cpp.obj: \
  C:/Qt/6.5.3/mingw_64/include/QtCore/qbytearray.h \
  C:/Qt/6.5.3/mingw_64/include/QtCore/QMetaType \
  C:/Qt/6.5.3/mingw_64/include/QtCore/qmetatype.h \
- D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\tracker3d.h \
+ D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\alg/tracker3d.h \
  D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\frame_protocol.h \
  C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/unistd.h \
  C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/io.h \

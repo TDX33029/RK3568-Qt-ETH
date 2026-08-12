@@ -350,8 +350,8 @@ CMakeFiles/ps_tracker_ui.dir/tracker_plot.cpp.obj: \
  C:/Qt/6.5.3/mingw_64/include/QtWidgets/qsizepolicy.h \
  C:/Qt/6.5.3/mingw_64/include/QtGui/qcursor.h \
  C:/Qt/6.5.3/mingw_64/include/QtGui/qbitmap.h \
- D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\tracker_app.h \
- D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\tracker3d.h \
+ D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\alg/tracker_app.h \
+ D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\alg/tracker3d.h \
  C:/Qt/6.5.3/mingw_64/include/QtGui/QPainter \
  C:/Qt/6.5.3/mingw_64/include/QtGui/qpainter.h \
  C:/Qt/6.5.3/mingw_64/include/QtGui/qtextoption.h \

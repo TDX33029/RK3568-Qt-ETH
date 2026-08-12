@@ -3,13 +3,13 @@
 #include <cerrno>
 #include <cstring>
 #include <unistd.h>
-#include <fcntl.h>          /* fcntl / F_GETFL / F_SETFL / O_NONBLOCK */
+#include <fcntl.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
 static const int kBufSize = 2048;
-static const int kRcvBufSize = 4 * 1024 * 1024;   /* 加大接收缓冲, 防突发丢包 */
+static const int kRcvBufSize = 4 * 1024 * 1024;
 
 EthReader::EthReader(QObject *parent)
     : QThread(parent)
@@ -19,9 +19,6 @@ EthReader::EthReader(QObject *parent)
 EthReader::~EthReader()
 {
     m_stop.store(true);
-    /* run() 内非阻塞 recvfrom + 2ms 轮询, stop 后最多 ~2ms 即退出;
-     * 不用 quit() (本线程没有事件循环), 直接 wait 到退出, 避免线程
-     * 仍在运行时对象已被销毁 (use-after-free)。 */
     if (isRunning())
         wait();
 }
@@ -39,8 +36,6 @@ void EthReader::run()
 
     int one = 1;
     ::setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &one, sizeof(one));
-    /* 100Hz+ 帧率 + 偶发突发: 内核默认接收缓冲 (~212KB) 在 UI 忙时可能
-     * 静默丢包, 显式放大。失败不致命, 忽略即可。 */
     ::setsockopt(sock, SOL_SOCKET, SO_RCVBUF, &kRcvBufSize, sizeof(kRcvBufSize));
 
     struct sockaddr_in addr{};
@@ -60,7 +55,6 @@ void EthReader::run()
         return;
     }
 
-    /* 非阻塞接收, 便于在 m_stop 时及时退出 */
     int flags = ::fcntl(sock, F_GETFL, 0);
     ::fcntl(sock, F_SETFL, flags | O_NONBLOCK);
 
@@ -72,7 +66,7 @@ void EthReader::run()
                                (struct sockaddr *)&from, &fromlen);
         if (n < 0) {
             if (errno == EAGAIN || errno == EWOULDBLOCK) {
-                msleep(2);                 /* 让出 CPU, 同时周期性检查 m_stop */
+                msleep(2);
                 continue;
             }
             if (errno == EINTR)
@@ -81,17 +75,15 @@ void EthReader::run()
             break;
         }
 
-        /* 联通测试: 收到 8B PING 帧即回 PONG (上位机测 RTT) */
         if (udp_ping_match(buf, (size_t)n)) {
             uint8_t pong[UDP_PING_LEN];
             udp_ping_to_pong(buf, pong);
             ::sendto(sock, (char *)pong, sizeof(pong), 0,
                      (struct sockaddr *)&from, fromlen);
-            m_pingCount.fetch_add(1);            /* UI 线程可读的探测计数 */
+            m_pingCount.fetch_add(1);
             continue;
         }
 
-        /* 基站配置: 收到 106B CFG 帧 -> 更新 EKF 锚点 -> 回 ACK */
         if (udp_cfg_match(buf, (size_t)n)) {
             UdpCfgAnchor anc[UDP_MAX_ANCHORS];
             int nanc = udp_cfg_parse(buf, anc, UDP_MAX_ANCHORS);
@@ -108,22 +100,20 @@ void EthReader::run()
             continue;
         }
 
-        if (n != (ssize_t)sizeof(UdpFrame))   /* 一数据报即一帧, 长度必须匹配 */
+        if (n != (ssize_t)sizeof(UdpFrame))
             continue;
 
         UdpFrame f;
         std::memcpy(&f, buf, sizeof(f));
 
-        /* 校验魔数 / CRC (见 frame_protocol.h): 返回 0=有效, 非 0=无效 */
         if (udp_frame_valid(&f) != 0)
             continue;
 
         if (m_seen_first && f.seq == m_last_seq)
-            continue;                         /* seq 未更新 (传感器未刷新) */
+            continue;
         m_last_seq   = f.seq;
         m_seen_first = true;
 
-        /* 转为 EKF 测量 */
         Tracker3DMeasurement meas;
         udp_frame_to_measurement(&f, &meas);
 
