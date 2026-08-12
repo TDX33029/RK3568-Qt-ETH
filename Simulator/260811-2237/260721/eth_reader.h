@@ -3,6 +3,7 @@
 
 #include <QThread>
 #include <QString>
+#include <QByteArray>
 #include <QMetaType>
 #include <atomic>
 #include <cstdint>
@@ -49,6 +50,9 @@ public:
 signals:
     /* 收到一帧有效测量 (UI 线程接收) */
     void frameReceived(const Tracker3DMeasurement &meas, double dt_sec, quint16 seq);
+    /* 上位机下发的基站配置 (CFG 帧): payload = [n_anc:u8] + n_anc*UdpCfgAnchor
+     * (QByteArray 内建类型, QueuedConnection 直接可用) */
+    void anchorsUpdated(const QByteArray &payload);
     void error(const QString &msg);
 
 protected:

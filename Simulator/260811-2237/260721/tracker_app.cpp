@@ -75,14 +75,12 @@ static void propagate_truth(double st[TRACKER3D_STATE_DIM], double dt, size_t si
     st[0] += st[3]*dt; st[1] += st[4]*dt; st[2] += st[5]*dt;
 }
 
-static void apply_modality(Tracker3DConfig *c, TrackerModality m) {
-    tracker3d_set_all_modalities(c,0,0,0,0);
-    switch (m) {
-        case MODALITY_TDOA: tracker3d_set_all_modalities(c,1,0,0,0); break;
-        case MODALITY_TOA:  tracker3d_set_all_modalities(c,0,1,0,0); break;
-        case MODALITY_AOA:  tracker3d_set_all_modalities(c,0,0,1,0); break;
-        case MODALITY_RSS:  tracker3d_set_all_modalities(c,0,0,0,1); break;
-    }
+static void apply_modality_mask(Tracker3DConfig *c, uint8_t mask) {
+    tracker3d_set_all_modalities(c,
+        (mask & TRACKER_MODE_TDOA) ? 1 : 0,
+        (mask & TRACKER_MODE_TOA)  ? 1 : 0,
+        (mask & TRACKER_MODE_AOA)  ? 1 : 0,
+        (mask & TRACKER_MODE_RSS)  ? 1 : 0);
 }
 
 static double app_now_ms() {
@@ -100,7 +98,8 @@ static size_t foff(size_t ti) { return ti*TRACKER3D_STATE_DIM; }
 void tracker_sim_default_options(TrackerSimOptions *o) {
     memset(o,0,sizeof(*o));
     o->scene=SCENE_STRAIGHT; o->target_mode=TARGET_MODE_SINGLE;
-    o->modality=MODALITY_TDOA; o->seed=(unsigned)time(NULL);
+    o->modality=MODALITY_TDOA; o->enable_mask=TRACKER_MODE_TDOA;  /* 默认单 TDOA */
+    o->seed=(unsigned)time(NULL);
     o->steps=80; o->dt=0.1;
 }
 
@@ -139,8 +138,8 @@ int tracker_parse_modality(const char *t, TrackerModality *m) {
     return -1;
 }
 
-size_t tracker_expected_measurement_dim_for_modality(TrackerModality m) {
-    Tracker3DConfig c; tracker3d_default_config(&c); configure_demo_anchors(&c); apply_modality(&c,m);
+size_t tracker_expected_measurement_dim_for_mask(uint8_t mask) {
+    Tracker3DConfig c; tracker3d_default_config(&c); configure_demo_anchors(&c); apply_modality_mask(&c, mask);
     return tracker_expected_measurement_dim(&c);
 }
 
@@ -190,7 +189,7 @@ int tracker_run_simulation(const TrackerSimOptions *opts, TrackerSimResult *r) {
     r->target_mode=opts->target_mode;
     r->target_count=tracker_target_count_for_mode(opts->target_mode);
     r->modality=opts->modality;
-    apply_modality(&r->config,opts->modality);
+    apply_modality_mask(&r->config, opts->enable_mask);
     r->measurement_dim=tracker_expected_measurement_dim(&r->config);
     r->steps=opts->steps; r->dt=opts->dt;
     r->truth_history=(double*)calloc(opts->steps*r->target_count*TRACKER3D_STATE_DIM,sizeof(double));
@@ -257,7 +256,7 @@ int tracker_live_init(TrackerSimResult *r, const TrackerSimOptions *opts) {
     r->target_mode  = TARGET_MODE_SINGLE;            /* 实时模式固定单目标 */
     r->target_count = 1;
     r->modality     = opts->modality;
-    apply_modality(&r->config, opts->modality);
+    apply_modality_mask(&r->config, opts->enable_mask);   /* 勾选的多模态参与 EKF */
     r->measurement_dim = tracker_expected_measurement_dim(&r->config);
     r->steps = 0;
     r->dt    = (opts->dt > 0.0 ? opts->dt : 0.1);

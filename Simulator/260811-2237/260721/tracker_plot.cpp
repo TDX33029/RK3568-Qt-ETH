@@ -13,16 +13,9 @@ TrackerPlot::TrackerPlot(QWidget *parent)
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 }
 
-static void projectPoint(const double s[6], TrackerPlot::ViewMode mode,
-                         int coordX, int coordY, double &vx, double &vy) {
-    if (mode == TrackerPlot::View3D) {
-        static const double iso_cos = 0.8660254037844386;
-        static const double iso_sin = 0.5;
-        vx = (s[0] - s[1]) * iso_cos;
-        vy = s[2] - (s[0] + s[1]) * iso_sin;
-    } else {
-        vx = s[coordX]; vy = s[coordY];
-    }
+static void projectPoint(const double s[6], int coordX, int coordY,
+                         double &vx, double &vy) {
+    vx = s[coordX]; vy = s[coordY];
 }
 
 void TrackerPlot::paintEvent(QPaintEvent *) {
@@ -45,8 +38,8 @@ void TrackerPlot::paintEvent(QPaintEvent *) {
 
     if (!m_result) return;
 
-    int coordX = 0, coordY = 1;
-    if (m_mode == ViewXZ) { coordX = 0; coordY = 2; }
+    /* 仅 XY 视图: 坐标轴固定 (x, y) */
+    const int coordX = 0, coordY = 1;
 
     /* 坐标范围: 估计 + 真值(若有) + 基站 */
     double minX =  std::numeric_limits<double>::max();
@@ -60,16 +53,16 @@ void TrackerPlot::paintEvent(QPaintEvent *) {
     for (size_t t = 0; t < m_result->target_count; ++t)
         for (size_t i = 0; i < m_result->steps; ++i) {
             const double *es = tracker_result_estimate_at(m_result, t, i);
-            if (es) { double vx,vy; projectPoint(es, m_mode, coordX, coordY, vx, vy); acc(vx, vy); }
+            if (es) { double vx,vy; projectPoint(es, coordX, coordY, vx, vy); acc(vx, vy); }
             if (m_result->truth_history) {
                 const double *tr = tracker_result_truth_at(m_result, t, i);
-                if (tr) { double vx,vy; projectPoint(tr, m_mode, coordX, coordY, vx, vy); acc(vx, vy); }
+                if (tr) { double vx,vy; projectPoint(tr, coordX, coordY, vx, vy); acc(vx, vy); }
             }
         }
     for (size_t a = 0; a < m_result->config.anchor_count; ++a) {
         const Tracker3DVec3 *an = &m_result->config.anchors[a];
         double s[6] = {an->x, an->y, an->z, 0,0,0};
-        double vx, vy; projectPoint(s, m_mode, coordX, coordY, vx, vy); acc(vx, vy);
+        double vx, vy; projectPoint(s, coordX, coordY, vx, vy); acc(vx, vy);
     }
     if (minX > maxX) { minX = 0; maxX = 1; minY = 0; maxY = 1; }  /* 无任何点 */
     double spanX = std::max(maxX - minX, 1e-6), spanY = std::max(maxY - minY, 1e-6);
@@ -89,7 +82,7 @@ void TrackerPlot::paintEvent(QPaintEvent *) {
             for (size_t i = 0; i < m_result->steps; ++i) {
                 const double *tr = tracker_result_truth_at(m_result, t, i);
                 if (!tr) continue;
-                double vx, vy; projectPoint(tr, m_mode, coordX, coordY, vx, vy);
+                double vx, vy; projectPoint(tr, coordX, coordY, vx, vy);
                 QPointF pt = toScreen(vx, vy);
                 if (first) { path.moveTo(pt); first = false; } else path.lineTo(pt);
             }
@@ -105,7 +98,7 @@ void TrackerPlot::paintEvent(QPaintEvent *) {
         for (size_t i = 0; i < m_result->steps; ++i) {
             const double *es = tracker_result_estimate_at(m_result, t, i);
             if (!es) continue;
-            double vx, vy; projectPoint(es, m_mode, coordX, coordY, vx, vy);
+            double vx, vy; projectPoint(es, coordX, coordY, vx, vy);
             QPointF pt = toScreen(vx, vy);
             if (first) { path.moveTo(pt); first = false; } else path.lineTo(pt);
         }
@@ -114,7 +107,7 @@ void TrackerPlot::paintEvent(QPaintEvent *) {
         p.drawPath(path);
         const double *cur = tracker_result_estimate_at(m_result, t, m_result->steps - 1);
         if (cur) {
-            double vx, vy; projectPoint(cur, m_mode, coordX, coordY, vx, vy);
+            double vx, vy; projectPoint(cur, coordX, coordY, vx, vy);
             QPointF pt = toScreen(vx, vy);
             p.setPen(Qt::NoPen); p.setBrush(QColor(0xD0, 0x1F, 0x1F));
             p.drawEllipse(pt, 3.5, 3.5);
@@ -126,7 +119,7 @@ void TrackerPlot::paintEvent(QPaintEvent *) {
     for (size_t a = 0; a < m_result->config.anchor_count; ++a) {
         const Tracker3DVec3 *an = &m_result->config.anchors[a];
         double s[6] = {an->x, an->y, an->z, 0,0,0};
-        double vx, vy; projectPoint(s, m_mode, coordX, coordY, vx, vy);
+        double vx, vy; projectPoint(s, coordX, coordY, vx, vy);
         QPointF pt = toScreen(vx, vy);
         p.setPen(QPen(QColor(0x1B, 0x2C, 0x34), 1));
         p.setBrush(QColor(0x2A, 0x3A, 0x4A));
@@ -137,7 +130,7 @@ void TrackerPlot::paintEvent(QPaintEvent *) {
 
     /* 图例 */
     p.setFont(QFont("sans-serif", 8));
-    const char *viewName = (m_mode == ViewXY) ? "XY" : (m_mode == ViewXZ) ? "XZ" : "3D";
+    const char *viewName = "XY";
     int lx = margin + 6, ly = margin + 14;
     p.setPen(QColor(0x33, 0x33, 0x33)); p.drawText(lx, ly, QString::fromLatin1(viewName));
     ly += 12;

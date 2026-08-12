@@ -7,7 +7,7 @@
 class TrackerPlot : public QWidget {
     Q_OBJECT
 public:
-    enum ViewMode { ViewXY, ViewXZ, View3D };
+    enum ViewMode { ViewXY };              /* 仅 XY 视图 */
 
     explicit TrackerPlot(QWidget *parent = nullptr);
 

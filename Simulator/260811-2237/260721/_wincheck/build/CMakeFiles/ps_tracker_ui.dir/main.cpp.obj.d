@@ -369,11 +369,13 @@ CMakeFiles/ps_tracker_ui.dir/main.cpp.obj: \
  C:/Qt/6.5.3/mingw_64/include/QtWidgets/qtabbar.h \
  C:/Qt/6.5.3/mingw_64/include/QtWidgets/qrubberband.h \
  C:/Qt/6.5.3/mingw_64/include/QtCore/qabstractitemmodel.h \
+ C:/Qt/6.5.3/mingw_64/include/QtWidgets/QCheckBox \
+ C:/Qt/6.5.3/mingw_64/include/QtWidgets/qcheckbox.h \
+ C:/Qt/6.5.3/mingw_64/include/QtWidgets/qabstractbutton.h \
  C:/Qt/6.5.3/mingw_64/include/QtWidgets/QSpinBox \
  C:/Qt/6.5.3/mingw_64/include/QtWidgets/qspinbox.h \
  C:/Qt/6.5.3/mingw_64/include/QtWidgets/QPushButton \
  C:/Qt/6.5.3/mingw_64/include/QtWidgets/qpushbutton.h \
- C:/Qt/6.5.3/mingw_64/include/QtWidgets/qabstractbutton.h \
  C:/Qt/6.5.3/mingw_64/include/QtWidgets/QLabel \
  C:/Qt/6.5.3/mingw_64/include/QtWidgets/qlabel.h \
  C:/Qt/6.5.3/mingw_64/include/QtGui/qpicture.h \
@@ -404,6 +406,8 @@ CMakeFiles/ps_tracker_ui.dir/main.cpp.obj: \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/std_thread.h \
  C:/Qt/6.5.3/mingw_64/include/QtCore/QString \
  C:/Qt/6.5.3/mingw_64/include/QtCore/qstring.h \
+ C:/Qt/6.5.3/mingw_64/include/QtCore/QByteArray \
+ C:/Qt/6.5.3/mingw_64/include/QtCore/qbytearray.h \
  C:/Qt/6.5.3/mingw_64/include/QtCore/QMetaType \
  C:/Qt/6.5.3/mingw_64/include/QtCore/qmetatype.h \
  D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\frame_protocol.h \

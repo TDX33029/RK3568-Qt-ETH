@@ -91,6 +91,23 @@ void EthReader::run()
             continue;
         }
 
+        /* 基站配置: 收到 106B CFG 帧 -> 更新 EKF 锚点 -> 回 ACK */
+        if (udp_cfg_match(buf, (size_t)n)) {
+            UdpCfgAnchor anc[UDP_MAX_ANCHORS];
+            int nanc = udp_cfg_parse(buf, anc, UDP_MAX_ANCHORS);
+            uint8_t ack[UDP_PING_LEN];
+            udp_cfg_to_ack(buf, ack);
+            ::sendto(sock, (char *)ack, sizeof(ack), 0,
+                     (struct sockaddr *)&from, fromlen);
+            if (nanc > 0) {
+                QByteArray payload;
+                payload.append((char)nanc);
+                payload.append((const char *)anc, nanc * (int)sizeof(UdpCfgAnchor));
+                emit anchorsUpdated(payload);
+            }
+            continue;
+        }
+
         if (n != (ssize_t)sizeof(UdpFrame))   /* 一数据报即一帧, 长度必须匹配 */
             continue;
 

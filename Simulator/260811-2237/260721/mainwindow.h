@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QStackedWidget>
 #include <QComboBox>
+#include <QCheckBox>
 #include <QSpinBox>
 #include <QPushButton>
 #include <QLabel>
@@ -27,10 +28,11 @@ public slots:
 private slots:
     void runSimulation();
     void goToMenu();
-    void onModalityChanged(int index);
+    void onModalityChanged();
     void onTargetModeChanged(int index);
     void onEthFrame(const Tracker3DMeasurement &meas, double dt_sec, quint16 seq);
     void onEthError(const QString &msg);
+    void onAnchorsUpdated(const QByteArray &payload);
     void onLiveTick();
 
 private:
@@ -45,19 +47,21 @@ private:
     QWidget *m_menuPage;
     QComboBox *m_sceneCombo;
     QComboBox *m_targetsCombo;
-    QComboBox *m_modalityCombo;
+    QCheckBox *m_chkTdoa, *m_chkToa, *m_chkAoa, *m_chkRss;  /* 模态多选 */
     QSpinBox *m_stepsSpin;
     QSpinBox *m_seedSpin;
     QLabel *m_dimLabel;
+    QSpinBox *m_portSpin;        /* 监听端口 (默认 5000) */
+    QLabel *m_ipLabel;           /* 本机有线 IP */
     QPushButton *m_liveBtn;
 
-    // Result page
+    // Result page (仅 XY 视图)
     QWidget *m_resultPage;
     QLabel *m_rScene, *m_rTargets, *m_rModality, *m_rSteps, *m_rDim;
     QLabel *m_rPosRmse, *m_rVelRmse, *m_rElapsed, *m_rStepMs;
     QLabel *m_rTargetInfo;
     QLabel *m_rLink;                 /* 实时链路状态灯 (UI 线程) */
-    TrackerPlot *m_xyPlot, *m_xzPlot, *m_plot3d;
+    TrackerPlot *m_xyPlot;
 
     // Core data
     TrackerSimOptions m_options;

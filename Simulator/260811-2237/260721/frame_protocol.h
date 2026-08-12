@@ -109,6 +109,53 @@ static inline void udp_ping_to_pong(const uint8_t *ping, uint8_t *pong) {
     pong[7] = 0;
 }
 
+/* ── 基站配置帧 (上位机 -> 板子): 106 字节, 与 182B 数据帧区分 ──────
+ *   [0..1]   magic {0xA5,0x5A}
+ *   [2..5]   "CFG"
+ *   [6]      seq (u8, 回显到 ACK)
+ *   [7]      n_anc (u8, 有效锚点数)
+ *   [8..103] anchors[n_anc] {x,y,z float32}, 每锚点 12B (n_anc<=8)
+ *   [104..105] crc16 (覆盖 [0..103])
+ * 板端收到即更新 EKF 锚点坐标并回 8B ACK 帧:
+ *   {magic, 'A','C','K', seq, 0}                                          */
+#define UDP_CFG_LEN 106
+
+typedef struct {
+    float x;
+    float y;
+    float z;
+} UdpCfgAnchor;               /* 12 字节 */
+
+static inline int udp_cfg_match(const uint8_t *p, size_t n) {
+    return n == UDP_CFG_LEN && p[0] == UDP_FRAME_MAGIC0 && p[1] == UDP_FRAME_MAGIC1
+        && p[2] == 'C' && p[3] == 'F' && p[4] == 'G';
+}
+
+/* 解析 CFG: 返回有效锚点数 (-1=CRC 错误)。out 容量 >= max_n。 */
+static inline int udp_cfg_parse(const uint8_t *p, UdpCfgAnchor *out, int max_n) {
+    uint16_t crc = udp_crc16_ccitt(p, 104);
+    uint16_t recv = (uint16_t)(p[104] | (p[105] << 8));
+    if (crc != recv)
+        return -1;
+    int n = p[7];
+    if (n < 0) n = 0;
+    if (n > max_n) n = max_n;
+    for (int i = 0; i < n; ++i)
+        memcpy(&out[i], p + 8 + i * 12, sizeof(UdpCfgAnchor));
+    return n;
+}
+
+static inline int udp_ack_match(const uint8_t *p, size_t n) {
+    return n == UDP_PING_LEN && p[0] == UDP_FRAME_MAGIC0 && p[1] == UDP_FRAME_MAGIC1
+        && p[2] == 'A' && p[3] == 'C' && p[4] == 'K';
+}
+
+static inline void udp_cfg_to_ack(const uint8_t *cfg, uint8_t *ack) {
+    memcpy(ack, cfg, UDP_PING_LEN);
+    ack[2] = 'A'; ack[3] = 'C'; ack[4] = 'K';   /* ACK, seq 回显 */
+    ack[7] = 0;
+}
+
 /* UdpFrame -> Tracker3DMeasurement (按 has 位填, 未测的 has_* 保持 0) */
 static inline void udp_frame_to_measurement(const UdpFrame *f, Tracker3DMeasurement *m) {
     tracker3d_clear_measurement(m);

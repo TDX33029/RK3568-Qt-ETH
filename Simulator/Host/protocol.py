@@ -107,6 +107,35 @@ def crc16(data: bytes) -> int:
     return crc
 
 
+# ---- 基站配置帧 (CFG, 106B; 与 182B 数据帧区分) ----
+CFG_FRAME_LEN = 106
+CFG_ANC_LEN = 12        # x,y,z float32
+
+
+def build_cfg_frame(seq: int, anchors) -> bytes:
+    """打包 106B CFG 帧: {magic,'CFG',seq,n_anc,anchors[n]*12B,crc16}。
+    anchors: [(x, y, z), ...] (<=8)。板端收到更新 EKF 锚点并回 ACK。"""
+    n = min(len(anchors), SPI_MAX_ANCHORS)
+    buf = bytearray(CFG_FRAME_LEN)
+    buf[0] = SPI_MAGIC0; buf[1] = SPI_MAGIC1
+    buf[2] = ord('C'); buf[3] = ord('F'); buf[4] = ord('G'); buf[5] = 0
+    buf[6] = seq & 0xFF
+    buf[7] = n
+    off = 8
+    for i in range(n):
+        x, y, z = anchors[i]
+        struct.pack_into("<fff", buf, off, x, y, z)
+        off += CFG_ANC_LEN
+    struct.pack_into("<H", buf, 104, crc16(bytes(buf[:104])))
+    return bytes(buf)
+
+
+def is_ack_frame(data: bytes) -> bool:
+    """板端对 CFG 的 ACK 应答 (8B): {magic,'ACK',0,seq,0} — tag 占 [2:5]"""
+    return (len(data) == 8 and data[0] == SPI_MAGIC0 and data[1] == SPI_MAGIC1
+            and data[2:5] == b"ACK")
+
+
 def build_frame(type_: int, seq: int, ts_ms: int, payload: bytes = b"") -> bytes:
     if len(payload) > MAX_PAYLOAD:
         raise ValueError("payload too large")
@@ -261,9 +290,13 @@ def scene_init_state(scene):
 
 
 class DemoSim:
-    """本地仿真器：复刻固件 sim.c 的目标轨迹 + 每锚点测量，产出 SpiFrame 字节与 Truth。"""
-    def __init__(self, cfg: Config):
+    """本地仿真器：复刻固件 sim.c 的目标轨迹 + 每锚点测量，产出 SpiFrame 字节与 Truth。
+
+    anchors 可自定义 (上位机编辑基站后同步用); 默认与板端 EKF 一致 (ANCHORS)。"""
+    def __init__(self, cfg: Config, anchors=None):
         self.cfg = cfg
+        self.anchors = list(anchors) if anchors is not None else list(ANCHORS)
+        self.n_anc = len(self.anchors)
         self.rng = 0xA5C0FFEE
         self._rw = [0.0] * 6
         self.apply(cfg)
@@ -312,8 +345,9 @@ class DemoSim:
         if t[2] < 0.5: t[2] = 0.5; t[5] = -t[5]
 
         en = cfg.enable_mask
-        # ref anchor range
-        rdx, rdy, rdz = t[0] - ANCHORS[REF_ANC][0], t[1] - ANCHORS[REF_ANC][1], t[2] - ANCHORS[REF_ANC][2]
+        # ref anchor range (ref = 索引 0)
+        rdx, rdy, rdz = (t[0] - self.anchors[0][0], t[1] - self.anchors[0][1],
+                         t[2] - self.anchors[0][2])
         rrho = math.sqrt(rdx*rdx + rdy*rdy) or 1e-3
         rrange = math.sqrt(rrho*rrho + rdz*rdz) or 1e-3
 
@@ -321,13 +355,14 @@ class DemoSim:
         buf[0] = SPI_MAGIC0; buf[1] = SPI_MAGIC1
         struct.pack_into("<H", buf, 2, self._seq & 0xFFFF)
         buf[4] = en & 0xFF
-        buf[5] = N_ANC
+        buf[5] = self.n_anc
         struct.pack_into("<I", buf, 6, int(dt_us) & 0xFFFFFFFF)
         # reserved [10..11] = 0
         off = SPI_ANC_OFF   # 12
         for i in range(SPI_MAX_ANCHORS):
-            if i < N_ANC:
-                dx = t[0] - ANCHORS[i][0]; dy = t[1] - ANCHORS[i][1]; dz = t[2] - ANCHORS[i][2]
+            if i < self.n_anc:
+                dx = t[0] - self.anchors[i][0]; dy = t[1] - self.anchors[i][1]
+                dz = t[2] - self.anchors[i][2]
                 rho = math.sqrt(dx*dx + dy*dy) or 1e-3
                 rng = math.sqrt(rho*rho + dz*dz) or 1e-3
                 has = 0; tdoa = 0.0; toa = 0.0; az = 0.0; el = 0.0; rss = 0.0

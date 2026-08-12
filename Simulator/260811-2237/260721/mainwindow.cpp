@@ -9,14 +9,67 @@
 #include <QMessageBox>
 #include <QFrame>
 #include <QFont>
+#include <QNetworkInterface>
+#include <QAbstractSocket>
+#include <QStringList>
+#include <QGuiApplication>
+#include <QScreen>
 #include <algorithm>
 #include <cstdio>
+#include <cstring>
+
+/* 勾选框 -> 模态位图; 全不勾时退回 TDOA */
+static uint8_t modality_mask_from_boxes(const QCheckBox *t, const QCheckBox *to,
+                                        const QCheckBox *a, const QCheckBox *r) {
+    uint8_t m = 0;
+    if (t->isChecked())  m |= TRACKER_MODE_TDOA;
+    if (to->isChecked()) m |= TRACKER_MODE_TOA;
+    if (a->isChecked())  m |= TRACKER_MODE_AOA;
+    if (r->isChecked())  m |= TRACKER_MODE_RSS;
+    return m ? m : TRACKER_MODE_TDOA;
+}
+
+static QString modality_mask_name(uint8_t mask) {
+    QStringList parts;
+    if (mask & TRACKER_MODE_TDOA) parts << QStringLiteral("TDOA");
+    if (mask & TRACKER_MODE_TOA)  parts << QStringLiteral("TOA");
+    if (mask & TRACKER_MODE_AOA)  parts << QStringLiteral("AOA");
+    if (mask & TRACKER_MODE_RSS)  parts << QStringLiteral("RSS");
+    return parts.isEmpty() ? QStringLiteral("TDOA") : parts.join(QStringLiteral("+"));
+}
+
+/* 获取本机有线 (以太网) IPv4: 过滤回环/虚拟/无线接口 */
+static QString board_ipv4() {
+    const auto ifaces = QNetworkInterface::allInterfaces();
+    for (const auto &iface : ifaces) {
+        if (!(iface.flags() & QNetworkInterface::IsUp)) continue;
+        if (iface.flags() & QNetworkInterface::IsLoopBack) continue;
+        const QString name = iface.name();
+        if (name.startsWith("lo") || name.startsWith("docker") ||
+            name.startsWith("veth") || name.startsWith("virbr") ||
+            name.startsWith("wlan") || name.startsWith("wlp"))
+            continue;
+        const auto entries = iface.addressEntries();
+        for (const auto &e : entries) {
+            if (e.ip().protocol() == QAbstractSocket::IPv4Protocol)
+                return QStringLiteral("%1: %2").arg(name).arg(e.ip().toString());
+        }
+    }
+    return QStringLiteral("- (检查网线/IP)");
+}
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
     setWindowTitle("PS Tracker UI");
-    resize(1100, 720);
+    /* 窗口尺寸: 保持 1100:720 设计比例等比缩放后居中, 屏幕比例不同也不变形
+     * (直接充满会改变宽高比 -> 画面被拉长)。RK3568 常见 1024x600/1280x800。 */
+    {
+        const QRect scr = QGuiApplication::primaryScreen()->availableGeometry();
+        const double scale = qMin((double)scr.width() / 1100.0,
+                                  (double)scr.height() / 720.0);
+        resize(qMax(640, (int)(1100 * scale)), qMax(400, (int)(720 * scale)));
+    }
 
     m_stack = new QStackedWidget(this);
     setCentralWidget(m_stack);
@@ -39,6 +92,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_eth, &EthReader::frameReceived, this, &MainWindow::onEthFrame,
             Qt::QueuedConnection);
     connect(m_eth, &EthReader::error, this, &MainWindow::onEthError,
+            Qt::QueuedConnection);
+    connect(m_eth, &EthReader::anchorsUpdated, this, &MainWindow::onAnchorsUpdated,
             Qt::QueuedConnection);
     connect(m_liveTimer, &QTimer::timeout, this, &MainWindow::onLiveTick);
 }
@@ -94,8 +149,23 @@ void MainWindow::buildMenuPage() {
     m_targetsCombo = makeCombo({"single", "multi3"});
     form->addRow("Targets:", m_targetsCombo);
 
-    m_modalityCombo = makeCombo({"TDOA", "TOA", "AOA", "RSS"});
-    form->addRow("Modality:", m_modalityCombo);
+    /* 模态多选 (勾选的参与 EKF 计算) */
+    m_chkTdoa = new QCheckBox("TDOA");
+    m_chkToa  = new QCheckBox("TOA");
+    m_chkAoa  = new QCheckBox("AOA");
+    m_chkRss  = new QCheckBox("RSS");
+    for (QCheckBox *cb : {m_chkTdoa, m_chkToa, m_chkAoa, m_chkRss}) {
+        cb->setStyleSheet("font-size:14px;");
+    }
+    m_chkTdoa->setChecked(true);           /* 默认 TDOA */
+    auto *modRow = new QWidget;
+    auto *modLay = new QHBoxLayout(modRow);
+    modLay->setContentsMargins(0, 0, 0, 0);
+    modLay->setSpacing(14);
+    for (QCheckBox *cb : {m_chkTdoa, m_chkToa, m_chkAoa, m_chkRss})
+        modLay->addWidget(cb);
+    modLay->addStretch();
+    form->addRow("Modality:", modRow);
 
     m_stepsSpin = new QSpinBox;
     m_stepsSpin->setRange(20, 500);
@@ -117,6 +187,29 @@ void MainWindow::buildMenuPage() {
     m_dimLabel = new QLabel;
     m_dimLabel->setStyleSheet("color:#30424E; font-size:14px; padding:0 60px;");
     root->addWidget(m_dimLabel);
+
+    // 连接信息: 本机有线 IP + 监听端口
+    auto *connRow = new QWidget;
+    auto *connLay = new QHBoxLayout(connRow);
+    connLay->setContentsMargins(60, 4, 60, 0);
+    auto *portLabel = new QLabel("监听端口:");
+    portLabel->setStyleSheet("color:#30424E; font-size:14px;");
+    m_portSpin = new QSpinBox;
+    m_portSpin->setRange(1, 65535);
+    m_portSpin->setValue(5000);                 /* 默认 UDP 监听端口 */
+    m_portSpin->setFixedWidth(110);
+    m_portSpin->setStyleSheet("font-size:14px; padding:4px 8px;");
+    auto *ipLabelTitle = new QLabel("本机有线 IP:");
+    ipLabelTitle->setStyleSheet("color:#30424E; font-size:14px;");
+    m_ipLabel = new QLabel(board_ipv4());
+    m_ipLabel->setStyleSheet("color:#1B2C34; font-size:14px; font-weight:bold;");
+    connLay->addWidget(portLabel);
+    connLay->addWidget(m_portSpin);
+    connLay->addSpacing(20);
+    connLay->addWidget(ipLabelTitle);
+    connLay->addWidget(m_ipLabel);
+    connLay->addStretch();
+    root->addWidget(connRow);
 
     // Buttons
     auto *btnRow = new QHBoxLayout;
@@ -160,12 +253,12 @@ void MainWindow::buildMenuPage() {
     root->addStretch();
 
     // Connections for dim label update
-    connect(m_modalityCombo, QOverload<int>::of(&QComboBox::currentIndexChanged),
-            this, &MainWindow::onModalityChanged);
+    for (QCheckBox *cb : {m_chkTdoa, m_chkToa, m_chkAoa, m_chkRss})
+        connect(cb, &QCheckBox::toggled, this, &MainWindow::onModalityChanged);
     connect(m_targetsCombo, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &MainWindow::onTargetModeChanged);
 
-    onModalityChanged(0);
+    onModalityChanged();
 
     m_stack->addWidget(m_menuPage);
 }
@@ -280,25 +373,13 @@ void MainWindow::buildResultPage() {
         return l;
     };
     plotLabelRow->addWidget(makePlotLabel("XY VIEW"));
-    plotLabelRow->addSpacing(12);
-    plotLabelRow->addWidget(makePlotLabel("XZ VIEW"));
-    plotLabelRow->addSpacing(12);
-    plotLabelRow->addWidget(makePlotLabel("3D VIEW"));
     plotVBox->addLayout(plotLabelRow);
 
     auto *plotRow = new QHBoxLayout;
     m_xyPlot = new TrackerPlot;
     m_xyPlot->setViewMode(TrackerPlot::ViewXY);
-    m_xzPlot = new TrackerPlot;
-    m_xzPlot->setViewMode(TrackerPlot::ViewXZ);
-    m_plot3d = new TrackerPlot;
-    m_plot3d->setViewMode(TrackerPlot::View3D);
 
     plotRow->addWidget(m_xyPlot, 1);
-    plotRow->addSpacing(12);
-    plotRow->addWidget(m_xzPlot, 1);
-    plotRow->addSpacing(12);
-    plotRow->addWidget(m_plot3d, 1);
     plotVBox->addLayout(plotRow, 1);
 
     root->addWidget(plotSection, 1);
@@ -312,7 +393,7 @@ void MainWindow::runSimulation() {
     // Gather options
     m_options.scene = (DemoScene)m_sceneCombo->currentIndex();
     m_options.target_mode = (TrackerTargetMode)m_targetsCombo->currentIndex();
-    m_options.modality = (TrackerModality)m_modalityCombo->currentIndex();
+    m_options.enable_mask = modality_mask_from_boxes(m_chkTdoa, m_chkToa, m_chkAoa, m_chkRss);
     m_options.steps = (size_t)m_stepsSpin->value();
     m_options.seed = (unsigned int)m_seedSpin->value();
 
@@ -344,7 +425,7 @@ void MainWindow::startLive() {
     if (m_live) return;
     // 复用菜单里的模态/种子等
     m_options.scene = (DemoScene)m_sceneCombo->currentIndex();
-    m_options.modality = (TrackerModality)m_modalityCombo->currentIndex();
+    m_options.enable_mask = modality_mask_from_boxes(m_chkTdoa, m_chkToa, m_chkAoa, m_chkRss);
     m_options.seed = (unsigned int)m_seedSpin->value();
     m_options.dt = 0.1;
 
@@ -364,7 +445,8 @@ void MainWindow::startLive() {
     m_liveBtn->setEnabled(false);
     m_liveBtn->setText(QStringLiteral("Live..."));
     m_eth->setHost(QStringLiteral("0.0.0.0"));  /* 监听所有接口; 仅收 ETH1 流量时填其 IP */
-    m_eth->setPort(5000);                       /* ETH1 UDP 监听端口 (默认 5000) */
+    m_eth->setPort((quint16)m_portSpin->value());  /* 监听端口 (菜单页可调, 默认 5000) */
+    m_ipLabel->setText(board_ipv4());           /* 启动前刷新一次本机 IP */
     m_eth->start();
     m_liveTimer->start();
     updateResultDisplay();
@@ -402,6 +484,31 @@ void MainWindow::onEthError(const QString &msg) {
     m_liveBtn->setText(QStringLiteral("Start Live (ETH1)"));
 }
 
+/* 上位机下发基站配置: payload = [n_anc:u8] + n_anc*UdpCfgAnchor (float32 xyz) */
+void MainWindow::onAnchorsUpdated(const QByteArray &payload) {
+    if (payload.size() < 1) return;
+    const int n = (uint8_t)payload[0];
+    if (n <= 0 || n > TRACKER3D_MAX_ANCHORS) return;
+    if (payload.size() < 1 + n * (int)sizeof(UdpCfgAnchor)) return;
+    /* 允许在 Start Live 之前下发 (接收前配置基站): 先安全初始化 */
+    if (!m_hasResult) {
+        memset(&m_result, 0, sizeof(m_result));
+        tracker3d_default_config(&m_result.config);
+    }
+    const auto *anc = (const UdpCfgAnchor *)(payload.constData() + 1);
+    for (int i = 0; i < n; ++i) {
+        m_result.config.anchors[i].x = anc[i].x;
+        m_result.config.anchors[i].y = anc[i].y;
+        m_result.config.anchors[i].z = anc[i].z;
+    }
+    m_result.config.anchor_count = (size_t)n;
+    if (m_live) m_liveDirty = true;      /* 重绘: 图上锚点位置更新 */
+    fprintf(stderr, "[ANCHORS] n=%d A0=(%.1f,%.1f,%.1f) A1=(%.1f,%.1f,%.1f)\n",
+            n, anc[0].x, anc[0].y, anc[0].z,
+            n > 1 ? anc[1].x : 0.0, n > 1 ? anc[1].y : 0.0, n > 1 ? anc[1].z : 0.0);
+    fflush(stderr);
+}
+
 void MainWindow::onLiveTick() {
     if (!m_live) return;
     /* 链路状态灯无条件刷新 (无新帧时也要变红), 1s 无新帧视为断流 */
@@ -435,7 +542,7 @@ void MainWindow::updateResultDisplay() {
         const double *e = tracker_result_final_estimate_at(&m_result, 0);
         m_rScene->setText(QStringLiteral("LIVE"));
         m_rTargets->setText(QStringLiteral("1"));
-        m_rModality->setText(tracker_modality_name(m_result.modality));
+        m_rModality->setText(modality_mask_name(m_options.enable_mask));
         m_rSteps->setText(QString::number(m_liveFrames));   /* 收帧总数, 非窗口步数 */
         m_rDim->setText(QString("Dim: %1").arg(m_result.measurement_dim));
         m_rPosRmse->setText(e ? QString::number(e[0], 'f', 3) : QStringLiteral("-"));
@@ -450,14 +557,12 @@ void MainWindow::updateResultDisplay() {
                 .arg(e[0], 0, 'f', 3).arg(e[1], 0, 'f', 3).arg(e[2], 0, 'f', 3));
         }
         m_xyPlot->setResult(&m_result);
-        m_xzPlot->setResult(&m_result);
-        m_plot3d->setResult(&m_result);
         return;
     }
 
     m_rScene->setText(tracker_scene_name(m_options.scene));
     m_rTargets->setText(tracker_target_mode_name(m_result.target_mode));
-    m_rModality->setText(tracker_modality_name(m_result.modality));
+    m_rModality->setText(modality_mask_name(m_options.enable_mask));
     m_rSteps->setText(QString::number(m_result.steps));
     m_rDim->setText(QString("Dim: %1").arg(m_result.measurement_dim));
     m_rPosRmse->setText(QString::number(m_result.pos_rmse, 'f', 4));
@@ -477,8 +582,6 @@ void MainWindow::updateResultDisplay() {
 
     // Update plots
     m_xyPlot->setResult(&m_result);
-    m_xzPlot->setResult(&m_result);
-    m_plot3d->setResult(&m_result);
 }
 
 void MainWindow::goToMenu() {
@@ -486,19 +589,21 @@ void MainWindow::goToMenu() {
     m_stack->setCurrentWidget(m_menuPage);
 }
 
-void MainWindow::onModalityChanged(int) {
-    size_t dim = tracker_expected_measurement_dim_for_modality(
-        (TrackerModality)m_modalityCombo->currentIndex());
+void MainWindow::onModalityChanged() {
+    uint8_t mask = modality_mask_from_boxes(m_chkTdoa, m_chkToa, m_chkAoa, m_chkRss);
+    size_t dim = tracker_expected_measurement_dim_for_mask(mask);
     size_t ntargets = tracker_target_count_for_mode(
         (TrackerTargetMode)m_targetsCombo->currentIndex());
 
     if (ntargets > 1) {
-        m_dimLabel->setText(QString("Measurement: %1 x %2 targets").arg(dim).arg(ntargets));
+        m_dimLabel->setText(QString("Measurement: %1 x %2 targets  [%3]")
+                                .arg(dim).arg(ntargets).arg(modality_mask_name(mask)));
     } else {
-        m_dimLabel->setText(QString("Measurement dimension: %1").arg(dim));
+        m_dimLabel->setText(QString("Measurement dimension: %1  [%2]")
+                                .arg(dim).arg(modality_mask_name(mask)));
     }
 }
 
 void MainWindow::onTargetModeChanged(int) {
-    onModalityChanged(0);
+    onModalityChanged();
 }

@@ -28,9 +28,11 @@ anchors[8]/crc16, 与 260721/frame_protocol.h 逐字节一致), 发往板子 ETH
 运行: python eth_host.py
 """
 from __future__ import annotations
+import math
 import platform
 import re
 import socket
+import struct
 import subprocess
 import sys
 import time
@@ -43,9 +45,11 @@ import protocol as P
 
 DEFAULT_TARGET_IP = "192.168.1.10"
 DEFAULT_PORT = 5000
+SCENE_DRAW = 4                          # 手绘路线模式 (本地扩展, 不入 protocol.py)
 POS_TRAIL = 400
 ANCHOR_COLOR = "#e74c3c"
 TRAIL_COLOR = "#2980b9"
+DRAW_COLOR = "#e67e22"                  # 手绘路径颜色
 HEARTBEAT_MS = 2000        # 发送中自动心跳探测周期
 PING_TIMEOUT_MS = 1500     # 联通测试等待应答超时
 
@@ -78,18 +82,206 @@ def icmp_ping(ip: str, timeout_ms: int = 1500):
     return None, "网络可达"
 
 
+# ============================================================
+#  手绘路线模式
+# ============================================================
+class DrawPlot(pg.PlotWidget):
+    """支持鼠标拖拽手绘路径的位置图。
+
+    绘制模式 (set_draw_mode(True)): 左键按下/拖拽在数据坐标系连续加点;
+    自动禁用视图平移/缩放, 避免误操作。路径以橙色线显示。
+    """
+    pathChanged = QtCore.pyqtSignal()
+
+    def __init__(self, parent=None, **kargs):
+        super().__init__(parent, **kargs)   # title/背景等透传给 PlotWidget
+        self.draw_pts = []               # [(x, y)] 数据坐标
+        self._drawing = False
+        self.draw_enabled = False
+        self._path_curve = self.plot(pen=pg.mkPen(DRAW_COLOR, width=3))
+        self._path_curve.setVisible(False)
+
+    def set_draw_mode(self, on: bool):
+        self.draw_enabled = on
+        vb = self.getPlotItem().vb
+        vb.setMouseEnabled(not on, not on)      # 绘制时禁用平移/缩放
+        self._path_curve.setVisible(on and bool(self.draw_pts))
+
+    def clear_path(self):
+        self.draw_pts = []
+        self._path_curve.setData([], [])
+        self._path_curve.setVisible(False)
+
+    def mousePressEvent(self, ev):
+        if self.draw_enabled and ev.button() == QtCore.Qt.LeftButton:
+            self._drawing = True
+            self._add_point(ev)
+            ev.accept()
+            return
+        super().mousePressEvent(ev)
+
+    def mouseMoveEvent(self, ev):
+        if self.draw_enabled and self._drawing:
+            self._add_point(ev)
+            ev.accept()
+            return
+        super().mouseMoveEvent(ev)
+
+    def mouseReleaseEvent(self, ev):
+        if self._drawing:
+            self._drawing = False
+            self.pathChanged.emit()
+            ev.accept()
+            return
+        super().mouseReleaseEvent(ev)
+
+    def _add_point(self, ev):
+        # QGraphicsView 的 mouse 事件是 QMouseEvent (viewport 坐标), 无 scenePos():
+        # 用 viewport 坐标 -> scene 坐标 -> 数据坐标
+        scene_pt = self.mapToScene(ev.pos())
+        p = self.getPlotItem().vb.mapSceneToView(scene_pt)
+        x, y = p.x(), p.y()
+        if self.draw_pts:
+            dx, dy = x - self.draw_pts[-1][0], y - self.draw_pts[-1][1]
+            if dx * dx + dy * dy < 0.01:        # 去抖: 相邻点间距 < 0.1m 忽略
+                return
+        self.draw_pts.append((x, y))
+        self._path_curve.setData([q[0] for q in self.draw_pts],
+                                 [q[1] for q in self.draw_pts])
+        self._path_curve.setVisible(True)    # 画第一个点即显示路径线
+
+
+class DrawSim:
+    """手绘路径匀速运动仿真: 目标沿用户绘制路径匀速循环运动, 生成与
+    DemoSim 完全同格式的 182B 帧 (锚点几何/噪声/CRC 均一致)。"""
+
+    def __init__(self, cfg: P.Config, pts, speed: float, z: float = 1.5,
+                 anchors=None):
+        self.cfg = cfg
+        self.pts = list(pts)
+        self.z = z
+        self.speed = speed                 # m/s (匀速)
+        self.anchors = list(anchors) if anchors is not None else list(P.ANCHORS)
+        self.n_anc = len(self.anchors)
+        self.rng = 0xA5C0FFEE
+        # 各段累积弧长 (供弧长->位置插值)
+        self._cum = [0.0]
+        for i in range(1, len(self.pts)):
+            dx = self.pts[i][0] - self.pts[i - 1][0]
+            dy = self.pts[i][1] - self.pts[i - 1][1]
+            self._cum.append(self._cum[-1] + math.hypot(dx, dy))
+        self.total = self._cum[-1] if self.pts else 0.0
+        self.reset()
+
+    # ---- 噪声 (与 protocol.DemoSim 同算法) ----
+    def _xs(self):
+        x = self.rng
+        x ^= (x << 13) & 0xFFFFFFFF; x ^= (x >> 17); x ^= (x << 5) & 0xFFFFFFFF
+        self.rng = x
+        return x
+
+    def _frand(self):
+        return (self._xs() >> 8) / float(0x00FFFFFF)
+
+    def _gauss(self):
+        u1 = max(self._frand(), 1e-7); u2 = self._frand()
+        return math.sqrt(-2.0 * math.log(u1)) * math.cos(2.0 * math.pi * u2)
+
+    def reset(self):
+        self._s = 0.0
+        self._last_us = 0.0
+        self._seq = 0
+
+    def _pos_at(self, s):
+        """弧长 s 处的位置 (x, y) 与速度 (vx, vy); 循环折返到起点。"""
+        if self.total <= 0:
+            return 0.0, 0.0, 0.0, 0.0
+        s = s % self.total
+        for i in range(1, len(self.pts)):
+            if s <= self._cum[i]:
+                seg = self._cum[i] - self._cum[i - 1]
+                t = (s - self._cum[i - 1]) / seg if seg > 1e-9 else 0.0
+                x0, y0 = self.pts[i - 1]; x1, y1 = self.pts[i]
+                x = x0 + (x1 - x0) * t
+                y = y0 + (y1 - y0) * t
+                vx = (x1 - x0) / seg * self.speed if seg > 1e-9 else 0.0
+                vy = (y1 - y0) / seg * self.speed if seg > 1e-9 else 0.0
+                return x, y, vx, vy
+        return self.pts[-1][0], self.pts[-1][1], 0.0, 0.0
+
+    def step(self, now_us):
+        dt_us = now_us - self._last_us
+        self._last_us = now_us
+        if dt_us > 1e6:
+            dt_us = 1e6
+        if dt_us < 0:
+            dt_us = 0
+        self._s += self.speed * (dt_us * 1e-6)
+        x, y, vx, vy = self._pos_at(self._s)
+        truth = (x, y, self.z, vx, vy, 0.0)
+        return self._pack(x, y, self.z, vx, vy, 0.0, dt_us), truth
+
+    def _pack(self, x, y, z, vx, vy, vz, dt_us):
+        """打包 182B UdpFrame (与 protocol.py::DemoSim.step 相同逻辑)。"""
+        cfg = self.cfg
+        en = cfg.enable_mask
+        rrange = None
+        for i in range(self.n_anc):
+            ax, ay, az = self.anchors[i]
+            dx, dy, dz = x - ax, y - ay, z - az
+            rho = math.sqrt(dx * dx + dy * dy) or 1e-3
+            rng = math.sqrt(rho * rho + dz * dz) or 1e-3
+            if i == 0:
+                rrange = rng
+                break
+        buf = bytearray(P.SPI_FRAME_LEN)
+        buf[0] = P.SPI_MAGIC0; buf[1] = P.SPI_MAGIC1
+        struct.pack_into("<H", buf, 2, self._seq & 0xFFFF)
+        buf[4] = en & 0xFF
+        buf[5] = self.n_anc
+        struct.pack_into("<I", buf, 6, int(dt_us) & 0xFFFFFFFF)
+        off = 12
+        for i in range(P.SPI_MAX_ANCHORS):
+            if i < self.n_anc:
+                ax, ay, az = self.anchors[i]
+                dx = x - ax; dy = y - ay; dz = z - az
+                rho = math.sqrt(dx * dx + dy * dy) or 1e-3
+                rng = math.sqrt(rho * rho + dz * dz) or 1e-3
+                has = 0; tdoa = 0.0; toa = 0.0; azm = 0.0; el = 0.0; rss = 0.0
+                if (en & P.SPI_MODE_TDOA) and i != P.REF_ANC:
+                    has |= P.SPI_MODE_TDOA
+                    tdoa = (rng - rrange) / P.C_LIGHT + self._gauss() * P.TDOA_STD
+                if en & P.SPI_MODE_TOA:
+                    has |= P.SPI_MODE_TOA
+                    toa = rng / P.C_LIGHT + self._gauss() * P.TOA_STD
+                if en & P.SPI_MODE_AOA:
+                    has |= P.SPI_MODE_AOA
+                    azm = math.atan2(dy, dx) + self._gauss() * P.AOA_STD
+                    el = math.atan2(dz, rho) + self._gauss() * P.AOA_STD
+                if en & P.SPI_MODE_RSS:
+                    has |= P.SPI_MODE_RSS
+                    rss = P.RSS_REF - 10.0 * P.RSS_N * math.log10(rng) + self._gauss() * P.RSS_STD
+                struct.pack_into(P.ANCHOR_FMT, buf, off, has, tdoa, toa, azm, el, rss)
+            off += P.ANCHOR_SIZE
+        struct.pack_into("<H", buf, 180, P.crc16(bytes(buf[:180])))
+        self._seq = (self._seq + 1) & 0xFFFF
+        return bytes(buf)
+
+
 class Sender(QtCore.QObject):
-    """UDP 帧发送器: 1ms 轮询节流发帧 + 心跳探测 + PONG 应答接收。"""
+    """UDP 帧发送器: 1ms 轮询节流发帧 + 心跳探测 + PONG/ACK 应答接收。"""
     error = QtCore.pyqtSignal(str)
     sent = QtCore.pyqtSignal(int)          # 每发一帧: 新 seq
-    pong = QtCore.pyqtSignal(int, float)   # 收到板卡应答: seq, rtt_ms
+    pong = QtCore.pyqtSignal(int, float)   # 收到板卡 PONG: seq, rtt_ms
+    ack = QtCore.pyqtSignal(int)           # 收到板卡 ACK (基站配置确认): seq
 
     def __init__(self, parent=None):
         super().__init__(parent)
         self.cfg = P.Config()
-        self.sim = P.DemoSim(self.cfg)
+        self.sim = P.DemoSim(self.cfg)      # 默认标准仿真; 手绘模式由 UI 替换
         self.sock = None
         self.dest = (DEFAULT_TARGET_IP, DEFAULT_PORT)
+        self._last_truth = (0.0, 0.0, 0.0, 0.0, 0.0, 0.0)   # 最近一帧真值
         self._ensure_sock()          # 立即建 socket: 联通测试不依赖"启动发送"
         self._t0 = 0.0
         self._timer = QtCore.QTimer(self)          # 1ms 节流发帧
@@ -108,13 +300,20 @@ class Sender(QtCore.QObject):
         self._pongs_in = 0
         self._last_pong_at = 0.0                   # 最近应答时刻 (0=从未)
         self._last_rtt_ms = 0.0
+        self._cfg_seq = 0
+        self._acks_in = 0
+        self._last_ack_at = 0.0                    # 最近基站配置确认时刻
+        self._last_ack_seq = -1
 
     def set_dest(self, ip: str, port: int):
         self.dest = (ip, port)
 
     def apply_config(self, cfg: P.Config):
         self.cfg = cfg
-        self.sim.apply(cfg)
+
+    def set_sim(self, sim):
+        """替换仿真器 (标准 DemoSim / 手绘 DrawSim); 未启动前调用。"""
+        self.sim = sim
 
     def _ensure_sock(self):
         """确保 socket 存在且绑定本机源端口 (PONG 回送到此端口才能收到)。"""
@@ -173,6 +372,20 @@ class Sender(QtCore.QObject):
         except OSError as e:
             self.error.emit(f"PING 发送失败: {e}")
 
+    def send_cfg(self, anchors) -> bool:
+        """下发基站配置 (106B CFG 帧)。anchors: [(x, y, z), ...] (<=8)。
+        板端更新 EKF 锚点后回 ACK (经 _recv_poll -> ack 信号)。"""
+        if not self._ensure_sock():
+            return False
+        self._cfg_seq = (self._cfg_seq + 1) & 0xFF
+        frame = P.build_cfg_frame(self._cfg_seq, anchors)
+        try:
+            self.sock.sendto(frame, self.dest)
+            return True
+        except OSError as e:
+            self.error.emit(f"CFG 发送失败: {e}")
+            return False
+
     def _recv_poll(self):
         while True:
             try:
@@ -185,6 +398,12 @@ class Sender(QtCore.QObject):
                 self._last_pong_at = time.monotonic()
                 self._last_rtt_ms = (time.monotonic() - self._ping_t0) * 1000.0
                 self.pong.emit(data[6], self._last_rtt_ms)
+                continue
+            if P.is_ack_frame(data):               # 基站配置 ACK
+                self._acks_in += 1
+                self._last_ack_at = time.monotonic()
+                self._last_ack_seq = data[6]
+                self.ack.emit(data[6])
 
     def _tick(self):
         now_us = int((time.monotonic() - self._t0) * 1e6)
@@ -193,7 +412,11 @@ class Sender(QtCore.QObject):
         self._next_us += self._period_us
         if now_us - self._next_us > 1e6:
             self._next_us = now_us       # 落后超过 1s, 重新对齐
-        frame, _truth = self.sim.step(now_us)   # dt 由 now_us 差分自算, 精确
+        frame, truth = self.sim.step(now_us)    # dt 由 now_us 差分自算, 精确
+        # 统一真值为 tuple (DemoSim 返回 P.Truth 对象, DrawSim 返回 tuple)
+        if isinstance(truth, P.Truth):
+            truth = (truth.x, truth.y, truth.z, truth.vx, truth.vy, truth.vz)
+        self._last_truth = truth
         try:
             self.sock.sendto(frame, self.dest)
         except OSError as e:
@@ -207,13 +430,14 @@ class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("ETH/UDP 上位机 - RK3568 定位接收端")
-        self.resize(1080, 680)
+        self.resize(1080, 800)
 
         self.cfg = P.Config()
         self.sender = Sender(self)
         self.sender.error.connect(self._on_error)
         self.sender.sent.connect(self._on_sent)
         self.sender.pong.connect(self._on_pong)
+        self.sender.ack.connect(self._on_ack)
 
         self._sent = 0
         self._errors = 0
@@ -223,6 +447,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self._fps_cnt = 0
         self._ping_btn_pending = False   # 联通测试按钮等待应答中
         self._udp_rtt = None             # 最近一次按钮测得的 UDP RTT
+        self._bs_pending = False         # 基站配置等待板端 ACK
 
         # 真值轨迹 (本地参照)
         self._tx = deque(maxlen=POS_TRAIL)
@@ -244,9 +469,10 @@ class MainWindow(QtWidgets.QMainWindow):
 
         left = QtWidgets.QFrame()
         left.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        left.setMinimumWidth(300)
-        left.setMaximumWidth(340)
+        left.setMinimumWidth(360)
+        left.setMaximumWidth(430)
         ll = QtWidgets.QVBoxLayout(left)
+        ll.setSpacing(10)
         root.addWidget(left)
         root.addWidget(self._build_plot(), 1)
 
@@ -272,13 +498,17 @@ class MainWindow(QtWidgets.QMainWindow):
         # 仿真配置
         g = QtWidgets.QGroupBox("仿真配置 Config")
         f = QtWidgets.QFormLayout(g)
+        f.setVerticalSpacing(8)
+        f.setLabelAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
         self.in_scene = QtWidgets.QComboBox()
         for k, v in P.SCENE_NAMES.items():
             self.in_scene.addItem(v, k)
+        self.in_scene.addItem("手绘 Draw (在图上拖拽画路径)", SCENE_DRAW)
         self.in_rate = QtWidgets.QSpinBox()
         self.in_rate.setRange(1, 200)
         self.in_rate.setValue(self.cfg.sample_rate_hz)
         mod = QtWidgets.QHBoxLayout()
+        mod.setSpacing(6)
         self.chk_tdoa = QtWidgets.QCheckBox("TDOA")
         self.chk_toa = QtWidgets.QCheckBox("TOA")
         self.chk_aoa = QtWidgets.QCheckBox("AOA")
@@ -290,6 +520,10 @@ class MainWindow(QtWidgets.QMainWindow):
         self.chk_aoa.setChecked(True)
         self.chk_rss.setChecked(True)
 
+        # 数值框固定宽度: 防止被 QFormLayout 行内拉伸成"细长条"
+        # (表单默认 AllNonFixedFieldsGrow 会把可伸展控件拉满行宽, 用
+        #  setFixedWidth 保持紧凑, 上下箭头可点)
+        self.in_rate.setFixedWidth(110)
         self.in_ix = QtWidgets.QDoubleSpinBox()
         self.in_iy = QtWidgets.QDoubleSpinBox()
         self.in_iz = QtWidgets.QDoubleSpinBox()
@@ -300,6 +534,7 @@ class MainWindow(QtWidgets.QMainWindow):
             w.setRange(-999.0, 999.0)
             w.setDecimals(2)
             w.setSingleStep(0.5)
+            w.setFixedWidth(110)
         self.in_ix.setValue(self.cfg.init_x)
         self.in_iy.setValue(self.cfg.init_y)
         self.in_iz.setValue(self.cfg.init_z)
@@ -307,12 +542,27 @@ class MainWindow(QtWidgets.QMainWindow):
         self.in_vy.setValue(self.cfg.vel_y)
         self.in_vz.setValue(self.cfg.vel_z)
 
+        # 手绘模式: 沿路径匀速速度 (m/s)
+        self.in_speed = QtWidgets.QDoubleSpinBox()
+        self.in_speed.setRange(0.1, 20.0)
+        self.in_speed.setDecimals(1)
+        self.in_speed.setSingleStep(0.5)
+        self.in_speed.setValue(2.0)
+        self.in_speed.setFixedWidth(110)
+
         f.addRow("场景 Scene", self.in_scene)
         f.addRow("采样率 Hz", self.in_rate)
         f.addRow("模态", mod)
         f.addRow("初值 X/Y/Z", self._hbox(self.in_ix, self.in_iy, self.in_iz))
         f.addRow("速度 Vx/Vy/Vz", self._hbox(self.in_vx, self.in_vy, self.in_vz))
+        f.addRow("手绘速度 m/s", self.in_speed)
+        self.lbl_draw_hint = QtWidgets.QLabel("")
+        self.lbl_draw_hint.setStyleSheet("color:#e67e22; font-size:12px;")
+        self.lbl_draw_hint.setWordWrap(True)
+        f.addRow("", self.lbl_draw_hint)
         ll.addWidget(g)
+
+        self.in_scene.currentIndexChanged.connect(self._on_scene_changed)
 
         # 控制
         g = QtWidgets.QGroupBox("控制 Control")
@@ -370,7 +620,7 @@ class MainWindow(QtWidgets.QMainWindow):
         w = QtWidgets.QWidget()
         v = QtWidgets.QVBoxLayout(w)
         pg.setConfigOptions(antialias=True)
-        self.plot = pg.PlotWidget(title="真值轨迹 Truth (本地参照) + 锚点 Anchors")
+        self.plot = DrawPlot(title="真值轨迹 Truth (本地参照) + 锚点 Anchors")
         self.plot.showGrid(x=True, y=True, alpha=0.3)
         self.plot.setLabel("bottom", "X", units="m")
         self.plot.setLabel("left", "Y", units="m")
@@ -379,18 +629,116 @@ class MainWindow(QtWidgets.QMainWindow):
         self.target_dot = pg.ScatterPlotItem(
             size=14, symbol="o", brush=pg.mkBrush(TRAIL_COLOR), pen=pg.mkPen("#111", width=1.5))
         self.plot.addItem(self.target_dot)
-        self.plot.addItem(pg.ScatterPlotItem(
+        self.bs_scatter = pg.ScatterPlotItem(
             pos=[(x, y) for x, y, _z in P.ANCHORS],
             size=[16] * P.N_ANC,
             symbol="t1",
             brush=pg.mkBrush(ANCHOR_COLOR),
-            pen=pg.mkPen("#7f0f16", width=1.5)))
+            pen=pg.mkPen("#7f0f16", width=1.5))
+        self.plot.addItem(self.bs_scatter)
+        self.bs_labels = []
         for i, (x, y, _z) in enumerate(P.ANCHORS):
             t = pg.TextItem(f"A{i}", color="#c0392b", anchor=(0.5, -0.6))
             t.setPos(x, y)
             self.plot.addItem(t)
-        v.addWidget(self.plot)
+            self.bs_labels.append(t)
+        v.addWidget(self.plot, 1)
+        v.addWidget(self._build_bs_panel())
         return w
+
+    def _build_bs_panel(self):
+        """基站坐标编辑表 (编辑后同步到板端 EKF)。"""
+        g = QtWidgets.QGroupBox("基站 Base Stations (编辑后同步到板端)")
+        gl = QtWidgets.QVBoxLayout(g)
+        gl.setContentsMargins(8, 6, 8, 6)
+        self.bs_table = QtWidgets.QTableWidget(len(P.ANCHORS), 3)
+        self.bs_table.setHorizontalHeaderLabels(["X (m)", "Y (m)", "Z (m)"])
+        self.bs_table.verticalHeader().setVisible(False)
+        self.bs_table.verticalHeader().setDefaultSectionSize(26)   # 紧凑行高
+        self.bs_table.setFixedHeight(26 * len(P.ANCHORS) + 28)     # 5 行全显示
+        for i, (x, y, z) in enumerate(P.ANCHORS):
+            for j, val in enumerate((x, y, z)):
+                spin = QtWidgets.QDoubleSpinBox()
+                spin.setRange(-999.0, 999.0)
+                spin.setDecimals(1)
+                spin.setSingleStep(0.5)
+                spin.setValue(val)
+                spin.valueChanged.connect(self._on_bs_edited)
+                self.bs_table.setCellWidget(i, j, spin)
+        self.bs_table.horizontalHeader().setSectionResizeMode(
+            QtWidgets.QHeaderView.Stretch)
+        gl.addWidget(self.bs_table)
+        row = QtWidgets.QHBoxLayout()
+        self.bs_sync_btn = QtWidgets.QPushButton("📡 应用到板端")
+        self.bs_sync_btn.clicked.connect(self._apply_bs)
+        self.lbl_bs_status = QtWidgets.QLabel("未同步")
+        self.lbl_bs_status.setStyleSheet("color:#888; font-size:12px;")
+        row.addWidget(self.bs_sync_btn)
+        row.addWidget(self.lbl_bs_status, 1)
+        gl.addLayout(row)
+        return g
+
+    # ---------------- 基站 ----------------
+    def _collect_anchors(self):
+        """从表格收集当前基站坐标 [(x, y, z), ...]"""
+        pts = []
+        for i in range(self.bs_table.rowCount()):
+            vals = []
+            for j in range(3):
+                w = self.bs_table.cellWidget(i, j)
+                if w is None:
+                    vals.append(0.0)
+                else:
+                    vals.append(w.value())
+            pts.append(tuple(vals))
+        return pts
+
+    def _update_bs_plot(self):
+        pts = self._collect_anchors()
+        self.bs_scatter.setData(pos=[(p[0], p[1]) for p in pts])
+        for i, t in enumerate(self.bs_labels):
+            if i < len(pts):
+                t.setPos(pts[i][0], pts[i][1])
+                t.setVisible(True)
+            else:
+                t.setVisible(False)
+
+    def _on_bs_edited(self, _v):
+        self._update_bs_plot()
+        self.lbl_bs_status.setText("已编辑, 未同步")
+        self.lbl_bs_status.setStyleSheet("color:#e67e22; font-size:12px;")
+
+    def _apply_bs(self):
+        anchors = self._collect_anchors()
+        if self.sender.send_cfg(anchors):
+            self._bs_pending = True
+            self.lbl_bs_status.setText("已发送, 等待板端确认…")
+            self.lbl_bs_status.setStyleSheet("color:#e67e22; font-size:12px;")
+            QtCore.QTimer.singleShot(3000, self._check_bs_ack)
+
+    def _check_bs_ack(self):
+        if self._bs_pending:
+            self.lbl_bs_status.setText("未收到确认 — 板端未运行 / 未部署含 CFG 的新代码")
+            self.lbl_bs_status.setStyleSheet("color:#C44E35; font-size:12px;")
+
+    def _on_ack(self, seq: int):
+        self._bs_pending = False
+        self.lbl_bs_status.setText(f"板端已确认 (seq={seq})")
+        self.lbl_bs_status.setStyleSheet("color:#27ae60; font-size:12px;")
+
+    # ---------------- 场景切换 ----------------
+    def _is_draw_scene(self):
+        return self.in_scene.currentData() == SCENE_DRAW
+
+    def _on_scene_changed(self, _idx: int):
+        if self._is_draw_scene():
+            self.plot.set_draw_mode(True)
+            self.lbl_draw_hint.setText(
+                "绘制模式: 在右侧图上按住鼠标左键拖拽画路径, 松开结束; "
+                "目标沿路径匀速循环运动")
+        else:
+            self.plot.set_draw_mode(False)
+            self.lbl_draw_hint.setText("")
 
     # ---------------- 发送控制 ----------------
     def _toggle_send(self, on: bool):
@@ -398,6 +746,21 @@ class MainWindow(QtWidgets.QMainWindow):
             self._apply_widgets_to_cfg()
             self.sender.set_dest(self.in_ip.text().strip(), self.in_port.value())
             self.sender.apply_config(self.cfg)
+            # 按场景选择仿真器 (测量按当前基站坐标生成)
+            anchors = self._collect_anchors()
+            if self._is_draw_scene():
+                pts = self.plot.draw_pts
+                if len(pts) < 2:
+                    QtWidgets.QMessageBox.warning(
+                        self, "手绘模式",
+                        "路径至少需要 2 个点 — 先在右侧图上按住鼠标左键拖拽画路径")
+                    self.start_btn.setChecked(False)
+                    return
+                sim = DrawSim(self.cfg, pts, self.in_speed.value(), z=1.5,
+                              anchors=anchors)
+            else:
+                sim = P.DemoSim(self.cfg, anchors=anchors)
+            self.sender.set_sim(sim)
             if not self.sender.start():
                 self.start_btn.setChecked(False)
                 return
@@ -475,8 +838,8 @@ class MainWindow(QtWidgets.QMainWindow):
         self._sent += 1
         self._fps_cnt += 1
         self._last_seq = seq
-        # 真值轨迹 (从 sim 取当前真值)
-        t = self.sender.sim._rw
+        # 真值轨迹 (标准/手绘仿真器统一经 _last_truth 提供)
+        t = self.sender._last_truth
         self._tx.append(t[0])
         self._ty.append(t[1])
         self._cur_xy = (t[0], t[1])
@@ -524,6 +887,8 @@ class MainWindow(QtWidgets.QMainWindow):
         self._cur_xy = (0.0, 0.0)
         self.curve_trail.setData([], [])
         self.target_dot.setData([])
+        if self._is_draw_scene():
+            self.plot.clear_path()      # 手绘模式: 同时清除路径
 
     def closeEvent(self, e):
         self.sender.close()

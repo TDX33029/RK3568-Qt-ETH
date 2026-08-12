@@ -26,11 +26,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Qt5 / Qt6 auto-detection (both work on RK3568).
 # Note: avoid find_package(NAMES ...) syntax -- it needs CMake >= 3.15, but
 # Debian 10 (buster) ships CMake 3.13.4. This try-Qt6-then-Qt5 form works on 3.13+.
-find_package(Qt6 QUIET COMPONENTS Widgets)
+find_package(Qt6 QUIET COMPONENTS Widgets Network)
 if(Qt6_FOUND)
     set(QT_VERSION_MAJOR 6)
 else()
-    find_package(Qt5 REQUIRED COMPONENTS Widgets)
+    find_package(Qt5 REQUIRED COMPONENTS Widgets Network)
     set(QT_VERSION_MAJOR 5)
 endif()
 
@@ -67,8 +67,11 @@ else()
     endif()
 endif()
 
-# Core dependency
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+# Core dependency (Network: 本机 IP 显示)
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    Qt${QT_VERSION_MAJOR}::Widgets
+    Qt${QT_VERSION_MAJOR}::Network
+)
 
 # Math library: needed on Linux (libm) for sqrt/cos/sin used in tracker3d/tracker_app.
 # On Windows/MinGW it is implicitly available.

@@ -1,5 +1,6 @@
 D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/_wincheck/build/ps_tracker_ui_autogen/EWIEGA46WW/moc_eth_reader.cpp: D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/eth_reader.h \
   D:/Document/tempPrj/-swap/Simulator/260811-2237/260721/_wincheck/build/ps_tracker_ui_autogen/moc_predefs.h \
+  C:/Qt/6.5.3/mingw_64/include/QtCore/QByteArray \
   C:/Qt/6.5.3/mingw_64/include/QtCore/QMetaType \
   C:/Qt/6.5.3/mingw_64/include/QtCore/QString \
   C:/Qt/6.5.3/mingw_64/include/QtCore/QThread \

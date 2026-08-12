@@ -7,6 +7,12 @@
 
 #define TRACKER_APP_MAX_TARGETS 3
 
+/* 模态位图 (与 frame_protocol.h 的 UDP_MODE_* 值一致): 勾选多模态参与 EKF */
+#define TRACKER_MODE_TDOA (1u << 0)
+#define TRACKER_MODE_TOA  (1u << 1)
+#define TRACKER_MODE_AOA  (1u << 2)
+#define TRACKER_MODE_RSS  (1u << 3)
+
 typedef enum {
     SCENE_STRAIGHT = 0,
     SCENE_CLIMB = 1,
@@ -28,7 +34,8 @@ typedef enum {
 typedef struct {
     DemoScene scene;
     TrackerTargetMode target_mode;
-    TrackerModality modality;
+    TrackerModality modality;      /* 兼容字段 (显示名用); 实际模态由 enable_mask 决定 */
+    uint8_t enable_mask;           /* 参与 EKF 的模态位图 (可多选) */
     unsigned int seed;
     size_t steps;
     double dt;
@@ -62,7 +69,7 @@ int tracker_parse_target_mode(const char *text, TrackerTargetMode *mode);
 size_t tracker_target_count_for_mode(TrackerTargetMode mode);
 const char *tracker_modality_name(TrackerModality modality);
 int tracker_parse_modality(const char *text, TrackerModality *modality);
-size_t tracker_expected_measurement_dim_for_modality(TrackerModality modality);
+size_t tracker_expected_measurement_dim_for_mask(uint8_t enable_mask);
 size_t tracker_expected_measurement_dim(const Tracker3DConfig *config);
 const double *tracker_result_truth_at(const TrackerSimResult *result, size_t target_index, size_t step_index);
 const double *tracker_result_estimate_at(const TrackerSimResult *result, size_t target_index, size_t step_index);

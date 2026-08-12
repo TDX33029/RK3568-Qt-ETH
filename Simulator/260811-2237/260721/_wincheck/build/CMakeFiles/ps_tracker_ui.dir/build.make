@@ -202,6 +202,7 @@ ps_tracker_ui.exe: CMakeFiles/ps_tracker_ui.dir/tracker_plot.cpp.obj
 ps_tracker_ui.exe: CMakeFiles/ps_tracker_ui.dir/eth_reader.cpp.obj
 ps_tracker_ui.exe: CMakeFiles/ps_tracker_ui.dir/build.make
 ps_tracker_ui.exe: C:/Qt/6.5.3/mingw_64/lib/libQt6Widgets.a
+ps_tracker_ui.exe: C:/Qt/6.5.3/mingw_64/lib/libQt6Network.a
 ps_tracker_ui.exe: C:/Qt/6.5.3/mingw_64/lib/libQt6Gui.a
 ps_tracker_ui.exe: C:/Qt/6.5.3/mingw_64/lib/libQt6Core.a
 ps_tracker_ui.exe: C:/Qt/6.5.3/mingw_64/lib/libQt6EntryPoint.a

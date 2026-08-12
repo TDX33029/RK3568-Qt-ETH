@@ -369,11 +369,13 @@ CMakeFiles/ps_tracker_ui.dir/mainwindow.cpp.obj: \
  C:/Qt/6.5.3/mingw_64/include/QtWidgets/qtabbar.h \
  C:/Qt/6.5.3/mingw_64/include/QtWidgets/qrubberband.h \
  C:/Qt/6.5.3/mingw_64/include/QtCore/qabstractitemmodel.h \
+ C:/Qt/6.5.3/mingw_64/include/QtWidgets/QCheckBox \
+ C:/Qt/6.5.3/mingw_64/include/QtWidgets/qcheckbox.h \
+ C:/Qt/6.5.3/mingw_64/include/QtWidgets/qabstractbutton.h \
  C:/Qt/6.5.3/mingw_64/include/QtWidgets/QSpinBox \
  C:/Qt/6.5.3/mingw_64/include/QtWidgets/qspinbox.h \
  C:/Qt/6.5.3/mingw_64/include/QtWidgets/QPushButton \
  C:/Qt/6.5.3/mingw_64/include/QtWidgets/qpushbutton.h \
- C:/Qt/6.5.3/mingw_64/include/QtWidgets/qabstractbutton.h \
  C:/Qt/6.5.3/mingw_64/include/QtWidgets/QLabel \
  C:/Qt/6.5.3/mingw_64/include/QtWidgets/qlabel.h \
  C:/Qt/6.5.3/mingw_64/include/QtGui/qpicture.h \
@@ -404,6 +406,8 @@ CMakeFiles/ps_tracker_ui.dir/mainwindow.cpp.obj: \
  C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/std_thread.h \
  C:/Qt/6.5.3/mingw_64/include/QtCore/QString \
  C:/Qt/6.5.3/mingw_64/include/QtCore/qstring.h \
+ C:/Qt/6.5.3/mingw_64/include/QtCore/QByteArray \
+ C:/Qt/6.5.3/mingw_64/include/QtCore/qbytearray.h \
  C:/Qt/6.5.3/mingw_64/include/QtCore/QMetaType \
  C:/Qt/6.5.3/mingw_64/include/QtCore/qmetatype.h \
  D:\Document\tempPrj\-swap\Simulator\260811-2237\260721\frame_protocol.h \
@@ -438,4 +442,30 @@ CMakeFiles/ps_tracker_ui.dir/mainwindow.cpp.obj: \
  C:/Qt/6.5.3/mingw_64/include/QtWidgets/QFrame \
  C:/Qt/6.5.3/mingw_64/include/QtWidgets/qframe.h \
  C:/Qt/6.5.3/mingw_64/include/QtGui/QFont \
- C:/Qt/6.5.3/mingw_64/include/QtGui/qfont.h
+ C:/Qt/6.5.3/mingw_64/include/QtGui/qfont.h \
+ C:/Qt/6.5.3/mingw_64/include/QtNetwork/QNetworkInterface \
+ C:/Qt/6.5.3/mingw_64/include/QtNetwork/qnetworkinterface.h \
+ C:/Qt/6.5.3/mingw_64/include/QtNetwork/qtnetworkglobal.h \
+ C:/Qt/6.5.3/mingw_64/include/QtNetwork/qtnetwork-config.h \
+ C:/Qt/6.5.3/mingw_64/include/QtNetwork/qtnetworkexports.h \
+ C:/Qt/6.5.3/mingw_64/include/QtNetwork/qhostaddress.h \
+ C:/Qt/6.5.3/mingw_64/include/QtNetwork/qabstractsocket.h \
+ C:/Qt/6.5.3/mingw_64/include/QtNetwork/QAbstractSocket \
+ C:/Qt/6.5.3/mingw_64/include/QtNetwork/qabstractsocket.h \
+ C:/Qt/6.5.3/mingw_64/include/QtCore/QStringList \
+ C:/Qt/6.5.3/mingw_64/include/QtCore/qstringlist.h \
+ C:/Qt/6.5.3/mingw_64/include/QtGui/QGuiApplication \
+ C:/Qt/6.5.3/mingw_64/include/QtGui/qguiapplication.h \
+ C:/Qt/6.5.3/mingw_64/include/QtGui/QScreen \
+ C:/Qt/6.5.3/mingw_64/include/QtGui/qscreen.h \
+ C:/Qt/6.5.3/mingw_64/include/QtCore/QList \
+ C:/Qt/6.5.3/mingw_64/include/QtCore/qlist.h \
+ C:/Qt/6.5.3/mingw_64/include/QtCore/QObject \
+ C:/Qt/6.5.3/mingw_64/include/QtCore/qobject.h \
+ C:/Qt/6.5.3/mingw_64/include/QtCore/QRect \
+ C:/Qt/6.5.3/mingw_64/include/QtCore/qrect.h \
+ C:/Qt/6.5.3/mingw_64/include/QtCore/QSize \
+ C:/Qt/6.5.3/mingw_64/include/QtCore/qsize.h \
+ C:/Qt/6.5.3/mingw_64/include/QtCore/QSizeF \
+ C:/Qt/6.5.3/mingw_64/include/QtGui/QTransform \
+ C:/Qt/6.5.3/mingw_64/include/QtGui/qtransform.h
