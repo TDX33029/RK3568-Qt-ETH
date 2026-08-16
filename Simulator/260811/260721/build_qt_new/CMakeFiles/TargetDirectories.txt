@@ -1,9 +1,0 @@
-D:/Document/tempPrj/-swap/260721/260721/build_qt_new/CMakeFiles/260721.dir
-D:/Document/tempPrj/-swap/260721/260721/build_qt_new/CMakeFiles/edit_cache.dir
-D:/Document/tempPrj/-swap/260721/260721/build_qt_new/CMakeFiles/rebuild_cache.dir
-D:/Document/tempPrj/-swap/260721/260721/build_qt_new/CMakeFiles/list_install_components.dir
-D:/Document/tempPrj/-swap/260721/260721/build_qt_new/CMakeFiles/install.dir
-D:/Document/tempPrj/-swap/260721/260721/build_qt_new/CMakeFiles/install/local.dir
-D:/Document/tempPrj/-swap/260721/260721/build_qt_new/CMakeFiles/install/strip.dir
-D:/Document/tempPrj/-swap/260721/260721/build_qt_new/CMakeFiles/260721_autogen_timestamp_deps.dir
-D:/Document/tempPrj/-swap/260721/260721/build_qt_new/CMakeFiles/260721_autogen.dir
