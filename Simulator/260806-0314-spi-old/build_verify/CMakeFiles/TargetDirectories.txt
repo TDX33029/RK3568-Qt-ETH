@@ -1,0 +1,9 @@
+D:/Document/tempPrj/-swap/260721/260721/build_verify/CMakeFiles/ps_tracker_ui.dir
+D:/Document/tempPrj/-swap/260721/260721/build_verify/CMakeFiles/edit_cache.dir
+D:/Document/tempPrj/-swap/260721/260721/build_verify/CMakeFiles/rebuild_cache.dir
+D:/Document/tempPrj/-swap/260721/260721/build_verify/CMakeFiles/list_install_components.dir
+D:/Document/tempPrj/-swap/260721/260721/build_verify/CMakeFiles/install.dir
+D:/Document/tempPrj/-swap/260721/260721/build_verify/CMakeFiles/install/local.dir
+D:/Document/tempPrj/-swap/260721/260721/build_verify/CMakeFiles/install/strip.dir
+D:/Document/tempPrj/-swap/260721/260721/build_verify/CMakeFiles/ps_tracker_ui_autogen_timestamp_deps.dir
+D:/Document/tempPrj/-swap/260721/260721/build_verify/CMakeFiles/ps_tracker_ui_autogen.dir

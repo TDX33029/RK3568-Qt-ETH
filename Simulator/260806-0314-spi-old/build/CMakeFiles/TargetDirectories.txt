@@ -1,0 +1,8 @@
+/home/ubuntu/桌面/qt/260721/260721/build/CMakeFiles/ps_tracker_ui.dir
+/home/ubuntu/桌面/qt/260721/260721/build/CMakeFiles/edit_cache.dir
+/home/ubuntu/桌面/qt/260721/260721/build/CMakeFiles/rebuild_cache.dir
+/home/ubuntu/桌面/qt/260721/260721/build/CMakeFiles/list_install_components.dir
+/home/ubuntu/桌面/qt/260721/260721/build/CMakeFiles/install.dir
+/home/ubuntu/桌面/qt/260721/260721/build/CMakeFiles/install/local.dir
+/home/ubuntu/桌面/qt/260721/260721/build/CMakeFiles/install/strip.dir
+/home/ubuntu/桌面/qt/260721/260721/build/CMakeFiles/ps_tracker_ui_autogen.dir
